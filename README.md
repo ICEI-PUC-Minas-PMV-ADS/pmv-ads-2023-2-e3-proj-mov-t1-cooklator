@@ -1,23 +1,25 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+` ANÁLISE E DESENV. DE SISTEMAS`
 
-`DISCIPLINA`
+`Projeto: Desenvolvimento de uma Aplicação Móvel em um Ambiente de Negócio`
 
-`SEMESTRE`
+`02/2023`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Cooklator é um projeto que visa facilitar e ajudar a vida do autônomo ou da pessoa que precisa de uma forma de precificar seu trabalho. A plataforma oferece essa solução com um cálculo baseado no custo dos materiais e no tempo gasto, assim para o usuário ter seu trabalho precificado e organizar seus gastos.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Gabriel Eduardo Palhares
+* Guilherme Augusto Gomes Cunha
+* Hector Florenca da Silva Mendes
+* Juliana Dutra Moreira
+* Pedro Mota Cassemiro
+* Thais Menezes Alves de Souza
 
 ## Orientador
 
-* Nome completo do professor 1
+* Will Ricardo dos Santos Machado
 
 ## Instruções de utilização
 
