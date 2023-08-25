@@ -154,20 +154,28 @@ De acordo com o PMBoK v6 as dez áreas que constituem os pilares para gerenciar 
 
 Com diagramas bem organizados que permitem gerenciar o tempo nos projetos, o gerente de projetos agenda e coordena tarefas dentro de um projeto para estimar o tempo necessário de conclusão.
 
-![Diagrama de rede simplificado notação francesa (método francês)](img/02-diagrama-rede-simplificado.png)
+![Diagrama de rede simplificado notação francesa (método francês)](img/2-diagramaGerenciamentoTempo.PNG)
 
 O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utilizada para controlar e gerenciar o cronograma de atividades de um projeto. Com ele, é possível listar tudo que precisa ser feito para colocar o projeto em prática, dividir em atividades e estimar o tempo necessário para executá-las.
 
-![Gráfico de Gantt](img/02-grafico-gantt.png)
+![Gráfico de Gantt](img/2-graficoGantt.PNG)
 
 ## Gerenciamento de Equipe
 
 O gerenciamento adequado de tarefas contribuirá para que o projeto alcance altos níveis de produtividade. Por isso, é fundamental que ocorra a gestão de tarefas e de pessoas, de modo que os times envolvidos no projeto possam ser facilmente gerenciados. 
 
-![Simple Project Timeline](img/02-project-timeline.png)
+![Simple Project Timeline](img/2-gerenciamentoEquipe.PNG)
 
 ## Gestão de Orçamento
 
-O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
+O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo. Os cálculos foram realizados considerando custos correspondentes à uma equipe de 06 (seis) integrantes.
 
-![Orçamento](img/02-orcamento.png)
+|Recursos Necessários | Custo estimado (R$)                |
+|--|-------------------------------------------------------|
+| Hardware |  R$30.000 |
+| Publicidade e Marketing |  R$15.000 |
+| Recursos Humanos | R$180.000 |
+| Rede |  R$5.000 |]
+| Software |  R$30.000 |
+| Serviços |  R$7.000 |
+| **TOTAL** |  R$267.000 |
