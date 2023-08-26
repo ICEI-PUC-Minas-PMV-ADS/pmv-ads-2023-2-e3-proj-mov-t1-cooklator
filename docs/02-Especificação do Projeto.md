@@ -8,19 +8,40 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+As pessoas retratadas durante o processo de compreensão do problema são apresentadas nas figuras que seguem.
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+<img align="left" src="img/personaJose.jpg" width="230" height="240">
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+## José Ribeiro
+
+**Profissão:** Recém formado em gastronomia e confeiteiro autônomo<br>
+**Idade:** 24 anos<br>
+José recentemente se formou em gastronomia e decidiu se especializar em confeitaria. Ele é apaixonado por criar sobremesas únicas e saborosas. José quer usar suas habilidades para construir sua própria marca e negócio autônomo de confeitaria.
+Ele precisa de uma maneira eficiente de rastrear os custos dos ingredientes, gerenciar seu tempo durante a produção e precificar suas criações. Tem o objetivo de usar o aplicativo para melhor gerir seu negócio de confeitaria, garantindo que seus preços reflitam o valor do seu trabalho e que ele possa oferecer produtos de qualidade aos clientes.
+
+---
+
+<img align="left" src="img/personaCaio.jpg" width="230" height="240">
+
+## Caio Lucas
+
+**Profissão:** Designer gráfico e padeiro amador<br>
+**Idade:** 27 anos<br>
+Caio tem um emprego em tempo integral como designer, mas tem uma paixão por fazer pães e bolos nos fins de semana para vender a amigos, familiares e seus vizinhos. Ele quer levar seu hobby a sério e transformá-lo em uma fonte de renda extra.
+Ele precisa de uma maneira simples de acompanhar o tempo gasto em suas produções e calcular o custo dos ingredientes. Tem o objetivo de utilizar o aplicativo para entender quanto tempo ele realmente gasta em cada produto e garantir que seus preços estejam alinhados com o mercado.
+
+---
+
+<img align="left" src="img/personaRicardo.jpg" width="230" height="240">
+
+## Ricardo Silva
+
+**Profissão:** Chef de cozinha autônomo<br>
+**Idade:** 32 anos<br>
+Ricardo tem anos de experiência na culinária e está agora administrando seu próprio negócio de buffets e venda de pratos gourmet. Ele tem compreensão da importância de calcular os custos corretamente para não comprometer seus possíveis lucros.
+Ele precisa de uma maneira eficiente de controlar o tempo gasto na preparação de cada prato e calcular custos dos ingredientes e materiais. Também tem interesse em armazenar receitas e observações sobre cada prato. Tem o objetivo de usar a aplicação para precificar seus pratos de forma justa, garantindo que os custos sejam cobertos e que ele obtenha o lucro desejado.
+
+
 
 ## Histórias de Usuários
 
@@ -28,17 +49,13 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+|José Ribeiro (Confeiteiro autônomo)  | Ser capaz de calcular os custos precisos de ingredientes por receita           | Garantir que meus preços cubram os gastos               |
+|José Ribeiro (Confeiteiro autônomo)       | Registrar o tempo gasto para produzir cada doce                 | Entender quanto tempo é necessário para cada produto |
+|Caio (Padeiro amador)  | Criar perfis de receitas com listas de ingredientes e quantidades           | Calcular os custos de cada prato               |
+|Caio (Padeiro amador)       | Registrar o tempo que levo para preparar cada prato                 | Calcular o valor do meu trabalho com base no tempo dedicado |
+|Ricardo (Chef de cozinha autônomo)  | Marcar tarefas específicas, como “fermentação” e “tempo de forno”           | Acompanhar o tempo total de preparo               |
+|Ricardo (Chef de cozinha autônomo)       | Adicionar notas de aprendizado a cada produção                | Lembrar de ajustes que fiz nas receitas e quais foram os resultados |
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
-
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
 
 ## Modelagem do Processo de Negócio 
 
