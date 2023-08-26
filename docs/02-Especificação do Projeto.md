@@ -15,7 +15,7 @@ As pessoas retratadas durante o processo de compreensão do problema são aprese
 ## José Ribeiro
 
 **Profissão:** Recém formado em gastronomia e confeiteiro autônomo<br>
-**Idade:** 24 anos<br>
+**Idade:** 27 anos<br>
 José recentemente se formou em gastronomia e decidiu se especializar em confeitaria. Ele é apaixonado por criar sobremesas únicas e saborosas. José quer usar suas habilidades para construir sua própria marca e negócio autônomo de confeitaria.
 Ele precisa de uma maneira eficiente de rastrear os custos dos ingredientes, gerenciar seu tempo durante a produção e precificar suas criações. Tem o objetivo de usar o aplicativo para melhor gerir seu negócio de confeitaria, garantindo que seus preços reflitam o valor do seu trabalho e que ele possa oferecer produtos de qualidade aos clientes.
 
@@ -26,7 +26,7 @@ Ele precisa de uma maneira eficiente de rastrear os custos dos ingredientes, ger
 ## Caio Lucas
 
 **Profissão:** Designer gráfico e padeiro amador<br>
-**Idade:** 27 anos<br>
+**Idade:** 24 anos<br>
 Caio tem um emprego em tempo integral como designer, mas tem uma paixão por fazer pães e bolos nos fins de semana para vender a amigos, familiares e seus vizinhos. Ele quer levar seu hobby a sério e transformá-lo em uma fonte de renda extra.
 Ele precisa de uma maneira simples de acompanhar o tempo gasto em suas produções e calcular o custo dos ingredientes. Tem o objetivo de utilizar o aplicativo para entender quanto tempo ele realmente gasta em cada produto e garantir que seus preços estejam alinhados com o mercado.
 
