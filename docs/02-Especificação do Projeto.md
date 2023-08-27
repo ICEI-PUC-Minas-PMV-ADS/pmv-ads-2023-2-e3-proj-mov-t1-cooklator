@@ -1,11 +1,5 @@
 # Especificações do Projeto
 
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
-
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
-
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
-
 ## Personas
 
 As pessoas retratadas durante o processo de compreensão do problema são apresentadas nas figuras que seguem.
@@ -40,8 +34,6 @@ Ele precisa de uma maneira simples de acompanhar o tempo gasto em suas produçõ
 **Idade:** 32 anos<br>
 Ricardo tem anos de experiência na culinária e está agora administrando seu próprio negócio de buffets e venda de pratos gourmet. Ele tem compreensão da importância de calcular os custos corretamente para não comprometer seus possíveis lucros.
 Ele precisa de uma maneira eficiente de controlar o tempo gasto na preparação de cada prato e calcular custos dos ingredientes e materiais. Também tem interesse em armazenar receitas e observações sobre cada prato. Tem o objetivo de usar a aplicação para precificar seus pratos de forma justa, garantindo que os custos sejam cobertos e que ele obtenha o lucro desejado.
-
-
 
 ## Histórias de Usuários
 
@@ -94,17 +86,23 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
+|ID    | Descrição do Requisito  | Prioridade | 
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| A aplicação permitirá ao usuário realizar cadastro para ter acesso a plataforma | ALTA | 
+|RF-002| A aplicação permitirá ao usuário o acesso a plataforma com os dados cadastrados | ALTA |
+|RF-003| A aplicação permitirá o cadastro de materiais e insumos para controle e cálculos de quantidade e gastos pelo usuário | MÉDIA |
+|RF-004| A aplicação deve permitir o usuário utilizar o timer para o cálculo do tempo gasto para confecção do produto | ALTA |
+|RF-005| A aplicação deve permitir ao usuário o cadastro e exibição dos pratos e receitas na plataforma | MÉDIA |
+|RF-006| A aplicação deve permitir a edição dos dados referentes aos insumos e receitas do usuário | MÉDIA |
+|RF-007| A aplicação deve permitir a edição de dados de conta do usuário | BAIXA |
+|RF-008| A aplicação deve permitir a recuperação ou mudança de senha | BAIXA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-001| A aplicação deverá ser responsiva permitindo a visualização em aparelhos mobile de forma adequada. | MÉDIA | 
+|RNF-002| A aplicação deve responder em um tempo de até 500ms as suas requisições |  ALTA | 
 
 Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
@@ -127,8 +125,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|01| O projeto deve ser entregue até o final do semestre 2023.2 |
 
 Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
 
@@ -150,6 +147,16 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Diagrams](https://app.diagrams.net/)
 
 # Matriz de Rastreabilidade
+
+| ID | RF01 | RF02 | RF03 | RF04 | RF05 | RF06 | RF07 | RF08 |
+|----|------|------|------|------|------|------|------|------|
+|RF01|      |  x   |      |      |      |      |      |      |
+|RF02|  x   |  x   |  x   |  x   |  x   |      |      |      |
+|RF03|      |  x   |      |  x   |  x   |      |      |      |
+|RF04|      |  x   |  x   |      |      |      |      |      |
+|RF05|      |  x   |  x   |      |      |      |      |      |
+|RF06|      |      |      |      |      |      |      |      |
+|RF07|      |      |      |      |      |      |      |      |
 
 A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
 
