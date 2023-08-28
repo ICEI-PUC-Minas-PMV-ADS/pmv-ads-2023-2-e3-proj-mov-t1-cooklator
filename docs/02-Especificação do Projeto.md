@@ -10,9 +10,9 @@ As pessoas retratadas durante o processo de compreensão do problema são aprese
 
 **Profissão:** Recém formado em gastronomia e confeiteiro autônomo;<br>
 **Idade:** 27 anos;<br>
-**Aplicativos:** Whatzapp , Instagram;<br>
+**Aplicativos:** Whatsapp, Instagram;<br>
 **Motivações:** José recentemente se formou em gastronomia e decidiu se especializar em confeitaria. Ele é apaixonado por criar sobremesas únicas e saborosas. José quer usar suas habilidades para construir sua própria marca e negócio autônomo de confeitaria;<br>
-**Frustações:** Ele precisa de uma maneira eficiente de rastrear os custos dos ingredientes, gerenciar seu tempo durante a produção e precificar suas criações. Tem o objetivo de usar o aplicativo para melhor gerir seu negócio de confeitaria, garantindo que seus preços reflitam o valor do seu trabalho e que ele possa oferecer produtos de qualidade aos clientes.
+**Frustrações:** Ele precisa de uma maneira eficiente de rastrear os custos dos ingredientes, gerenciar seu tempo durante a produção e precificar suas criações. Tem o objetivo de usar o aplicativo para melhor gerir seu negócio de confeitaria, garantindo que seus preços reflitam o valor do seu trabalho e que ele possa oferecer produtos de qualidade aos clientes.
 
 ---
 
@@ -22,9 +22,9 @@ As pessoas retratadas durante o processo de compreensão do problema são aprese
 
 **Profissão:** Designer gráfico e padeiro amador;<br>
 **Idade:** 24 anos;<br>
-**Aplicativos:** Whatzapp, twitter, facebook, Instagram;<br>
+**Aplicativos:** Whatsapp, Twitter, Facebook, Instagram;<br>
 **Motivações:** Caio tem um emprego em tempo integral como designer, mas tem uma paixão por fazer pães e bolos nos fins de semana para vender a amigos, familiares e seus vizinhos. Ele quer levar seu hobby a sério e transformá-lo em uma fonte de renda extra;<br>
-**Frustações:** Ele precisa de uma maneira simples de acompanhar o tempo gasto em suas produções e calcular o custo dos ingredientes. Tem o objetivo de utilizar o aplicativo para entender quanto tempo ele realmente gasta em cada produto e garantir que seus preços estejam alinhados com o mercado.
+**Frustrações:** Ele precisa de uma maneira simples de acompanhar o tempo gasto em suas produções e calcular o custo dos ingredientes. Tem o objetivo de utilizar o aplicativo para entender quanto tempo ele realmente gasta em cada produto e garantir que seus preços estejam alinhados com o mercado.
 
 ---
 
@@ -34,9 +34,9 @@ As pessoas retratadas durante o processo de compreensão do problema são aprese
 
 **Profissão:** Chef de cozinha autônomo;<br>
 **Idade:** 32 anos;<br>
-**Aplicativos:** Whatzapp, twitter, Instagram;<br>
+**Aplicativos:** Whatsapp, Twitter, Instagram;<br>
 **Motivações:** Ricardo tem anos de experiência na culinária e está agora administrando seu próprio negócio de buffets e venda de pratos gourmet. Ele tem compreensão da importância de calcular os custos corretamente para não comprometer seus possíveis lucros;<br>
-**Frustações:** Ele precisa de uma maneira eficiente de controlar o tempo gasto na preparação de cada prato e calcular custos dos ingredientes e materiais. Também tem interesse em armazenar receitas e observações sobre cada prato. Tem o objetivo de usar a aplicação para precificar seus pratos de forma justa, garantindo que os custos sejam cobertos e que ele obtenha o lucro desejado.
+**Frustrações:** Ele precisa de uma maneira eficiente de controlar o tempo gasto na preparação de cada prato e calcular custos dos ingredientes e materiais. Também tem interesse em armazenar receitas e observações sobre cada prato. Tem o objetivo de usar a aplicação para precificar seus pratos de forma justa, garantindo que os custos sejam cobertos e que ele obtenha o lucro desejado.
 
 ---
 
@@ -46,9 +46,9 @@ As pessoas retratadas durante o processo de compreensão do problema são aprese
 
 **Profissão:** Chef de Culinária Artesanal;<br>
 **Idade:** 35 anos;<br>
-**Aplicativos:** Whatzapp, twitter, Instagram;<br>
+**Aplicativos:** Whatsapp, Twitter, Instagram;<br>
 **Motivações:** Isabela está apaixonada por explorar novos sabores e criar pratos únicos. Sua principal motivação é a busca pela expressão artística através da culinária. Ela adora experimentar ingredientes não convencionais e técnicos inovadores;<br>
-**Frustações:** Isabela muitas vezes se sente frustrada com as limitações de orçamento e recursos. Ela sabe que certos ingredientes e equipamentos de alta qualidade podem elevar suas criações.Tem o objetivo de utilizar o aplicativo para conseguir precificar cada comida artesanal, sem ter prejuízos de acordo com cada ingrediente utilizado .
+**Frustrações:** Isabela muitas vezes se sente frustrada com as limitações de orçamento e recursos. Ela sabe que certos ingredientes e equipamentos de alta qualidade podem elevar suas criações. Tem o objetivo de utilizar o aplicativo para conseguir precificar cada comida artesanal, sem ter prejuízos de acordo com cada ingrediente utilizado.
 
 
 ## Histórias de Usuários
@@ -63,7 +63,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |Caio (Padeiro amador)       | Registrar o tempo que levo para preparar cada prato                 | Calcular o valor do meu trabalho com base no tempo dedicado |
 |Ricardo (Chef de cozinha autônomo)  | Marcar tarefas específicas, como “fermentação” e “tempo de forno”           | Acompanhar o tempo total de preparo               |
 |Ricardo (Chef de cozinha autônomo)       | Adicionar notas de aprendizado a cada produção                | Lembrar de ajustes que fiz nas receitas e quais foram os resultados |
-| Isabela Rodrigues (Culinária Artesanal)       | Conseguir precificar cada produto | Muitos ingredientes caros e exoticos  |
+| Isabela Rodrigues (Culinária Artesanal)       | Conseguir precificar cada produto | Muitos ingredientes caros e exóticos  |
 
 ## Modelagem do Processo de Negócio 
 
