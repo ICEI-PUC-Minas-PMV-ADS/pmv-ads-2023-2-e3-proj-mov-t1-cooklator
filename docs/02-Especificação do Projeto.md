@@ -1,5 +1,7 @@
 # Especificações do Projeto
 
+A identificação precisa do desafio em questão e os aspectos mais significativos a serem abordados neste empreendimento foram solidificados por meio de um esforço colaborativo com os usuários. Isso foi realizado através de um processo imersivo liderado pela equipe, compreendendo a observação direta dos usuários em suas configurações usuais e a condução de entrevistas interativas. As informações capturadas durante essa exploração foram condensadas e moldadas na forma de personas detalhadas e histórias de usuário.
+
 ## Personas
 
 As pessoas retratadas durante o processo de compreensão do problema são apresentadas nas figuras que seguem.
@@ -120,21 +122,6 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-001| A aplicação deverá ser responsiva permitindo a visualização em aparelhos mobile de forma adequada. | MÉDIA | 
 |RNF-002| A aplicação deve responder em um tempo de até 500ms as suas requisições |  ALTA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
-
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
@@ -164,6 +151,8 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 
 # Matriz de Rastreabilidade
 
+A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
+
 | ID | RF01 | RF02 | RF03 | RF04 | RF05 |
 |----|------|------|------|------|------|
 |RF01|      |  x   |      |      |      |
@@ -171,17 +160,6 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 |RF03|      |  x   |      |  x   |  x   |
 |RF04|      |  x   |  x   |      |      |
 |RF05|      |  x   |  x   |      |      |
-
-A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
-
-A matriz deve contemplar todos os elementos relevantes que fazem parte do sistema, conforme a figura meramente ilustrativa apresentada a seguir.
-
-![Exemplo de matriz de rastreabilidade](img/02-matriz-rastreabilidade.png)
-
-> **Links Úteis**:
-> - [Artigo Engenharia de Software 13 - Rastreabilidade](https://www.devmedia.com.br/artigo-engenharia-de-software-13-rastreabilidade/12822/)
-> - [Verificação da rastreabilidade de requisitos usando a integração do IBM Rational RequisitePro e do IBM ClearQuest Test Manager](https://developer.ibm.com/br/tutorials/requirementstraceabilityverificationusingrrpandcctm/)
-> - [IBM Engineering Lifecycle Optimization – Publishing](https://www.ibm.com/br-pt/products/engineering-lifecycle-optimization/publishing/)
 
 
 # Gerenciamento de Projeto
