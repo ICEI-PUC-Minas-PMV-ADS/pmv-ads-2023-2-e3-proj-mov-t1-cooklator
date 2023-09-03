@@ -100,7 +100,10 @@ Obs.: todas as informações para gerar os indicadores devem estar no diagrama d
 
 ## Requisitos
 
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
+As tabelas a seguir apresentam os requisitos funcionais, requisitos não funcionais e restrições que definem o escopo do projeto. O levantamento da prioridade dos requisitos foi definida por meio da técnica de Escala de Três Níveis. Os critérios de importância e urgência foram utilizados como níveis de prioridade em um quadrante, possibilitando a combinação destes aspectos durante a classificação da prioridade de cada requisito.
+
+![priorizacao](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/90e680c1-7a47-4f16-9e54-34ec098477b0)
+
 
 ### Requisitos Funcionais
 
@@ -129,6 +132,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deve ser entregue até o final do semestre 2023.2 |
+|02| A aplicação deverá ser desenvolvida utilizando React Native e JSON Server |
+|03| Apenas a própria equipe será responsável pelo desenvolvimento do projeto. |
+|04| O projeto fará uso de um banco de dados relacional.|
 
 Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
 
