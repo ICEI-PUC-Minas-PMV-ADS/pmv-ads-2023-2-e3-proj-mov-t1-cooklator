@@ -49,18 +49,19 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 ### Divisão de Papéis
 
-Apresente a divisão de papéis entre os membros do grupo.
+A equipe escolheu a metodologia ágil SCRUM para o gerenciamento do processo de desenvolvimento do projeto. A cada semana, haverá uma sprint, com uma reunião de definição dos backlogs da próxima sprint. Reuniões semanais serão realizadas para a comunicação do que está sendo feito e das dificuldades para o Scrum Master. Ao final da sprint, uma reunião é realizada com o professor para verificar se o que foi produzido durante a sprint atende aos requisitos.
 
-Exemplificação: A equipe utiliza metodologias ágeis, tendo escolhido o Scrum como base para definição do processo de desenvolvimento. A equipe está organizada da seguinte maneira:
-- Scrum Master: Felipe Domingos;
-- Product Owner: Rommel Carneiro;
-- Equipe de Desenvolvimento: Pedro Penna, Pedro Ivo, Rodrigo Richard;
-- Equipe de Design: Simone Nogueira.
+Os integrantes da equipe e seus respectivos papéis estão a seguir:
 
-> **Links Úteis**:
-> - [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-> - [Os papéis do Scrum e a verdade sobre cargos nessa técnica](https://www.atlassian.com/br/agile/scrum/roles)
+* Scrum Master: A definir.
+* Product Owner: A definir.
+* Equipe de Desenvolvimento: deve executar as tarefas e participar ativamente das rotinas. Será formada por todos os integrantes da equipe.
+  - Gabriel Eduardo Palhares
+  - Guilherme Augusto Gomes Cunha
+  - Hector Florenca da Silva Mendes
+  - Juliana Dutra Moreira
+  - Pedro Mota Cassemiro
+  - Thais Menezes Alves de Souza
 
 ### Processo
 
