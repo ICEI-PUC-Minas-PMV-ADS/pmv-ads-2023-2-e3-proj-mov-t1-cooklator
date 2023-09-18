@@ -11,7 +11,7 @@ Os diversos ambientes de trabalho e suas respectivas plataformas estão descrito
 |:--------------------:|:------------------------------------:|:----------------------------------------:|
 |Repositório de Código Fonte| <i>GitHub</i> |[GitHub - COOKLATOR](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator)|
 |Documentos do Projeto| <i>GitHub</i> |[GitHub - COOKLATOR](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/tree/main/docs)|
-|Projeto de Interface e <i>Wireframes</i>| <i>Figma</i> |[Figma - Projeto COOKLATOR]()|
+|Projeto de Interface e <i>Wireframes</i>| <i>Figma</i> |[Figma - Projeto COOKLATOR](https://www.figma.com/file/WcMIs1ypuhaKSn77klf9xH/Juliana-Dutra's-team-library?type=design&node-id=413-1692&mode=design&t=ALRUbKGwIRX0L9IO-0)|
 |Gerenciamento do Projeto| <i>GitHub Projects</i> |[GitHub Projects - Projeto COOKLATOR](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/496)|
 
 ## Controle de Versão
