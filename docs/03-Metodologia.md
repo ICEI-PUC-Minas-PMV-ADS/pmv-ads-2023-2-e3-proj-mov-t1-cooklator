@@ -16,34 +16,23 @@ Os diversos ambientes de trabalho e suas respectivas plataformas estão descrito
 
 ## Controle de Versão
 
-A ferramenta de controle de versão adotada no projeto foi o
-[Git](https://git-scm.com/), sendo que o [Github](https://github.com)
-foi utilizado para hospedagem do repositório.
+A ferramenta utilizada para o controle de versões adotada no projeto foi o [GitHub Desktop](https://desktop.github.com/), sendo o [Github](https://github.com) utilizado para hospedagem do repositório. A escolha desta ferramenta foi feita com base em experiências anteriores, em função da arquitetura da plataforma que fornece um controle simultâneo,  acompanhamento das mudanças juntamente ao funcionamento da aplicação, sincronização de versões, além de proporcionar a reversão de alterações em situações pertinentes.
 
-O projeto segue a seguinte convenção para o nome de branches:
+O projeto segue a seguinte convenção para o nome e sequência de branches:
 
 - `main`: versão estável já testada do software
-- `unstable`: versão já testada do software, porém instável
-- `testing`: versão em testes do software
-- `dev`: versão de desenvolvimento do software
+- `desenvolvimento`: versão já testada do software, porém instável
+- `local`: versão individual para desenvolvimento e testes do software
 
-Quanto à gerência de issues, o projeto adota a seguinte convenção para
-etiquetas:
+Com relação ao controle do fluxo de versionamento, foi adotada a seguinte sequência: 
 
-- `documentation`: melhorias ou acréscimos à documentação
-- `bug`: uma funcionalidade encontra-se com problemas
-- `enhancement`: uma funcionalidade precisa ser melhorada
-- `feature`: uma nova funcionalidade precisa ser introduzida
+- `Clone do repositório`: cada integrante faz a clonagem do repositório para sua máquina.
+- `Criação das Branchs`: ramificação da aplicação para controle de versionamento sem afetar o projeto principal
+- `Commits`: registro das alterações de uma versão específica de um projeto ou repositório.
+- `Pull`: operação executada pelo integrante para obter as atualizações mais recentes e mesclá-las em na branch desejada.
+- `Push`: ação realizada para enviar as alterações do membro do grupo à branch desejada, fornecendo essas alterações a todos os outros membros.
+- `Merge`: combinação de duas branchs de modo a integrar as versões entre elas, igualando ou fazendo o controle das versões.
 
-Discuta como a configuração do projeto foi feita na ferramenta de versionamento escolhida. Exponha como a gerência de tags, merges, commits e branchs é realizada. Discuta como a gerência de issues foi realizada.
-
-> **Links Úteis**:
-> - [Microfundamento: Gerência de Configuração](https://pucminas.instructure.com/courses/87878/)
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
->  - [Comparando fluxos de trabalho](https://www.atlassian.com/br/git/tutorials/comparing-workflows)
-> - [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
-> - [The gitflow workflow - in less than 5 mins](https://www.youtube.com/watch?v=1SXpE08hvGs)
 
 ## Gerenciamento de Projeto
 
