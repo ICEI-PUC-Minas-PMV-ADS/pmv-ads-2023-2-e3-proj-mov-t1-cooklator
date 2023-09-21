@@ -77,7 +77,10 @@ O Cooklator, ao fornecer uma maneira mais eficaz de calcular custos, rastrear te
 
 ### Descrição Geral da Proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+A proposta consiste na criação de um aplicativo voltado para profissionais autônomos para resolver os desafios críticos relacionados à precificação de produtos e serviços, gestão de custos e organização de informações comerciais. O aplicativo abrangerá desde o cálculo preciso de custos até a geração automática de preços competitivos, possibilitando que os usuários mantenham registros detalhados de seus projetos, incluindo receitas para atrair clientes. Esta proposta está alinhada com os objetivos de capacitar profissionais autônomos a tomar decisões informadas e estratégicas em relação à precificação, tornando-os mais competitivos e eficazes na promoção de seus serviços.
+
+As oportunidades de melhoria incluem a expansão do Cooklator para atender a diversas profissões autônomas, bem como a adição de recursos avançados, como análises de mercado e integração com sistemas de pagamento. Ao resolver desafios existentes e fornecer ferramentas abrangentes para a gestão de negócios autônomos, esta proposta tem o potencial de se tornar uma solução indispensável para profissionais que buscam sucesso e crescimento em seus empreendimentos.
+
 
 ### Processo 1 – NOME DO PROCESSO
 
