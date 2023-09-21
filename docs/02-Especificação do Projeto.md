@@ -96,12 +96,17 @@ Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em segu
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
+Também conhecidos como KPIs (Key Performance Indicators), os indicadores de desempenho no cenário de planejamento de projetos são ferramentas essenciais, com a finalidade de avaliar e monitorar o andamento de um ou mais processos. Qualquer indicador de desempenho existe como métrica, sendo que o tipo mais indicado dependerá das metas estabelecidas no decorrer da estratégia.
 
-Usar o seguinte modelo: 
+Fonte: PIRES, Raphael. Rock Content, 2020.
 
-![Indicadores de Desempenho](img/02-indic-desemp.png)
-Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
+| Indicador | Objetivos | Descrição | Cálculo | Fonte de Dados | Perspectiva |
+|-------------|-------------|-------------|-------------|-------------|-------------|
+| Taxa de Precificação | Garantir preços competitivos | Avalia  a precisão dos preços calculados em relação ao mercado | {(Preço Proposto - Preço de Mercado) / Preço de Mercado} x 100 | Dados de preços de mercado, dados de custos do aplicativo | Financeira |
+| Eficiência de Custos | Minimizar gastos excessivos | Avalia a eficiência na gestão de custos e materiais | {(Custo Real - Custo Estimado) / Custo Estimado} x 100 | Dados de custos do aplicativo | Operacional |
+| Tempo Médio de Produção | Melhorar a eficiência da produção | Calcula o tempo médio gasto na produção de cada item | Soma do tempo de produção de todos os itens / Número de itens produzidos | Dados de tempo do aplicativo | Operacional |
+| Taxa de Conversão de Vendas | Aumentar a taxa de conversão de vendas | Mede a porcentagem de clientes que fazem uma compra após visualizar o receitas e/ou portfólio digital| (Número de compras / Número de visualizações) x 100 | Dados de interação das receitas e/ou portfólio digital | Comercial |
+| Satisfação do Usuário | Melhorar a experiência do usuário | Avalia a satisfação dos usuários com o aplicativo | Média das avaliações de satisfação fornecidas pelos usuários | Avaliações de usuários | Qualitativa |
 
 ## Requisitos
 
