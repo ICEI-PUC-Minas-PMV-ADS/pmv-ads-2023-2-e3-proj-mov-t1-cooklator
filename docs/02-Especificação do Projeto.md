@@ -70,7 +70,10 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 ### Análise da Situação Atual
 
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+Na situação atual, profissionais autônomos, como confeiteiros e artesãos, enfrentam desafios significativos na precificação de seus produtos e serviços. Isso se deve à falta de uma ferramenta eficiente para rastrear custos, calcular preços competitivos e organizar informações sobre projetos e clientes. Muitos dependem de cálculos manuais e estimativas subjetivas, o que pode resultar em precificações incorretas e perda de oportunidades de negócios. A proposta de um aplicativo dedicado a resolver esses problemas é inovadora, oferecendo uma solução que pode facilitar a gestão financeira, o acompanhamento de projetos e a apresentação profissional do trabalho para profissionais autônomos.
+
+O Cooklator, ao fornecer uma maneira mais eficaz de calcular custos, rastrear tempo e organizar informações, tem o potencial de revolucionar a maneira como os profissionais autônomos gerenciam seus negócios. Além disso, pode ajudar a nivelar o campo de jogo, permitindo que esses profissionais compitam de maneira mais justa e eficaz no mercado, proporcionando benefícios tangíveis à sua carreira e ao sucesso de seus empreendimentos.
+
 
 ### Descrição Geral da Proposta
 
