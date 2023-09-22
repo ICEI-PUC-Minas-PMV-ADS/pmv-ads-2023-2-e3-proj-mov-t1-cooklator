@@ -82,13 +82,13 @@ A proposta consiste na criação de um aplicativo voltado para profissionais aut
 As oportunidades de melhoria incluem a expansão do Cooklator para atender a diversas profissões autônomas, bem como a adição de recursos avançados, como análises de mercado e integração com sistemas de pagamento. Ao resolver desafios existentes e fornecer ferramentas abrangentes para a gestão de negócios autônomos, esta proposta tem o potencial de se tornar uma solução indispensável para profissionais que buscam sucesso e crescimento em seus empreendimentos.
 
 
-### Processo 1 – NOME DO PROCESSO
+### Processo 1 – TELA INICIAL
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
 
-![Processo 1](img/02-bpmn-proc1.png)
+![Processo 1](img/processo1.jpg)
 
-### Processo 2 – NOME DO PROCESSO
+### Processo 2 – TELA INICIAL
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
 
