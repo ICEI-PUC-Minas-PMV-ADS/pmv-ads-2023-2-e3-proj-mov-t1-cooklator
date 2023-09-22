@@ -63,7 +63,7 @@ A equipe definiu o GitHub Projects para o gerenciamento do projeto, definição 
 * Done:
   - Lista de tarefas finalizadas e revisadas.
  
-Adicionar print do quadro.
+![kaban 1](img/kanban.png)
 
 ### Ferramentas
 
