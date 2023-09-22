@@ -84,15 +84,21 @@ As oportunidades de melhoria incluem a expansão do Cooklator para atender a div
 
 ### Processo 1 – TELA INICIAL
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+Aqui apresenta, tela de Login, e Cadastro de usuário, mostrando o modelo de  processo  1, descrito no padrão BPMN. 
 
 ![Processo 1](img/processo1.jpg)
 
-### Processo 2 – TELA INICIAL
+### Processo 2 – TELA DE RECEITAS.
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+Aqui apresenta a tela de cadastro de todo o material , a receita e afins que será utilizado durante toda a receita  , mostrando o modelo de  processo  2, descrito no padrão BPMN.
 
-![Processo 2](img/02-bpmn-proc2.png)
+![Processo 2](img/processo2.jpg)
+
+### Processo 3 – TELA DE PRECIFICAÇÃO.
+
+Aqui apresenta a tela de trabalho, utilizada para usar a calculadora, com finalidade de precificar o produto para o usuário , mostrando o modelo de  processo  3, descrito no padrão BPMN.
+
+![Processo 3](img/processo3.jpg)
 
 ## Indicadores de Desempenho
 
