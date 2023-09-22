@@ -42,16 +42,14 @@ A equipe escolheu a metodologia ágil SCRUM para o gerenciamento do processo de 
 
 Os integrantes da equipe e seus respectivos papéis estão a seguir:
 
-* Scrum Master: A definir.
-* Product Owner: A definir.
+* Scrum Master: Thais Menezes Alves de Souza.
+* Product Owner: Juliana Dutra Moreira.
 * Equipe de Desenvolvimento: deve executar as tarefas e participar ativamente das rotinas. Será formada por todos os integrantes da equipe.
   - Gabriel Eduardo Palhares
   - Guilherme Augusto Gomes Cunha
   - Hector Florenca da Silva Mendes
-  - Juliana Dutra Moreira
   - Pedro Mota Cassemiro
-  - Thais Menezes Alves de Souza
-
+  
 ### Processo
 
 A equipe definiu o GitHub Projects para o gerenciamento do projeto, definição e distribuição de tarefas. A estruturação está a seguir:
