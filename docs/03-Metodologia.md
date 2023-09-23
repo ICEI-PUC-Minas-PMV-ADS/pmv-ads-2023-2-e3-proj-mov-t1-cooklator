@@ -71,7 +71,7 @@ As ferramentas empregadas no projeto são:
 
 |FERRAMENTA `(Solução Tecnologica)`| SOLUÇÃO ... `(Descrição das ferramentas utilizadas)` |
 |--------------------|-----------------------------------|
-| Editor de Código | Definir.|
+| Editor de Código | Webstorm - Jetbrains.|
 | Comunicação | As ferramentas utilizadas na comunicação foram o Microsoft Teams, Google Meets e WhatsApp.|
 |Desenho e Prototipação| A ferramenta escolhida para o desenvolvimento de desenhos de telas foi o Figma. |
 
