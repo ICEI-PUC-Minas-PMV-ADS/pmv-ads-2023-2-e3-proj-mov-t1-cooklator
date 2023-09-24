@@ -46,12 +46,31 @@ Explique como a hospedagem e o lançamento da plataforma foi feita.
 
 ## Qualidade de Software
 
-Conceituar qualidade de fato é uma tarefa complexa, mas ela pode ser vista como um método gerencial que através de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+As métricas de qualidade do software Cooklator será baseada na norma ISO/IEC 25010. Os atributos e subcaracterísticas em ordem de peso/prioridade são:
 
-No contexto de desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem satisfeitas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, tal nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+**Funcionalidade**
+Integridade funcional para cobertura de todas as tarefas e objetivos propostos pelo software;
+Correção funcional ao prover os resultados corretos;
+Adequação funcional medindo o quão bem consegue realizar suas tarefas 
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software.
-Com base nessas características e nas respectivas sub-características, identifique as sub-características que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software considerando-se alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão a equipe avaliar os objetos de interesse.
+**Usabilidade**
+
+A usabilidade é uma característica importante pois assim podemos realizar eficientemente os objetivos do produto. 
+Adequação reconhecível;
+Capacidade de aprendizado ;
+Operabilidade;
+Compreensibilidade;
+
+**Segurança e Compatibilidade**
+Confidencialidade, integridade e disponibilidade do sistema para manter informações cadastradas de forma segura no sistema e garantir integridade delas como um todo. Além disso, a compatibilidade define a facilidade e segurança que o sistema possui em poder trocar informações com um sistema terceiro. 
+
+**Manutenibilidade**
+
+Conformidade com os requisitos impostos;
+Modificabilidade que define a facilidade de realizar modificações no produto;
+Testabilidade para garantir que as modificações e as funcionalidades existem persistem em pleno funcionamento;
+
+
 
 > **Links Úteis**:
 >
