@@ -118,8 +118,7 @@ Fonte: PIRES, Raphael. Rock Content, 2020.
 
 As tabelas a seguir apresentam os requisitos funcionais, requisitos não funcionais e restrições que definem o escopo do projeto. O levantamento da prioridade dos requisitos foi definida por meio da técnica de Escala de Três Níveis. Os critérios de importância e urgência foram utilizados como níveis de prioridade em um quadrante, possibilitando a combinação destes aspectos durante a classificação da prioridade de cada requisito.
 
-![priorizacao](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/90e680c1-7a47-4f16-9e54-34ec098477b0)
-
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/e7e0e6ab-292b-4298-8f7d-7adc0cee9e0a)
 
 ### Requisitos Funcionais
 
@@ -129,7 +128,7 @@ As tabelas a seguir apresentam os requisitos funcionais, requisitos não funcion
 |RF-002| A aplicação permitirá ao usuário o acesso a plataforma com os dados cadastrados | ALTA |
 |RF-003| A aplicação permitirá o cadastro de materiais e insumos para controle e cálculos de quantidade e gastos pelo usuário | MÉDIA |
 |RF-004| A aplicação deve permitir o usuário utilizar o timer para o cálculo do tempo gasto para confecção do produto | ALTA |
-|RF-005| A aplicação deve permitir ao usuário o cadastro e exibição dos pratos e receitas na plataforma | MÉDIA |
+|RF-005| A aplicação deve permitir ao usuário o cadastro e exibição das receitas e precificação na plataforma | ALTA |
 |RF-006| A aplicação deve permitir a edição dos dados referentes aos insumos e receitas do usuário | MÉDIA |
 |RF-007| A aplicação deve permitir a edição de dados de conta do usuário | BAIXA |
 |RF-008| A aplicação deve permitir a recuperação ou mudança de senha | BAIXA |
