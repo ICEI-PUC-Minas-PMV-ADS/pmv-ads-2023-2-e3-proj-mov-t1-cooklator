@@ -21,3 +21,19 @@ As tarefas listadas abaixos foram desenhadas imaginando englobar todos os requis
 | **Tarefa 4** | **Critério de Êxito** | **O que será avaliado** |
 |--------------|-----------------------|-------------------------|
 |Utilizar o timer | Iniciar e pausar o timer enquanto acontece o preparo | Facilidade em realizar a ação. Se o layout gera alguma dúvida/ambiguação. O fluxo é intuitivo. O usuário consegue acompanhar o timer com facilidade, sem atrapalhar o processo. |
+
+| **Tarefa 5** | **Critério de Êxito** | **O que será avaliado** |
+|--------------|-----------------------|-------------------------|
+|Cadastro receitas | Concluir o cadastro corretamente com todos os seus dados. | Facilidade em realizar a ação. Se o layout gera alguma dúvida/ambiguação. O fluxo é intuitivo. Consegue carregar e utilizar todos os insumos cadastrados previamente sem nenhum impedimento. |
+
+| **Tarefa 6** | **Critério de Êxito** | **O que será avaliado** |
+|--------------|-----------------------|-------------------------|
+|Edição de dados insumos/receitas | Concluir a edição corretamente com todos os seus dados. | Facilidade em realizar a ação. Se o layout gera alguma dúvida/ambiguação. O fluxo é intuitivo. Consegue carregar e editar todos os dados previamente cadastrados. |
+
+| **Tarefa 7** | **Critério de Êxito** | **O que será avaliado** |
+|--------------|-----------------------|-------------------------|
+|Edição de dados do usuário | Concluir a edição corretamente com todos os seus dados. | Facilidade em realizar a ação. Se o layout gera alguma dúvida/ambiguação. O fluxo é intuitivo. Consegue carregar e editar todos os dados previamente cadastrados. |
+
+| **Tarefa 8** | **Critério de Êxito** | **O que será avaliado** |
+|--------------|-----------------------|-------------------------|
+|Recuperação de senha | Concluir o fluxo e trocar a sua senha. | Facilidade em realizar a ação. Se o layout gera alguma dúvida/ambiguação. O fluxo é intuitivo. |
