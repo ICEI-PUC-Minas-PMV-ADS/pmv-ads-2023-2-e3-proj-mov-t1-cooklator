@@ -1,4 +1,4 @@
-# Registro de Testes de Software
+# Plano de Testes de Software
 
 A seguir são descritos os testes funcionais a serem executados:
 
