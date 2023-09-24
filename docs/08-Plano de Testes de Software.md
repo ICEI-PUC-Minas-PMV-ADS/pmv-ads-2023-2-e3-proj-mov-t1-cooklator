@@ -1,19 +1,60 @@
-# Plano de Testes de Software
+# Registro de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
+A seguir são descritos os testes funcionais a serem executados:
 
-Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
+| Caso de Teste | CT-01 - Cadastro de usuário |
+|---------------|--------------------------|
+| Requisitos Associados | RF-001 - A aplicação permitirá ao usuário realizar cadastro para ter acesso a plataforma |
+| Objetivo do Teste | Verificar se o cadastro do usuário é realizado de maneira correta |
+| Passos | 1- Acessar a aplicação; <br> 2- Na página inicial, clicar em "Cadastrar-se" e ser encaminhado para o formulário de cadastro; <br> 3- Preencher os campos obrigatórios: Nome, Sobrenome, e-mail, senha, confirmação de senha e valor por hora de trabalho e clicar em "Cadastrar". |
+| Critérios de Êxito | - Durante o cadastro a aplicação deve apontar as devidas validações caso algum campo esteja incorreto ou incompleto. Após o preenchimento, o cadastro será realizado com sucesso e armazenado no banco de dados.
 
-Enumere quais cenários de testes foram selecionados para teste. Neste tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo de usuários que foi escolhido para participar do teste e as ferramentas utilizadas.
- 
-## Ferramentas de Testes (Opcional)
+| Caso de Teste | CT-02 - Login na plataforma |
+|---------------|--------------------------|
+| Requisitos Associados | RF-002 - A aplicação permitirá ao usuário o acesso a plataforma com os dados cadastrados |
+| Objetivo do Teste | Verificar se o login está ocorrendo corretamente |
+| Passos | 1 -Acessar a aplicação; <br> 2- Na página inicial inserir os dados de login <br> 3- Selecionar o botão "entrar" |
+| Critérios de Êxito | Ao digitar as informações erradas o usuário deve ser avisado por uma mensagem que os dados estão incorretos, o ícone de visualização da senha deve exibir a senha ao ser selecionado e o login correto deve encaminhar o usuário para a página principal da aplicação.
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+| Caso de Teste | CT-03 - Cadastro de materiais e insumos |
+|---------------|--------------------------|
+| Requisitos Associados | RF-003 - A aplicação permitirá o cadastro de materiais e insumos para controle e cálculos de quantidade e gastos pelo usuário |
+| Objetivo do Teste | Avaliar o cadastro de materiais pelo usuário |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo para criação de uma nova receita <br> 3  Acessar a aba para cadastrar materiais <br> 4- Cadastrar uma material preenchendo nome do material, preço, quantidade e observações. |
+| Critérios de Êxito | Ao cadastrar um material, este deve ser exibido e acrescentado na lista de materiais. Validações como um alerta de cadastro de um material com mesmo nome de um anterior deve ser exibida.
+
+| Caso de Teste | CT-04 - Utilização do timer |
+|---------------|--------------------------|
+| Requisitos Associados | RF-004 - A aplicação deve permitir o usuário utilizar o timer para o cálculo do tempo gasto para confecção do produto |
+| Objetivo do Teste | Verificar o funcionamento e sincronia do timer |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo para criação ou continuação de uma receita <br> 3- Acessar a aba do timer <br> 4- Ativar ou pausar o timer para início ou continuação de uma receita. |
+| Critérios de Êxito | Ao ativar o timer o tempo da receita deverá ser registrado. Caso o usuário pause e retorne posteriormente a receita e reative o timer, o tempo deverá ser acrescido no tempo anterior e desse modo, exibir o tempo total decorrido da confecção do prato.
+
+| Caso de Teste | CT-05 - Cadastro de receitas, precificação e exibição das receitas |
+|---------------|--------------------------|
+| Requisitos Associados | RF-005 - A aplicação deve permitir ao usuário o cadastro e exibição das receitas e precificação na plataforma |
+| Objetivo do Teste | Verificar o cadastro, precificação e exibição de uma receita na aplicação |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo de receitas <br> 3- Escolher a opção de cadastrar ou visualizar receitas anteriores |
+| Critérios de Êxito | Ao acessar as receitas, o usuário poderá criar uma nova receita e também visualizar as receitas já finalizadas. No campo das receitas finalizadas, a receita com os materiais, custos, tempo de prepararo, valor final sugerido (precificação) deverão ser exibidos corretamente.
+
+| Caso de Teste | CT-06 - Edição de dados da receita |
+|---------------|--------------------------|
+| Requisitos Associados | RF-006 - A aplicação deve permitir a edição dos dados referentes aos insumos e receitas do usuário |
+| Objetivo do Teste | Fazer a edição dos dados de uma receita|
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo para criação ou continuação de uma receita <br> 3- Escolher a receita desejada e acessar o campo de materiais e observações <br> 4- Fazer a edição desejada selecionando o campo de edição |
+| Critérios de Êxito | Ao acessar as receitas, o usuário poderá editar os materiais e as informações relacionadas a ele. As alterações serão salvas e já exibidas na lista de materiais e observações.
+
+| Caso de Teste | CT-07 - Edição de dados de conta do usuário |
+|---------------|--------------------------|
+| Requisitos Associados | RF-007 - A aplicação deve permitir a edição de dados de conta do usuário |
+| Objetivo do Teste |  Fazer a edição dos dados da conta do usuário |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar a área do usuário <br> 3- Fazer as edições desejadas selecionando o campo de edição |
+| Critérios de Êxito | Ao acessar a área do usuário, as edições dos dados do cadastro da conta poderão ser alterados por ele. As alterações serão salvas e já exibidas nesta página.
+
+
+| Caso de Teste | CT-08 - Recuperação de senha |
+|---------------|--------------------------|
+| Requisitos Associados | RF-008 - A aplicação deve permitir a recuperação ou mudança de senha |
+| Objetivo do Teste | Fazer a recuperação de senha |
+| Passos | 1- Acessar a aplicação; <br> 2- Na página inicial selecionar "Esqueci minha senha" <br> 3- Preencher as informações necessárias para a recuperação |
+| Critérios de Êxito | Ao acessar a aplicação e solicitar a recuperação da senha, o usuário deve conseguir mudar sua senha atual para fazer um novo acesso à aplicação.
