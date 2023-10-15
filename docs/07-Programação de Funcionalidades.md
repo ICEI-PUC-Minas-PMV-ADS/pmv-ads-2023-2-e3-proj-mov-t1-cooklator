@@ -15,7 +15,7 @@ O código utiliza o hook useState do React para criar vários estados. Os estado
 A interface é renderizada dentro de um componente View. Ela consiste em dois cards, cada um contendo campos de entrada e botões.
 O primeiro card é para as informações pessoais, nome, e-mail e valor por hora. Um botão "Editar" é fornecido, mas atualmente, ele apenas imprime uma mensagem no console quando pressionado. O segundo card é para alteração de senha. Ele inclui campos para a senha atual, nova senha e confirmação da nova senha. Cada campo de senha é configurado para ocultar ou mostrar a senha atual e as novas senhas, conforme desejado. Há também um botão "Alterar Senha", que ainda não executa nenhuma ação além de imprimir uma mensagem no console nessa implementação inicial.
 
-<img src="img/telaPerfil.png" alt="Tela-Perfil-1">
+<img src="img/telaPerfil1.png" alt="Tela-Perfil-1">
 
 <img src="img/telaPerfil2.png" alt="Tela-Perfil-2">
 
