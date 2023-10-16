@@ -27,17 +27,19 @@ O primeiro card é para as informações pessoais, nome, e-mail e valor por hora
 
 ## Tela de Cadastro de Materiais (Juliana Dutra Moreira)
 
-O cadastro de receitas permitirá o usuário fazer o registro inicial da receita com nome, observações e materiais que serão utilizados no desenvolvimento do prato. Estas informações após cadastradas serão exibidas quando o usuário iniciar a receita e serão utilizada para registros e cálculos posteriores relacionados a receita. Nesta tela o usuário poderá colocar um nome desejado no input Nome, inserir observações no input Observações e poderá cadastrar materiais por meio do botão "+", no qual será encaminhado para o modal/tela de cadastro de material. Esses materiais serão listados nesta tela a medida que o usuário cadastra novos materiais. Ao final, por meio dos botões "Salvar" ou "Cancelar" ele poderá optar pelo registro da receita ou cancelamento para retornar a página de receitas. 
+O cadastro de receitas permitirá o usuário fazer o registro inicial da receita com nome, observações, valor da hora e materiais que serão utilizados no desenvolvimento do prato. Estas informações após cadastradas serão exibidas quando o usuário iniciar a receita e serão utilizada para registros e cálculos posteriores relacionados a receita. Nesta tela o usuário poderá colocar um nome desejado no input Nome, inserir observações no input Observações, inserir o valor desejado da hora de trabalho (ou marcar a opção de manter a hora cadastrada no perfil) e poderá cadastrar materiais por meio do botão "+", no qual será encaminhado para o modal/tela de cadastro de material. Esses materiais serão listados nesta tela a medida que o usuário cadastra novos materiais. Ao final, por meio dos botões "Salvar" ou "Cancelar" ele poderá optar pelo registro da receita ou cancelamento para retornar a página de receitas. 
 
 No código atual, é possível adicionar um nome, observação e adicionar materiais que serão listados na tela. A adição de materiais está de forma representativa pois esta funcionalidade será desenvolvida de modo separado ao cadastro de material. Os botões ao final da página ainda não executam as funções.
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/3ed91b61-5f4c-4b78-bf3d-111497ac1457)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/5bfbcce3-bd35-4c86-833c-06bb284715e1)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/d53dc7b3-43f2-4ede-9e00-fac11295edbd)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/42905311-2fc1-47c2-a950-7051cea001c6)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/4c77c91f-0c3b-41a6-8835-49e94ff55eb6)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/3bf61aa7-9176-44c9-9e6d-96d07b6e85f1)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/0336507c-bdbc-44d0-a633-ff1fecd7639e)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/a4df5643-c163-468a-9543-dc31703dee31)
+
+
 
 
 
