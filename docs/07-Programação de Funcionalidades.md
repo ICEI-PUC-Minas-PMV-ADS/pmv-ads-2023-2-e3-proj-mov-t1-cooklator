@@ -43,8 +43,10 @@ No código atual, é possível adicionar um nome, observação e adicionar mater
 ## TELA DE LOGIN E CADASTRO (HECTOR FLORENÇA)
 
 
-O Tela de Login  permitirá o usuário fazer o ‘Login’ utilizando Email e Senhas, será método para ele acessar todos as suas receitas ja salvas, e também salvar novas receitas, a tela contara como uma rota de acesso para CADASTRAR caso o usuário não tenha ainda uma conta no nosso aplicativo.
-Na tela de Cadastro, caso o usuário não tenha cadastrado antes, mesmo poderá criar nova conta utilizando Nome Completo, Email e senha .
+O Tela de Login  permitirá o usuário fazer o ‘Login’ utilizando Email e Senhas, será método para ele acessar todos as suas receitas ja salvas, e também salvar novas receitas, a tela contara como uma rota de acesso para CADASTRAR caso o usuário não tenha ainda uma conta no nosso aplicativo, caso o usuário coloque senha ou Email errado retornara uma mensagem de erro , se não mesmo ira retorna para pagina Home.
+Na tela de Cadastro, caso o usuário não tenha cadastrado antes, mesmo poderá criar nova conta utilizando Nome Completo, Email e senha, nesta tela o usuário tela um botão para retorna a tela de  Login, caso tenha clicado errado.
+
+
 <img src="img/LOGIN.png" alt="Tela-login-1">
 
 <img src="img/REGISTRAR.png" alt="Tela-Registrar-2">
