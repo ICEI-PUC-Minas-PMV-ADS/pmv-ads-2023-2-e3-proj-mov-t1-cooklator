@@ -40,6 +40,14 @@ No código atual, é possível adicionar um nome, observação e adicionar mater
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/a4df5643-c163-468a-9543-dc31703dee31)
 
 
+## TELA DE LOGIN E CADASTRO (HECTOR FLORENÇA)
+
+
+O Tela de Login  permitirá o usuário fazer o ‘Login’ utilizando Email e Senhas, será método para ele acessar todos as suas receitas ja salvas, e também salvar novas receitas, a tela contara como uma rota de acesso para CADASTRAR caso o usuário não tenha ainda uma conta no nosso aplicativo.
+Na tela de Cadastro, caso o usuário não tenha cadastrado antes, mesmo poderá criar nova conta utilizando Nome Completo, Email e senha .
+<img src="img/LOGIN.png" alt="Tela-login-1">
+
+<img src="img/REGISTRAR.png" alt="Tela-Registrar-2">
 
 
 
