@@ -1,20 +1,25 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import CadastroReceita from './components/CadastrarReceita';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Receitas from './pages/Receitas';
 import CadastroMaterial from './components/CadastroMaterial';
+import {View, StyleSheet} from 'react-native';
+import CadastroReceita from "./components/CadastrarReceita";
 
-const Stack = createStackNavigator();
+const AppStack = createStackNavigator();
 
-function App() {
+const App = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="CadastrarReceita">
-                <Stack.Screen name="CadastrarReceita" component={CadastroReceita} options={{ title: 'Cadastrar Receita' }} />
-                <Stack.Screen name="CadastroMaterial" component={CadastroMaterial} options={{ title: 'Cadastro de Material' }} />
-            </Stack.Navigator>
+            <AppStack.Navigator initialRouteName="Receitas">
+                <AppStack.Screen name="Receitas" component={Receitas} />
+                {/*<AppStack.Screen name="TelaProjetosAndamento" component={TelaProjetosAndamento} />*/}
+                {/*<AppStack.Screen name="TelaProjetosFinalizados" component={TelaProjetosFinalizados} />*/}
+                <AppStack.Screen name="CadastrarReceita" component={CadastroReceita} options={{ title: 'Receitas' }} />
+                <AppStack.Screen name="CadastroMaterial" component={CadastroMaterial} options={{ title: 'Cadastrar Receita' }} />
+            </AppStack.Navigator>
         </NavigationContainer>
     );
-}
+};
 
 export default App;

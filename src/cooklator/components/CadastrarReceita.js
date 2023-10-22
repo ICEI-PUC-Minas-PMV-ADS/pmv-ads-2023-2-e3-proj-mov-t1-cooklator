@@ -7,9 +7,10 @@ import {
     Modal,
     Pressable, TouchableHighlight
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {Checkbox} from 'react-native-paper';
 import CadastroMaterial from "./CadastroMaterial";
+import Receitas from "../pages/Receitas";
 
 const receitaApiUrl = 'http://localhost:3000/receita';
 
@@ -17,8 +18,6 @@ const CadastroReceita = () => {
 
     const [textTitulo, setTextTitulo] = useState('');
     const [textObs, setTextObs] = useState('');
-    const [modalVisible, setModalVisible] = useState(false);
-    const [adcionaMarterial, setAdcionaMarterial] = useState([]);
     const [hourValue, setHourValue] = useState('R$ 0.00');
     const valorHora = parseFloat(hourValue.replace('R$', '').trim());
     const [checked, setChecked] = useState(false);
@@ -26,6 +25,10 @@ const CadastroReceita = () => {
 
     const handleNavigateToMaterial = () => {
         navigation.navigate('CadastroMaterial');
+    };
+
+    const handleNavigateToReceitaPage = () => {
+        navigation.navigate('Receitas');
     };
 
     const handleAdicionarReceita = async () => {
@@ -67,16 +70,6 @@ const CadastroReceita = () => {
             });
     }
 
-    const adicionarView = () => {
-        const novaView = (
-            <View key={adcionaMarterial.length} style={styles.adicionarMaterialView}>
-                <Text>Material adicionado</Text>
-            </View>
-        );
-
-        setAdcionaMarterial([...adcionaMarterial, novaView]);
-    };
-
     const handleInputChange = (text) => {
         const numericValue = text.replace(/[^0-9]/g, '');
 
@@ -89,9 +82,10 @@ const CadastroReceita = () => {
     };
 
     return (
-        <>
+        <View style={styles.mainContainer}>
+        <View style={styles.container}>
             <View style={styles.headerView}>
-                <Text style={styles.text}> Cadastrar Receita</Text>
+                <Text style={styles.headerText}> Cadastrar Receita</Text>
             </View>
 
             <View style={styles.line}></View>
@@ -137,55 +131,21 @@ const CadastroReceita = () => {
                 <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
             </View>
 
-            <View style={styles.viewButtons}>
-                <Text style={styles.textTituloMaterial}>Materiais</Text>
+
+                <Text style={styles.textTituloMaterial}>Materiais:</Text>
                 <Pressable
                     style={[styles.button, styles.buttonOpen]}
-                    onPress={handleNavigateToMaterial }>
+                    onPress={handleNavigateToMaterial}>
                     <Text style={styles.textStylePlus}>+</Text>
                 </Pressable>
-            </View>
 
-            {adcionaMarterial.map((view, index) => (
-                <View key={index}>{view}</View>
-            ))}
-
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                    setAdcionaMarterial();
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Cadastrar novo material</Text>
-
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => {
-                                setModalVisible(!modalVisible);
-                                adicionarView();
-                            }}>
-                            <Text style={styles.textStyle}>Adicionar material</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button, styles.buttonCloseCancel]}
-                            onPress={() => {
-                                setModalVisible(!modalVisible);
-                            }}>
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                        </Pressable>
-                    </View>
-                </View>
-            </Modal>
 
             <View style={styles.viewButtons}>
 
                 <View style={styles.viewButtons}>
                     <TouchableHighlight
-                        style={styles.buttonCancel}>
+                        style={styles.buttonCancel}
+                        onPress={handleNavigateToReceitaPage}>
                         <Text style={styles.textStyle}>Cancelar</Text>
                     </TouchableHighlight>
                 </View>
@@ -198,27 +158,37 @@ const CadastroReceita = () => {
                     </TouchableHighlight>
                 </View>
             </View>
-        </>
+        </View>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
     line: {
         borderBottomWidth: 1,
         borderBottomColor: '#C1C4C7',
         marginBottom: 10,
+        alignSelf: 'stretch',
     },
-    text: {
+    headerText: {
         fontSize: 25,
         textAlign: 'center',
-        paddingTop: 20,
         fontWeight: 'bold',
     },
     headerView: {
         margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
-        paddingTop: 35,
+        alignItems: 'center',
     },
     input: {
         width: 300,
@@ -249,21 +219,6 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         padding: 10,
     },
-    modalView: {
-        margin: 20,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        padding: 35,
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
     button: {
         borderRadius: 20,
         elevation: 2,
@@ -276,18 +231,6 @@ const styles = StyleSheet.create({
         marginRight: 200,
         paddingLeft: 8,
     },
-    buttonClose: {
-        width: 200,
-        height: 30,
-        backgroundColor: '#BEC2C9',
-    },
-    buttonCloseCancel: {
-        width: 100,
-        height: 30,
-        marginTop: 5,
-        backgroundColor: '#BEC2C9',
-        marginLeft: 20,
-    },
     textStyle: {
         fontSize: 18,
         fontWeight: '500',
@@ -296,18 +239,6 @@ const styles = StyleSheet.create({
     textStylePlus: {
         fontSize: 20,
         fontWeight: 'bold',
-    },
-    modalText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        paddingBottom: 10,
-    },
-    centeredView: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 22,
     },
     buttonSave: {
         width: 100,
@@ -332,10 +263,10 @@ const styles = StyleSheet.create({
         paddingTop: 5,
     },
     viewButtons: {
+        width: 220,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 10,
-        alignItems: "center",
     },
     textTituloMaterial: {
         fontSize: 20,
@@ -343,19 +274,6 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginTop: 12,
         fontWeight: '600',
-    },
-    adicionarMaterialView: {
-        fontSize: 25,
-        textAlign: 'center',
-        paddingLeft: 20,
-        paddingVertical: 10,
-        fontWeight: 'bold',
-        borderWidth: 1,
-        borderColor: '#DCDCDC',
-        borderRadius: 10,
-        margin: 12,
-        marginLeft: 20,
-        padding: 10,
     },
     textValorHora: {
         width: 100,
