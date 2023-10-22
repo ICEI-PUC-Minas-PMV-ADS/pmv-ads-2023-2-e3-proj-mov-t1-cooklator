@@ -1,0 +1,18 @@
+DELETE http://localhost:3000/receita/4
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-22T102928.200.json
+
+###
+
+DELETE http://localhost:3000/receita/3
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-22T102924.200.json
+
+###
+
