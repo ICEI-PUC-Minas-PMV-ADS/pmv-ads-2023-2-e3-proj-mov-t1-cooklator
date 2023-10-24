@@ -7,8 +7,8 @@ import {
     Modal,
     Pressable, TouchableHighlight
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {Checkbox} from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import { Checkbox } from 'react-native-paper';
 import CadastroMaterial from "./CadastroMaterial";
 import Receitas from "../pages/Receitas";
 
