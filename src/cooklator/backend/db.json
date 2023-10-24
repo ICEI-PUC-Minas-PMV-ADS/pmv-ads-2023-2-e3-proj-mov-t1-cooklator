@@ -1,0 +1,25 @@
+{
+  "receita": [
+    {
+      "id": 1,
+      "nome": "torta de manteiga escocesa",
+      "valorHora": 3,
+      "aplicaValorPadrao": false,
+      "observacoes": "Testando a receita com flor de sal"
+    },
+    {
+      "id": 2,
+      "nome": "teste5",
+      "valorHora": 5,
+      "aplicaValorPadrao": false,
+      "observacoes": "Testando a receita com flor de sal"
+    },
+    {
+      "nome": "teste 21/10",
+      "valorHora": 5,
+      "aplicaValorPadrao": true,
+      "observacoes": "salvar no \"banco\"",
+      "id": 5
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+### GET LISTA DE RECEITAS
+GET http://localhost:3000/receita
+
+
+### CREATE RECEITA
+POST http://localhost:3000/receita
+content-type: application/json
+
+{
+  "id": 1,
+  "nome": "torta de manteiga escocesa",
+  "valorHora": 5.00,
+  "aplicaValorPadrao": false,
+  "observacoes": "Testando a receita com flor de sal"
+}
+
+### UPDATE RECEITA
+PUT http://localhost:3000/receita/1
+content-type: application/json
+
+{
+  "id": 1,
+  "nome": "torta de manteiga escocesa",
+  "valorHora": 3.00,
+  "aplicaValorPadrao": false,
+  "observacoes": "Testando a receita com flor de sal"
+}
+
+
+### GET RECEITA
+GET http://localhost:3000/receita/1
+
+### DELETE RECEITA
+DELETE http://localhost:3000/receita/4
