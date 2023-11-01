@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72861723-8aa6-4505-b984-6a434ef3624e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cooklator/pages/Receitas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cooklator/components/ModalWarning.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cooklator/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/components/CadastrarReceita.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/CadastrarReceita.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/backend/Receita.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/backend/Recipe.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/backend/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/backend/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/CadastrarReceita.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/CreateRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/pages/Receitas.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,17 +25,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTTP Request" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/cooklator/components/MenuFlutuante.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -37,25 +47,26 @@
 }</component>
   <component name="ProjectId" id="2WxWWDaDOMBJpY4BJZEdB3HY3Xj" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "juliana-teste",
-    "last_opened_file_path": "C:/Users/Julianadm/Desenvolvimento/Repositorios/pmv-ads-2023-2-e3-proj-mov-t1-cooklator",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;juliana-teste&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Julianadm/Desenvolvimento/Repositorios/pmv-ads-2023-2-e3-proj-mov-t1-cooklator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="React Native.Unnamed">
     <configuration name="Receita | DELETE RECEITA" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/cooklator/backend/Receita.http" index="5" requestIdentifier="DELETE RECEITA" runType="Run single request">
       <method v="2" />
@@ -71,6 +82,10 @@
         <option name="ReactNativePackager" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="HTTP Request.Receita | DELETE RECEITA" />
+      <item itemvalue="React Native.Unnamed" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.Receita | DELETE RECEITA" />
@@ -88,10 +103,25 @@
       <workItem from="1697674741654" duration="4574000" />
       <workItem from="1697927197732" duration="6740000" />
       <workItem from="1697979475131" duration="8101000" />
+      <workItem from="1698599071728" duration="734000" />
+      <workItem from="1698711156165" duration="7274000" />
+      <workItem from="1698796298822" duration="9536000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/cooklator/App.js</url>
+          <line>13</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

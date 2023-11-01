@@ -1,9 +1,9 @@
 ### GET LISTA DE RECEITAS
-GET http://localhost:3000/receita
+GET http://localhost:3000/recipe
 
 
 ### CREATE RECEITA
-POST http://localhost:3000/receita
+POST http://localhost:3000/recipe
 content-type: application/json
 
 {
@@ -15,7 +15,7 @@ content-type: application/json
 }
 
 ### UPDATE RECEITA
-PUT http://localhost:3000/receita/1
+PUT http://localhost:3000/recipe/1
 content-type: application/json
 
 {
@@ -28,7 +28,7 @@ content-type: application/json
 
 
 ### GET RECEITA
-GET http://localhost:3000/receita/1
+GET http://localhost:3000/recipe/1
 
 ### DELETE RECEITA
-DELETE http://localhost:3000/receita/4
+DELETE http://localhost:3000/recipe/4
