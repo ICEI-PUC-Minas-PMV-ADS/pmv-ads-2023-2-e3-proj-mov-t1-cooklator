@@ -1,9 +1,16 @@
 import React, {useState} from 'react';
 import {Modal, Text, View, Pressable} from 'react-native';
 
-const ModalWarning = ({visible, message, onClose, onGoTo}) => {
+const ModalWarning = ({
+                          visible,
+                          message,
+                          onPrimaryButtonPress,
+                          primaryButtonLabel,
+                          onSecondaryButtonPress,
+                          secondaryButtonLabel
+                      }) => {
 
-    message = 'Receita adicionada com sucesso';
+    const renderSecondaryButton = secondaryButtonLabel && onSecondaryButtonPress;
 
     return (
         <Modal
@@ -14,13 +21,21 @@ const ModalWarning = ({visible, message, onClose, onGoTo}) => {
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                     <Text style={styles.messageText}>{message}</Text>
-                    <Pressable
-                        onPress={onClose}
-                    >
-                        <View style={styles.viewText}>
-                            <Text>Fechar</Text>
-                        </View>
-                    </Pressable>
+                    <View style={styles.viewPressable}>
+                        <Pressable onPress={onPrimaryButtonPress}
+                                   style={renderSecondaryButton ? styles.primaryButton : styles.singleButton}>
+                            <View style={styles.viewText}>
+                                <Text>{primaryButtonLabel}</Text>
+                            </View>
+                        </Pressable>
+                        {secondaryButtonLabel && onSecondaryButtonPress && (
+                            <Pressable onPress={onSecondaryButtonPress} style={styles.secondaryButton}>
+                                <View style={styles.viewText}>
+                                    <Text>{secondaryButtonLabel}</Text>
+                                </View>
+                            </Pressable>
+                        )}
+                    </View>
                 </View>
             </View>
         </Modal>
@@ -36,7 +51,7 @@ const styles = {
     },
     modalContent: {
         backgroundColor: 'white',
-        padding: 20,
+        padding: 10,
         borderRadius: 10,
         width: 300,
         height: 150,
@@ -51,7 +66,6 @@ const styles = {
         elevation: 4,
     },
     viewText: {
-        width: 125,
         height: 33,
         borderRadius: 20,
         border: 10,
@@ -72,6 +86,20 @@ const styles = {
         textAlign: 'center',
         paddingBottom: 30,
     },
+    primaryButton: {
+        width: 100,
+        marginRight: 50,
+    },
+    secondaryButton: {
+        width: 100,
+    },
+    singleButton: {
+        width: 125,
+    },
+    viewPressable: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    }
 };
 
 export default ModalWarning;

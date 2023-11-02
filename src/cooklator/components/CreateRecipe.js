@@ -10,7 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 
-const recipeApiUrl = 'http://localhost:3000/receita';
+const recipeApiUrl = 'http://localhost:3000/recipe';
 
 const CreateRecipe = () => {
 
@@ -184,7 +184,7 @@ const CreateRecipe = () => {
                         </TouchableHighlight>
                     </View>
                 </View>
-                <ModalWarning visible={modalVisible} message={modalMessage} onClose={hideModal}/>
+                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal} primaryButtonLabel={'Fechar'}/>
             </View>
         </View>
     );

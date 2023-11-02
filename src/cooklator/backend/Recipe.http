@@ -1,8 +1,8 @@
-### GET LISTA DE RECEITAS
+### GET RECIPE LIST
 GET http://localhost:3000/recipe
 
 
-### CREATE RECEITA
+### CREATE RECIPE
 POST http://localhost:3000/recipe
 content-type: application/json
 
@@ -14,7 +14,7 @@ content-type: application/json
   "observacoes": "Testando a receita com flor de sal"
 }
 
-### UPDATE RECEITA
+### UPDATE RECIPE
 PUT http://localhost:3000/recipe/1
 content-type: application/json
 
@@ -27,8 +27,8 @@ content-type: application/json
 }
 
 
-### GET RECEITA
+### GET RECIPE
 GET http://localhost:3000/recipe/1
 
-### DELETE RECEITA
+### DELETE RECIPE
 DELETE http://localhost:3000/recipe/4

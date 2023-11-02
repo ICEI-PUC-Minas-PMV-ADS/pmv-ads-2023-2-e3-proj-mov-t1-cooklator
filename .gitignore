@@ -1,3 +1,7 @@
 
 *.xml
 *.xml
+*.json
+*.http
+*.http
+*.xml
