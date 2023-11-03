@@ -6,6 +6,11 @@ import Recipes from "./pages/Recipes";
 import CadastroMaterial from "./components/CadastroMaterial";
 import CreateRecipe from "./components/CreateRecipe";
 import FloatingMenu from "./components/FloatingMenu";
+import RecipesInProgress from "./pages/ReceipesInProgress";
+import cardRecipe from "./components/CardRecipe";
+import receipesInProgress from "./pages/ReceipesInProgress";
+import createRecipe from "./components/CreateRecipe";
+import recipes from "./pages/Recipes";
 
 const AppStack = createStackNavigator();
 
@@ -33,6 +38,19 @@ const App = () => {
                                 presentation: {
                                     color: "#64CCC5"
                                 }
+                            }}
+                        />
+                        <AppStack.Screen
+                            name="RecipesInProgress"
+                            component={RecipesInProgress}
+                            options={{
+                                title: "Projetos em Andamento",
+                                headerStyle: {
+                                    backgroundColor: "#64CCC5",
+                                    shadowOpacity: 0,
+                                    elevation: 0,
+                                },
+                                headerTitleStyle: { color: "white" },
                             }}
                         />
                         <AppStack.Screen

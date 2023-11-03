@@ -14,7 +14,7 @@ const Recipes = () => {
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     style={styles.customButton}
-                    // onPress={() => navigation.navigate('TelaProjetosAndamento')}
+                    onPress={() => navigation.navigate('RecipesInProgress')}
                 >
                     <Text style={styles.buttonText}>PROJETOS EM ANDAMENTO</Text>
                 </TouchableOpacity>
@@ -63,22 +63,21 @@ const styles = StyleSheet.create({
     },
     customButton: {
         width: '90%',
-        height: 35,
+        height: 50,
         alignItems: 'center',
         alignSelf: 'center',
+        justifyContent: 'center',
         backgroundColor: '#176B87',
         padding: 10,
         borderRadius: 10,
     },
     buttonText: {
         color: 'white',
-        alignSelf: 'center',
-        alignItems: 'center',
         letterSpacing: 2,
+        justifyContent: 'center',
         fontSize: 15,
         fontWeight: "bold",
-        marginBottom: 16,
-
+        paddingTop: 7
     },
 });
 

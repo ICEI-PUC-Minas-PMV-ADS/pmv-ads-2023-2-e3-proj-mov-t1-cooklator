@@ -9,6 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
+import ColorPicker from "./ColorPicker";
 
 const recipeApiUrl = 'http://localhost:3000/recipe';
 
@@ -24,6 +25,7 @@ const CreateRecipe = () => {
     const [hourValueError, setHourValueError] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [selectedColor, setSelectedColor] = useState('#176B87');
 
     const handleNavigateToMaterial = () => {
         navigation.navigate('CadastroMaterial');
@@ -54,7 +56,8 @@ const CreateRecipe = () => {
                         nome: textTitle,
                         valorHora: hourValueChange,
                         aplicaValorPadrao: checked,
-                        observacoes: textObs
+                        observacoes: textObs,
+                        cor: selectedColor
                     };
 
                     const response = await addRecipe(newRecipe);
@@ -82,6 +85,10 @@ const CreateRecipe = () => {
 
         return fetch(recipeApiUrl, requestOptions);
     }
+
+    const handleColorSelect = (color) => {
+        setSelectedColor(color);
+    };
 
     const showModal = (message) => {
         setModalMessage(message);
@@ -156,15 +163,15 @@ const CreateRecipe = () => {
                     <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
                 </View>
                 <Text style={styles.errorMessageObs}>{hourValueError}</Text>
-
-
+                <View style={styles.viewColors}>
+                    <ColorPicker onColorSelect={handleColorSelect}/>
+                </View>
                 <Text style={styles.textMaterialTitle}>Materiais:</Text>
                 <Pressable
                     style={[styles.button, styles.buttonOpen]}
                     onPress={handleNavigateToMaterial}>
                     <Text style={styles.textStylePlus}>+</Text>
                 </Pressable>
-
 
                 <View style={styles.viewButtons}>
 
@@ -184,7 +191,8 @@ const CreateRecipe = () => {
                         </TouchableHighlight>
                     </View>
                 </View>
-                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal} primaryButtonLabel={'Fechar'}/>
+                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal}
+                              primaryButtonLabel={'Fechar'}/>
             </View>
         </View>
     );
@@ -233,8 +241,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#DCDCDC',
         borderRadius: 10,
-        margin: 15,
         marginLeft: 20,
+        marginTop: 10,
+        marginBottom: 5,
         padding: 10,
     },
     inputValor: {
@@ -330,6 +339,9 @@ const styles = StyleSheet.create({
     checkboxText: {
         paddingTop: 7,
     },
+    viewColors: {
+        paddingBottom: 10
+    }
 });
 
 export default CreateRecipe;

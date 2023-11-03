@@ -11,7 +11,8 @@ content-type: application/json
   "nome": "torta de manteiga escocesa",
   "valorHora": 5.00,
   "aplicaValorPadrao": false,
-  "observacoes": "Testando a receita com flor de sal"
+  "observacoes": "Testando a receita com flor de sal",
+  "cor":"#176B87"
 }
 
 ### UPDATE RECIPE
@@ -23,7 +24,8 @@ content-type: application/json
   "nome": "torta de manteiga escocesa",
   "valorHora": 3.00,
   "aplicaValorPadrao": false,
-  "observacoes": "Testando a receita com flor de sal"
+  "observacoes": "Testando a receita com flor de sal",
+  "cor":"#176B87"
 }
 
 

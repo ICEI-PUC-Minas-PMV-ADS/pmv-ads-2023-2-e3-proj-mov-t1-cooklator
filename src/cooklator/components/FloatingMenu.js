@@ -48,7 +48,7 @@ const FloatingMenu = () => {
                                     icon: 'account', label: 'Perfil', onPress: () => {
                                     },
                                     color: '#DAFFFB',
-                                    style: {backgroundColor: '#64CCC5'},
+                                    style: {backgroundColor: '#64CCC5', elevation: 2 },
                                 },
                                 {
                                     icon: 'muffin', label: 'Receitas', onPress: () => {
@@ -66,17 +66,14 @@ const FloatingMenu = () => {
                                     style: {backgroundColor: '#64CCC5'},
                                 },
                             ]}
-                            onStateChange={({open}: { open: Boolean }) => setOpen(open)}
-                            onPress={() => {
-                                if (open) {
-                                    // do something if the speed dial is open
-                                }
-                            }}
+                            onStateChange={({ open }) => setOpen(open)}
                             visible={visible}
                         />
                     </Portal>
                 </Provider>
-                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal} primaryButtonLabel={'Cancelar'} onSecondaryButtonPress={logOut} secondaryButtonLabel={"Sair"}/>
+                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal}
+                              primaryButtonLabel={'Cancelar'} onSecondaryButtonPress={logOut}
+                              secondaryButtonLabel={"Sair"}/>
             </View>
         </>
     );

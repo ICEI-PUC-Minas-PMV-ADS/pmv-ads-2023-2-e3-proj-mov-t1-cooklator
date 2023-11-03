@@ -5,21 +5,32 @@
       "nome": "torta de manteiga escocesa",
       "valorHora": 3,
       "aplicaValorPadrao": false,
-      "observacoes": "Testando a receita com flor de sal"
+      "observacoes": "Testando a receita com flor de sal",
+      "cor": "#176B87"
     },
     {
-      "id": 2,
-      "nome": "teste5",
+      "nome": "teste da cor",
+      "valorHora": 0,
+      "aplicaValorPadrao": true,
+      "observacoes": "sem escolher cor",
+      "cor": "#64CCC5",
+      "id": 6
+    },
+    {
+      "nome": "teste de cor 2",
+      "valorHora": 0,
+      "aplicaValorPadrao": true,
+      "observacoes": "cor escolhida",
+      "cor": "#98FB98",
+      "id": 7
+    },
+    {
+      "nome": "Bolo de cenoura",
       "valorHora": 5,
       "aplicaValorPadrao": false,
-      "observacoes": "Testando a receita com flor de sal"
-    },
-    {
-      "nome": "teste 21/10",
-      "valorHora": 5,
-      "aplicaValorPadrao": true,
-      "observacoes": "salvar no \"banco\"",
-      "id": 5
+      "observacoes": "com figos",
+      "cor": "#ffc107",
+      "id": 8
     }
   ]
 }
