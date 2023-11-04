@@ -1,10 +1,11 @@
 import CardRecipe from "../components/CardRecipe";
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import config from "../config";
 
 const RecipesInProgress = () => {
     const [recipes, setRecipes] = useState([]);
-    const recipeApiUrl = 'http://localhost:3000/recipe';
+    const recipeApiUrl = config.recipeApiUrl;
 
     useEffect(() => {
         fetch(recipeApiUrl)
@@ -16,7 +17,13 @@ const RecipesInProgress = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {recipes.map((recipe) => (
-                <CardRecipe key={recipe.id} recipeName={recipe.nome} recipeColor={recipe.cor} />
+                <CardRecipe
+                    key={recipe.id}
+                    recipeName={recipe.nome}
+                    recipeColor={recipe.cor}
+                    recipeId={recipe.id}
+                    setRecipes={setRecipes}
+                />
             ))}
         </ScrollView>
     )

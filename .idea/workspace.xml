@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72861723-8aa6-4505-b984-6a434ef3624e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cooklator/components/CardRecipe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cooklator/components/ColorPicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cooklator/pages/ReceipesInProgress.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cooklator/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cooklator/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/backend/Recipe.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/backend/Recipe.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cooklator/backend/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/backend/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/CardRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/CardRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cooklator/components/CreateRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/CreateRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/ModalWarning.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/ModalWarning.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/pages/ReceipesInProgress.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/pages/ReceipesInProgress.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +119,7 @@
       <workItem from="1698599071728" duration="734000" />
       <workItem from="1698711156165" duration="7274000" />
       <workItem from="1698796298822" duration="9536000" />
+      <workItem from="1699104562856" duration="16364000" />
     </task>
     <servers />
   </component>
@@ -132,7 +131,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/cooklator/App.js</url>
-          <line>19</line>
+          <line>18</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {} from 'react';
 import {Modal, Text, View, Pressable} from 'react-native';
 
 const ModalWarning = ({
@@ -68,17 +68,15 @@ const styles = {
     viewText: {
         height: 33,
         borderRadius: 20,
-        border: 10,
         backgroundColor: '#64CCC5',
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#DAFFFB',
         borderWidth: 2,
         shadowColor: 'rgba(0, 0, 0, 0.3)',
-        shadowOffset: {width: 0, height: 2},
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.8,
         shadowRadius: 4,
-        elevation: 4,
     },
     messageText: {
         fontSize: 17,

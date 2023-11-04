@@ -10,8 +10,9 @@ import {useNavigation} from '@react-navigation/native';
 import {Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
+import config from "../config";
 
-const recipeApiUrl = 'http://localhost:3000/recipe';
+const recipeApiUrl = config.recipeApiUrl;
 
 const CreateRecipe = () => {
 
@@ -64,15 +65,14 @@ const CreateRecipe = () => {
 
                     if (response.status === 201) {
                         const data = await response.json();
-                        showModal('Receita adicionada com sucesso!');
+                        showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
                     }
                 }
             } catch
                 (error) {
                 console.error('Erro:', error);
             }
-        }
-    ;
+        };
 
     function addRecipe(newRecipe) {
         const requestOptions = {
@@ -98,6 +98,18 @@ const CreateRecipe = () => {
     const hideModal = () => {
         setModalVisible(false);
         setModalMessage('');
+    };
+
+    const handleResetForm = () => {
+        hideModal()
+
+        setTextTitle("")
+        setTextObs("")
+        setHourValue('R$ 0.00')
+        setChecked(false)
+        setSelectedColor('#176B87')
+        setNameError('');
+        setHourValueError('');
     };
 
     const handleInputChange = (text) => {
@@ -191,8 +203,9 @@ const CreateRecipe = () => {
                         </TouchableHighlight>
                     </View>
                 </View>
-                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal}
-                              primaryButtonLabel={'Fechar'}/>
+                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={handleResetForm }
+                              primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
+                              secondaryButtonLabel={"Não"}/>
             </View>
         </View>
     );
