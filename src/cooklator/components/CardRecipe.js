@@ -3,6 +3,7 @@ import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {Card, Title, Paragraph, Appbar, Menu, Divider, useTheme} from 'react-native-paper';
 import ModalWarning from "./ModalWarning";
 import config from "../config";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
@@ -67,7 +68,15 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
                     <View style={styles.cardContent}>
                         <View>
                             <Title style={styles.titleText}>{recipeName}</Title>
-                            <Paragraph style={styles.titleContent}>This is card 1 content.</Paragraph>
+                            <Paragraph style={styles.titleContent}>
+                                <View style={styles.iconContainer}>
+                                    <Icon name="timer-outline" size={20} color="gray"/> Tempo: x minutos
+                                </View>
+                                <View style={styles.iconContainer}>
+                                    <Icon name="fruit-watermelon" size={20} color="gray"/> Materiais: 2
+                                </View>
+                                    <Icon name="chart-line" size={20} color="gray"/> R$ 3,00
+                            </Paragraph>
                         </View>
 
                         <View style={styles.containerMenu}>
@@ -139,6 +148,11 @@ const styles = StyleSheet.create({
     containerMenu: {
         alignItems: 'flex-end',
     },
+    iconContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 30,
+    }
 });
 
 export default CardRecipe;
