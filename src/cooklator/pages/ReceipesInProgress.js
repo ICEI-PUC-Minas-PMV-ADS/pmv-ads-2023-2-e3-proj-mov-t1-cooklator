@@ -1,11 +1,19 @@
 import CardRecipe from "../components/CardRecipe";
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import {ScrollView, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import config from "../config";
+import { useNavigation } from '@react-navigation/native';
+import {TouchableRipple} from "react-native-paper";
 
 const RecipesInProgress = () => {
     const [recipes, setRecipes] = useState([]);
     const recipeApiUrl = config.recipeApiUrl;
+    const navigation = useNavigation();
+
+    const handleCardPress = () => {
+        // navigation.navigate('OptionsTabs', { recipeId });
+        navigation.navigate('OptionsTabs');
+    };
 
     useEffect(() => {
         fetch(recipeApiUrl)
@@ -17,6 +25,7 @@ const RecipesInProgress = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {recipes.map((recipe) => (
+                <TouchableRipple onPress={handleCardPress}>
                 <CardRecipe
                     key={recipe.id}
                     recipeName={recipe.nome}
@@ -24,6 +33,7 @@ const RecipesInProgress = () => {
                     recipeId={recipe.id}
                     setRecipes={setRecipes}
                 />
+                </TouchableRipple>
             ))}
         </ScrollView>
     )

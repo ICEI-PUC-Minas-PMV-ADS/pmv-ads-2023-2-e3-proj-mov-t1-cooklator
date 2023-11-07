@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {Platform, ScrollView, StyleSheet, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, View, Text} from 'react-native';
 import {Card, Title, Paragraph, Appbar, Menu, Divider, useTheme} from 'react-native-paper';
 import ModalWarning from "./ModalWarning";
 import config from "../config";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useNavigation} from "@react-navigation/native";
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
@@ -15,6 +16,11 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
     const {isV3} = useTheme();
     const [modalVisibleConfirmRemove, setModalVisibleConfirmRemove] = useState(false);
     const [modalMessageConfirmRemove, setModalMessageConfirmRemove] = useState('');
+    const navigation = useNavigation();
+
+    const handleNavigateToOptions = () => {
+        navigation.navigate('OptionsTabs');
+    }
 
     const showModal = (message) => {
         setModalMessageConfirmRemove(message);
@@ -70,12 +76,15 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
                             <Title style={styles.titleText}>{recipeName}</Title>
                             <Paragraph style={styles.titleContent}>
                                 <View style={styles.iconContainer}>
-                                    <Icon name="timer-outline" size={20} color="gray"/> Tempo: x minutos
+                                    <Icon name="timer-outline" size={20} color="gray"/>
+                                    <Text>Tempo: x minutos</Text>
                                 </View>
                                 <View style={styles.iconContainer}>
-                                    <Icon name="fruit-watermelon" size={20} color="gray"/> Materiais: 2
+                                    <Icon name="fruit-watermelon" size={20} color="gray"/>
+                                    <Text>Materiais: 2</Text>
                                 </View>
-                                    <Icon name="chart-line" size={20} color="gray"/> R$ 3,00
+                                    <Icon name="chart-line" size={20} color="gray"/>
+                                    <Text>R$ 3,00</Text>
                             </Paragraph>
                         </View>
 
@@ -146,6 +155,7 @@ const styles = StyleSheet.create({
         marginVertical: 8,
     },
     containerMenu: {
+        marginRight: 15,
         alignItems: 'flex-end',
     },
     iconContainer: {

@@ -9,6 +9,7 @@ import RecipesInProgress from "./pages/ReceipesInProgress";
 import CardRecipe from "./components/CardRecipe";
 import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
+import OptionsTabs from "./components/OptionTabs";
 
 const AppStack = createStackNavigator();
 
@@ -21,8 +22,6 @@ const App = () => {
                     <View style={styles.containerNavigator}>
                         <AppStack.Navigator initialRouteName="Recipes">
                             <AppStack.Screen name="Receitas" component={Recipes}/>
-                            {/*<AppStack.Screen name="TelaProjetosAndamento" component={TelaProjetosAndamento} />*/}
-                            {/*<AppStack.Screen name="TelaProjetosFinalizados" component={TelaProjetosFinalizados} />*/}
                             <AppStack.Screen
                                 name="CadastrarReceita"
                                 component={CreateRecipe}
@@ -62,6 +61,7 @@ const App = () => {
                                 component={FloatingMenu}
                             />
                             <AppStack.Screen name="CardRecipe" component={CardRecipe}/>
+                            <AppStack.Screen name="OptionsTabs" component={OptionsTabs} options={{title: "Continuar Receita"}}/>
                         </AppStack.Navigator>
                     </View>
                     <View style={styles.FloatingMenu}>

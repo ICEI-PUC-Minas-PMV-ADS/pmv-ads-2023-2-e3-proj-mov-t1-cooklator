@@ -17,20 +17,20 @@
       "id": 6
     },
     {
-      "nome": "teste de cor 2",
-      "valorHora": 0,
-      "aplicaValorPadrao": true,
-      "observacoes": "cor escolhida",
-      "cor": "#98FB98",
-      "id": 7
-    },
-    {
       "nome": "Bolo de cenoura",
       "valorHora": 5,
       "aplicaValorPadrao": false,
       "observacoes": "com figos",
       "cor": "#ffc107",
       "id": 8
+    },
+    {
+      "nome": "pudim",
+      "valorHora": 0,
+      "aplicaValorPadrao": true,
+      "observacoes": "",
+      "cor": "#98FB98",
+      "id": 9
     }
   ]
 }
