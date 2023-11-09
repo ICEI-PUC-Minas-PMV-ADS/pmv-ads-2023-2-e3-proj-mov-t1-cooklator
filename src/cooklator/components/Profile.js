@@ -43,7 +43,7 @@ const Profile = () => {
             <Card style={{paddingBottom: 16, marginHorizontal: 8}} elevation={3} >
                 <View style={styles.inputContainer}>
 
-                    <Text style={{fontWeight:'bold', paddingTop: 16}}>
+                    <Text style={{fontSize: 18, fontWeight:'bold', paddingTop: 16}}>
                         Perfil
                     </Text>
 
@@ -71,7 +71,7 @@ const Profile = () => {
                             onChangeValueHour={valueHour => setValueHour(valueHour)}
                         />
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 10}}>Fixar para todos os projetos</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 12}}>Fixar para todos os projetos</Text>
                             <Checkbox
                                 status={checked ? 'checked' : 'unchecked'}
                                 onPress={() => {
@@ -119,7 +119,7 @@ const Profile = () => {
                     />
 
                     <Button
-                        style={{marginBottom: 16}}
+                        style={{marginVertical: 10}}
                         icon="square-edit-outline"
                         mode="contained"
                         onPress={() => console.log('Pressed')}>
