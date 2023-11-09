@@ -6,6 +6,7 @@ import CadastroMaterial from "./components/CadastroMaterial";
 import { View, StyleSheet } from "react-native";
 import CadastroReceita from "./components/CadastrarReceita";
 import Materials from "./pages/Materials";
+import Profile from "./components/Profile";
 
 const AppStack = createStackNavigator();
 
@@ -26,6 +27,11 @@ const App = () => {
           component={CadastroMaterial}
           options={{ title: "Cadastrar Receita" }}
         />
+          <AppStack.Screen
+              name="Profile"
+              component={Profile}
+              options={{title: "Perfil"}}
+          />
       </AppStack.Navigator>
     </NavigationContainer>
   );

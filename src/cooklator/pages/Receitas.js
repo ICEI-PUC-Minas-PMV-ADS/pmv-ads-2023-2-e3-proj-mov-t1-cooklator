@@ -36,6 +36,13 @@ const Receitas = () => {
                 >
                     Cadastrar nova receita
                 </Button>
+                <Button
+                    mode="contained"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Profile')}
+                >
+                    Perfil
+                </Button>
             </View>
         </View>
     );
