@@ -37,6 +37,48 @@ const Profile = () => {
     const [hideNewPassword, setHideNewPassword] = React.useState(true);
     const [hideNewPasswordConfirmation, setHideNewPasswordConfirmation] = React.useState(true);
 
+    const currentPasswordChange = e => {
+        const currentPassword = e.target.value;
+        setCurrentPassword(currentPassword);
+    }
+
+    const newPasswordConfirmationChange = e => {
+        const newPasswordConfirmation = e.target.value;
+        setNewPasswordConfirmation(newPasswordConfirmation);
+    }
+
+    const newPasswordChange = e => {
+        const newPassword = e.target.value;
+        setNewPassword(newPassword);
+    }
+
+    const hideCurrentPasswordChange = () => {
+        setHideCurrentPassword(!hideCurrentPassword);
+    }
+
+    const hideNewPasswordChange = () => {
+        setHideNewPassword(!hideNewPassword);
+    }
+
+    const hideNewPasswordConfirmationChange = () => {
+        setHideNewPasswordConfirmation(!hideNewPasswordConfirmation)
+    }
+
+    const nameChange = e => {
+        const name = e.target.value;
+        setName(name);
+    }
+
+    const emailChange = e => {
+        const email = e.target.value;
+        setEmail(email);
+    }
+
+    const valueHourChange = e => {
+        const valueHour = e.target.value;
+        setValueHour(valueHour);
+    }
+
     return (
 
         <View style={{paddingTop: 16}}>
@@ -52,14 +94,14 @@ const Profile = () => {
                         label="Nome"
                         value={name}
                         mode='outlined'
-                        onChangeName={name => setName(name)}
+                        onChange={nameChange}
                     />
                     <TextInput
                         style={styles.input}
                         label="E-mail"
                         value={email}
                         mode='outlined'
-                        onChangeEmail={email => setEmail(email)}
+                        onChange={emailChange}
                     />
 
                     <View style={styles.input}>
@@ -68,7 +110,7 @@ const Profile = () => {
                             label="Valor por Hora"
                             value={valueHour}
                             mode='outlined'
-                            onChangeValueHour={valueHour => setValueHour(valueHour)}
+                            onChange={valueHourChange}
                         />
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={{fontWeight: 'bold', fontSize: 12}}>Fixar para todos os projetos</Text>
@@ -95,8 +137,8 @@ const Profile = () => {
                         label="Senha Atual"
                         value={currentPassword}
                         mode='outlined'
-                        onChangeSenhaAtual={currentPassword => setCurrentPassword(currentPassword)}
-                        right={<TextInput.Icon icon={hideCurrentPassword ? "eye" : "eye-off"} onPress={() => !setHideCurrentPassword}/>}
+                        onChange={currentPasswordChange}
+                        right={<TextInput.Icon icon={hideCurrentPassword ? "eye-off" : "eye"} onPress={hideCurrentPasswordChange}/>}
                         secureTextEntry={hideCurrentPassword}
                     />
                     <TextInput
@@ -104,8 +146,8 @@ const Profile = () => {
                         label="Nova Senha"
                         value={newPassword}
                         mode='outlined'
-                        onChangeNovaSenha={newPassword => setNewPassword(newPassword)}
-                        right={<TextInput.Icon icon={hideNewPassword ? "eye" : "eye-off"} onPress={() => !setHideNewPassword}/>}
+                        onChange={newPasswordChange}
+                        right={<TextInput.Icon icon={hideNewPassword ? "eye-off" : "eye"} onPress={hideNewPasswordChange}/>}
                         secureTextEntry={hideNewPassword}
                     />
                     <TextInput
@@ -113,8 +155,8 @@ const Profile = () => {
                         label="Confirmação Nova Senha"
                         value={newPasswordConfirmation}
                         mode='outlined'
-                        onChangeConfirmacaoNovaSenha={newPasswordConfirmation => setNewPasswordConfirmation(newPasswordConfirmation)}
-                        right={<TextInput.Icon icon={hideNewPasswordConfirmation ? "eye" : "eye-off"} onPress={() =>    !setHideNewPasswordConfirmation}/>}
+                        onChange={newPasswordConfirmationChange}
+                        right={<TextInput.Icon icon={hideNewPasswordConfirmation ? "eye-off" : "eye"} onPress={hideNewPasswordConfirmationChange}/>}
                         secureTextEntry={hideNewPasswordConfirmation}
                     />
 
