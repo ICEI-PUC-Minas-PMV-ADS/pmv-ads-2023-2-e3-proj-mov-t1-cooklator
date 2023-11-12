@@ -28,7 +28,7 @@ const ModalWarning = ({
                                 <Text>{primaryButtonLabel}</Text>
                             </View>
                         </Pressable>
-                        {secondaryButtonLabel && onSecondaryButtonPress && (
+                        {renderSecondaryButton && (
                             <Pressable onPress={onSecondaryButtonPress} style={styles.secondaryButton}>
                                 <View style={styles.viewText}>
                                     <Text>{secondaryButtonLabel}</Text>
@@ -74,7 +74,7 @@ const styles = {
         borderColor: '#DAFFFB',
         borderWidth: 2,
         shadowColor: 'rgba(0, 0, 0, 0.3)',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.8,
         shadowRadius: 4,
     },

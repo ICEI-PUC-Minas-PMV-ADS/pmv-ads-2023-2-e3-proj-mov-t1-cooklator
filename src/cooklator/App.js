@@ -64,8 +64,8 @@ const App = () => {
                             <AppStack.Screen name="OptionsTabs" component={OptionsTabs} options={{title: "Continuar Receita"}}/>
                         </AppStack.Navigator>
                     </View>
-                    <View style={styles.FloatingMenu}>
-                        <FloatingMenu/> {FloatingMenu}
+                    <View style={styles.floatingMenu}>
+                        <FloatingMenu />
                     </View>
                 </View>
 
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         flex: 1,
 
     },
-    FloatingMenu: {
+    floatingMenu: {
         alignSelf: "flex-end"
     },
 });

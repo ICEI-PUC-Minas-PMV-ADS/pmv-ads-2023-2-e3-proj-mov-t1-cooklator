@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     buttonSpacer: {
-        height: 16, // Largura do espaçador entre os botões
+        height: 16,
     },
     customButton: {
         width: '90%',

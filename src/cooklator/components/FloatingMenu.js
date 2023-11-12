@@ -59,7 +59,7 @@ const FloatingMenu = () => {
                                 },
                                 {
                                     icon: 'logout', label: 'Sair', onPress: () => {
-                                        showModal('Tem cereteza que deseja sair?')
+                                        showModal('Tem certeza que deseja sair?')
                                     },
                                     size: theme.isV3 ? 'small' : 'medium',
                                     color: '#DAFFFB',

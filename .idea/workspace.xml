@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72861723-8aa6-4505-b984-6a434ef3624e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cooklator/components/OptionTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cooklator/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/backend/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/backend/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/components/CardRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/CardRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/pages/ReceipesInProgress.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/pages/ReceipesInProgress.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cooklator/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/ModalWarning.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/ModalWarning.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
