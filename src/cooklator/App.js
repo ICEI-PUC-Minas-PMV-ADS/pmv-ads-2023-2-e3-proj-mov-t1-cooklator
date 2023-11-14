@@ -10,6 +10,7 @@ import CardRecipe from "./components/CardRecipe";
 import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
+import Profile from "./components/Profile";
 
 const AppStack = createStackNavigator();
 
@@ -61,11 +62,17 @@ const App = () => {
                                 component={FloatingMenu}
                             />
                             <AppStack.Screen name="CardRecipe" component={CardRecipe}/>
-                            <AppStack.Screen name="OptionsTabs" component={OptionsTabs} options={{title: "Continuar Receita"}}/>
+                            <AppStack.Screen name="OptionsTabs" component={OptionsTabs}
+                                             options={{title: "Continuar Receita"}}/>
+                            <AppStack.Screen
+                                name="Profile"
+                                component={Profile}
+                                options={{title: "Perfil"}}
+                            />
                         </AppStack.Navigator>
                     </View>
                     <View style={styles.floatingMenu}>
-                        <FloatingMenu />
+                        <FloatingMenu/>
                     </View>
                 </View>
 
