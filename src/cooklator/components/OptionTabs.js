@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
+import Timer from "./Timer";
 
 const OptionsTabs = () => {
     const [value, setValue] = React.useState('timer');
@@ -62,6 +63,7 @@ const OptionsTabs = () => {
             {value === 'timer' && (
                 <View style={styles.timeView}>
                     <Text style={styles.titleTimer}>TIMER</Text>
+                    <Timer/>
                 </View>
             )}
             {value === 'materials' && (

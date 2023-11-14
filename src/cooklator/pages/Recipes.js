@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Button, Text} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 
 const Recipes = () => {
@@ -36,6 +36,13 @@ const Recipes = () => {
                 >
                     <Text style={styles.buttonText}>CADASTRAR NOVA RECEITA</Text>
                 </TouchableOpacity>
+                <Button
+                    mode="contained"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Profile')}
+                >
+                    Perfil
+                </Button>
             </View>
 
         </View>
