@@ -36,13 +36,6 @@ const Recipes = () => {
                 >
                     <Text style={styles.buttonText}>CADASTRAR NOVA RECEITA</Text>
                 </TouchableOpacity>
-                <Button
-                    mode="contained"
-                    style={styles.button}
-                    onPress={() => navigation.navigate('Profile')}
-                >
-                    Perfil
-                </Button>
             </View>
 
         </View>

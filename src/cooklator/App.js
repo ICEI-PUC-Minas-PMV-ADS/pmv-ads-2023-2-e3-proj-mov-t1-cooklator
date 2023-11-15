@@ -22,7 +22,19 @@ const App = () => {
 
                     <View style={styles.containerNavigator}>
                         <AppStack.Navigator initialRouteName="Recipes">
-                            <AppStack.Screen name="Receitas" component={Recipes}/>
+                            <AppStack.Screen name="Receitas" component={Recipes}
+                                             options={{
+                                                 headerStyle: {
+                                                     backgroundColor: "#DAFFFB",
+                                                     shadowOpacity: 0,
+                                                     elevation: 0,
+                                                 },
+                                                 headerTitleStyle: {
+                                                     color: "#04364A",
+                                                     fontSize: 24,
+                                                 },
+                                             }}
+                            />
                             <AppStack.Screen
                                 name="CadastrarReceita"
                                 component={CreateRecipe}
@@ -55,19 +67,45 @@ const App = () => {
                             <AppStack.Screen
                                 name="CadastroMaterial"
                                 component={CadastroMaterial}
-                                options={{title: "Cadastrar Receita"}}
+                                options={{
+                                    title: "Cadastrar Receita",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {color: "white"},
+                                }}
                             />
                             <AppStack.Screen
                                 name="MenuFlutuante"
                                 component={FloatingMenu}
                             />
                             <AppStack.Screen name="CardRecipe" component={CardRecipe}/>
-                            <AppStack.Screen name="OptionsTabs" component={OptionsTabs}
-                                             options={{title: "Continuar Receita"}}/>
+                            <AppStack.Screen
+                                name="OptionsTabs"
+                                component={OptionsTabs}
+                                options={{
+                                    title: "Continuar Receita",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {color: "white"},
+                                }}/>
                             <AppStack.Screen
                                 name="Profile"
                                 component={Profile}
-                                options={{title: "Perfil"}}
+                                options={{
+                                    title: "Perfil",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {color: "white"},
+                                }}
                             />
                         </AppStack.Navigator>
                     </View>
