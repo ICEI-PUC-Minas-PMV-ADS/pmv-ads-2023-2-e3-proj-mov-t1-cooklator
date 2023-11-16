@@ -22,16 +22,23 @@ const Profile = () => {
         input: {
             width: '100%',
             marginVertical: 10
+        },
+        invalidInput: {
+            color: 'red'
         }
     });
 
     const [checked, setChecked] = React.useState(false);
 
     const [name, setName] = React.useState("Usuário Teste");
+    const [isNameValid, setIsNameValid] = React.useState(true);
     const [email, setEmail] = React.useState("usuarioteste@email.com");
+    const [isEmailValid, setIsEmailValid] = React.useState(true);
     const [currentPassword, setCurrentPassword] = React.useState("");
     const [newPassword, setNewPassword] = React.useState("");
+    const [isNewPasswordValid, setIsNewPasswordValid] = React.useState(true);
     const [newPasswordConfirmation, setNewPasswordConfirmation] = React.useState("");
+    const [isNewPasswordConfirmationValid, setIsNewPasswordConfirmationValid] = React.useState(true);
     const [valueHour, setValueHour] = React.useState("35");
     const [hideCurrentPassword, setHideCurrentPassword] = React.useState(true);
     const [hideNewPassword, setHideNewPassword] = React.useState(true);
@@ -44,11 +51,13 @@ const Profile = () => {
 
     const newPasswordConfirmationChange = e => {
         const newPasswordConfirmation = e.target.value;
+        setIsNewPasswordConfirmationValid(newPasswordConfirmation !== '' && newPasswordConfirmation.length === 8 && newPasswordConfirmation === newPassword)
         setNewPasswordConfirmation(newPasswordConfirmation);
     }
 
     const newPasswordChange = e => {
         const newPassword = e.target.value;
+        setIsNewPasswordValid(newPassword !== '' && newPassword.length === 8)
         setNewPassword(newPassword);
     }
 
@@ -66,17 +75,26 @@ const Profile = () => {
 
     const nameChange = e => {
         const name = e.target.value;
+        setIsNameValid(name !== '' && (name.length >= 5 && name.length <= 15));
         setName(name);
     }
 
     const emailChange = e => {
         const email = e.target.value;
+        setIsEmailValid(validateEmail(email))
         setEmail(email);
     }
 
     const valueHourChange = e => {
         const valueHour = e.target.value;
-        setValueHour(valueHour);
+        if (!isNaN(valueHour)) {
+            setValueHour(valueHour);
+        }
+    }
+
+    function validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     }
 
     return (
@@ -91,18 +109,23 @@ const Profile = () => {
 
                     <TextInput
                         style={styles.input}
+                        outlineColor={isNameValid ? 'gray' : 'red'}
                         label="Nome"
                         value={name}
                         mode='outlined'
                         onChange={nameChange}
                     />
+                    {!isNameValid && <Text style={styles.invalidInput}>O nome deve conter entre 5 e 15 caracteres </Text>}
                     <TextInput
                         style={styles.input}
-                        label="E-mail"
+                        outlineColor={isEmailValid ? 'gray' : 'red'}
+                        label= "E-mail"
                         value={email}
                         mode='outlined'
                         onChange={emailChange}
+                        errorMessage={"Teste"}
                     />
+                    {!isEmailValid && <Text style={styles.invalidInput}>Endereço de E-mail inválido</Text>}
 
                     <View style={styles.input}>
                         <TextInput
@@ -145,20 +168,24 @@ const Profile = () => {
                         style={styles.input}
                         label="Nova Senha"
                         value={newPassword}
+                        outlineColor={isNewPasswordValid ? 'gray' : 'red'}
                         mode='outlined'
                         onChange={newPasswordChange}
                         right={<TextInput.Icon icon={hideNewPassword ? "eye-off" : "eye"} onPress={hideNewPasswordChange}/>}
                         secureTextEntry={hideNewPassword}
                     />
+                    {!isNewPasswordValid && <Text style={styles.invalidInput}>A nova senha deve conter 8 caracteres</Text>}
                     <TextInput
                         style={styles.input}
                         label="Confirmação Nova Senha"
                         value={newPasswordConfirmation}
+                        outlineColor={isNewPasswordConfirmationValid ? 'gray' : 'red'}
                         mode='outlined'
                         onChange={newPasswordConfirmationChange}
                         right={<TextInput.Icon icon={hideNewPasswordConfirmation ? "eye-off" : "eye"} onPress={hideNewPasswordConfirmationChange}/>}
                         secureTextEntry={hideNewPasswordConfirmation}
                     />
+                    {!isNewPasswordConfirmationValid && <Text style={styles.invalidInput}>Confirmação de senha inválida</Text>}
 
                     <Button
                         style={{marginVertical: 10}}
