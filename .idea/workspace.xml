@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72861723-8aa6-4505-b984-6a434ef3624e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cooklator/components/CardValues.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/FloatingMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/components/OptionTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/components/OptionTabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cooklator/pages/Recipes.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTTP Request" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/cooklator/components/MenuFlutuante.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2WxWWDaDOMBJpY4BJZEdB3HY3Xj" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;juliana-teste&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Julianadm/Desenvolvimento/Repositorios/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/src/cooklator/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Julianadm\Desenvolvimento\Repositorios\pmv-ads-2023-2-e3-proj-mov-t1-cooklator\src\cooklator\backend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="React Native.Unnamed">
+    <configuration name="Receita | DELETE RECEITA" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/cooklator/backend/Receita.http" index="5" requestIdentifier="DELETE RECEITA" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Recipe | CREATE RECIPE" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/cooklator/backend/Recipe.http" index="2" requestIdentifier="CREATE RECIPE" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Recipe | GET RECIPE LIST" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/cooklator/backend/Recipe.http" requestIdentifier="GET RECIPE LIST" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="ReactNative" factoryName="React Native" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <react-native value="$USER_HOME$/AppData/Roaming/npm/node_modules/react-native-cli" />
+      <platform value="ANDROID" />
+      <envs />
+      <only-packager />
+      <browser value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <method v="2">
+        <option name="ReactNativePackager" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.Recipe | CREATE RECIPE" />
+      <item itemvalue="HTTP Request.Recipe | GET RECIPE LIST" />
+      <item itemvalue="HTTP Request.Receita | DELETE RECEITA" />
+      <item itemvalue="React Native.Unnamed" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.Recipe | GET RECIPE LIST" />
+        <item itemvalue="HTTP Request.Recipe | CREATE RECIPE" />
+        <item itemvalue="HTTP Request.Receita | DELETE RECEITA" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72861723-8aa6-4505-b984-6a434ef3624e" name="Changes" comment="" />
+      <created>1697674740597</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697674740597</updated>
+      <workItem from="1697674741654" duration="4574000" />
+      <workItem from="1697927197732" duration="6740000" />
+      <workItem from="1697979475131" duration="8101000" />
+      <workItem from="1698599071728" duration="734000" />
+      <workItem from="1698711156165" duration="7274000" />
+      <workItem from="1698796298822" duration="9536000" />
+      <workItem from="1699104562856" duration="17150000" />
+      <workItem from="1699203154944" duration="5025000" />
+      <workItem from="1699314071471" duration="9214000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
