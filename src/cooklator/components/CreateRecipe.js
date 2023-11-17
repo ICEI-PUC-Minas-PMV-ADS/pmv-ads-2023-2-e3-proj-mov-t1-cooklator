@@ -4,10 +4,10 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    Pressable, TouchableHighlight
+    Pressable, TouchableHighlight, ScrollView
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Checkbox} from 'react-native-paper';
+import {Card, Checkbox, Dialog, Portal} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
 import config from "../config";
@@ -37,42 +37,42 @@ const CreateRecipe = () => {
     };
 
     const handleAddRecipe = async () => {
-            try {
-                let isValid = true;
-                setNameError('')
-                setHourValueError('')
+        try {
+            let isValid = true;
+            setNameError('')
+            setHourValueError('')
 
-                if (textTitle.trim() === '') {
-                    setNameError('O nome da receita é obrigatório');
-                    isValid = false;
-                }
-
-                if (hourValueChange <= 0 && checked === false) {
-                    setHourValueError('O valor da hora deve ser maior que zero ou marque o valor padrão');
-                    isValid = false;
-                }
-
-                if (isValid) {
-                    const newRecipe = {
-                        nome: textTitle,
-                        valorHora: hourValueChange,
-                        aplicaValorPadrao: checked,
-                        observacoes: textObs,
-                        cor: selectedColor
-                    };
-
-                    const response = await addRecipe(newRecipe);
-
-                    if (response.status === 201) {
-                        const data = await response.json();
-                        showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
-                    }
-                }
-            } catch
-                (error) {
-                console.error('Erro:', error);
+            if (textTitle.trim() === '') {
+                setNameError('O nome da receita é obrigatório');
+                isValid = false;
             }
-        };
+
+            if (hourValueChange <= 0 && checked === false) {
+                setHourValueError('Insira um valor ou marque o valor padrão');
+                isValid = false;
+            }
+
+            if (isValid) {
+                const newRecipe = {
+                    nome: textTitle,
+                    valorHora: hourValueChange,
+                    aplicaValorPadrao: checked,
+                    observacoes: textObs,
+                    cor: selectedColor
+                };
+
+                const response = await addRecipe(newRecipe);
+
+                if (response.status === 201) {
+                    const data = await response.json();
+                    showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
+                }
+            }
+        } catch
+            (error) {
+            console.error('Erro:', error);
+        }
+    };
 
     function addRecipe(newRecipe) {
         const requestOptions = {
@@ -124,101 +124,119 @@ const CreateRecipe = () => {
     };
 
     return (
-        <View style={styles.mainContainer}>
+        <ScrollView contentContainerStyle={styles.mainContainer}>
             <View style={styles.container}>
-                <View style={styles.headerView}>
-                    <Text style={styles.headerText}> Cadastrar Receita</Text>
-                </View>
+                <View style={styles.mainContainer}>
+                    <View style={styles.container}>
+                        <View style={styles.headerView}>
+                            <Text style={styles.headerText}> Cadastrar Receita</Text>
+                        </View>
 
-                <View style={styles.line}></View>
+                        <View style={styles.line}></View>
+                        <Card style={styles.card} elevation={3}>
+                            <TextInput
+                                style={styles.input}
+                                value={textTitle}
+                                onChangeText={setTextTitle}
+                                placeholder="Nome da receita"
+                                keyboardType="default"
+                                placeholderTextColor="#606b6a"
+                            />
+                            <Text style={styles.errorMessageName}>{nameError}</Text>
 
-                <TextInput
-                    style={styles.input}
-                    value={textTitle}
-                    onChangeText={setTextTitle}
-                    placeholder="Nome da receita"
-                    keyboardType="default"
-                    placeholderTextColor="grey"
-                />
-                <Text style={styles.errorMessageName}>{nameError}</Text>
+                            <TextInput
+                                style={styles.inputObs}
+                                value={textObs}
+                                onChangeText={setTextObs}
+                                placeholder="Observações"
+                                keyboardType="default"
+                                placeholderTextColor="#606b6a"
 
-                <TextInput
-                    style={styles.inputObs}
-                    value={textObs}
-                    onChangeText={setTextObs}
-                    placeholder="Observações"
-                    keyboardType="default"
-                    placeholderTextColor="grey"
-                />
+                            />
 
-                <View style={styles.viewButtons}>
-                    <View style={styles.viewValue}>
-                        <Text style={styles.textHourValue}> Valor da hora:</Text>
-                        <TextInput
-                            style={styles.inputValor}
-                            value={hourValue}
-                            onChangeText={handleInputChange}
-                            placeholder="R$ 0,00"
-                            keyboardType="numeric"
-                            placeholderTextColor="grey"
-                        />
+                            <View style={styles.viewButtons}>
+                                <View style={styles.viewValue}>
+                                    <Text style={styles.textHourValue}> Valor da hora:</Text>
+                                    <TextInput
+                                        style={styles.inputValor}
+                                        value={hourValue}
+                                        onChangeText={handleInputChange}
+                                        placeholder="R$ 0,00"
+                                        keyboardType="numeric"
+                                        placeholderTextColor="grey"
+                                    />
 
+                                </View>
+                            </View>
+                            <Text style={styles.errorMessageObs}>{hourValueError}</Text>
+                            <View style={styles.checkboxContainer}>
+                                <Checkbox.Android
+                                    status={checked ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                        setChecked(!checked);
+                                    }}
+                                />
+                                <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
+                            </View>
+                        </Card>
+
+                        <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
+                        <View style={styles.viewColors}>
+                                <ColorPicker onColorSelect={handleColorSelect}/>
+                            </View>
+                        </Card>
+
+                        <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
+                        <View style={styles.viewMaterial}>
+                            <Text style={styles.textMaterialTitle}>Materiais:</Text>
+                            <Pressable
+                                style={[styles.button, styles.buttonOpen]}
+                                onPress={handleNavigateToMaterial}>
+                                <Text style={styles.textStylePlus}>+</Text>
+                            </Pressable>
+                        </View>
+                        </Card>
+
+                        <View style={styles.viewButtons}>
+                            <View>
+                                <TouchableHighlight
+                                    style={[styles.buttonSave, {marginRight: 150, marginLeft: 30}]}
+                                    onPress={handleNavigateToRecipesPage}
+                                    underlayColor="#176B87"
+                                >
+                                    <Text style={styles.textStyle}>Cancelar</Text>
+                                </TouchableHighlight>
+                            </View>
+                            <View>
+                                <TouchableHighlight
+                                    style={styles.buttonSave}
+                                    onPress={handleAddRecipe}
+                                    underlayColor="#176B87"
+                                >
+                                    <Text style={styles.textStyle}>Salvar</Text>
+                                </TouchableHighlight>
+                            </View>
+                        </View>
+                        <ModalWarning visible={modalVisible} message={modalMessage}
+                                      onPrimaryButtonPress={handleResetForm}
+                                      primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
+                                      secondaryButtonLabel={"Não"}/>
                     </View>
                 </View>
-                <View style={styles.checkboxContainer}>
-                    <Checkbox.Android
-                        status={checked ? 'checked' : 'unchecked'}
-                        onPress={() => {
-                            setChecked(!checked);
-                        }}
-                    />
-                    <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
-                </View>
-                <Text style={styles.errorMessageObs}>{hourValueError}</Text>
-                <View style={styles.viewColors}>
-                    <ColorPicker onColorSelect={handleColorSelect}/>
-                </View>
-                <Text style={styles.textMaterialTitle}>Materiais:</Text>
-                <Pressable
-                    style={[styles.button, styles.buttonOpen]}
-                    onPress={handleNavigateToMaterial}>
-                    <Text style={styles.textStylePlus}>+</Text>
-                </Pressable>
-
-                <View style={styles.viewButtons}>
-
-                    <View style={styles.viewButtons}>
-                        <TouchableHighlight
-                            style={styles.buttonCancel}
-                            onPress={handleNavigateToRecipesPage}>
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                        </TouchableHighlight>
-                    </View>
-
-                    <View style={styles.viewButtons}>
-                        <TouchableHighlight
-                            style={styles.buttonSave}
-                            onPress={handleAddRecipe}>
-                            <Text style={styles.saveText}>Salvar</Text>
-                        </TouchableHighlight>
-                    </View>
-                </View>
-                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={handleResetForm }
-                              primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
-                              secondaryButtonLabel={"Não"}/>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     mainContainer: {
-        flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
+        flexGrow: 1,
     },
     container: {
-        flex: 1,
+        width: 400,
+        flexGrow: 1,
         backgroundColor: '#fff',
     },
     line: {
@@ -239,7 +257,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     input: {
-        width: 300,
+        width: '90%',
         height: 40,
         borderWidth: 1,
         borderColor: '#DCDCDC',
@@ -247,9 +265,10 @@ const styles = StyleSheet.create({
         margin: 12,
         marginLeft: 20,
         padding: 10,
+        backgroundColor: 'white'
     },
     inputObs: {
-        width: 300,
+        width: '90%',
         height: 100,
         borderWidth: 1,
         borderColor: '#DCDCDC',
@@ -258,6 +277,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 5,
         padding: 10,
+        backgroundColor: 'white'
     },
     inputValor: {
         width: 100,
@@ -267,6 +287,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginLeft: 20,
         padding: 10,
+        backgroundColor: 'white'
     },
     errorMessageName: {
         color: 'red',
@@ -274,9 +295,9 @@ const styles = StyleSheet.create({
     },
     errorMessageObs: {
         width: 300,
-        height: 40,
+        height: 20,
         color: 'red',
-        marginLeft: 20,
+        marginLeft: 30,
     },
     button: {
         borderRadius: 20,
@@ -285,7 +306,7 @@ const styles = StyleSheet.create({
     buttonOpen: {
         width: 30,
         height: 30,
-        backgroundColor: '#DCDCDC',
+        backgroundColor: '#176B87',
         margin: 12,
         marginRight: 200,
         paddingLeft: 8,
@@ -294,32 +315,29 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '500',
         textAlign: 'center',
-    },
-    textStylePlus: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        paddingTop: 7,
+        color: 'white'
     },
     buttonSave: {
         width: 100,
         height: 40,
-        backgroundColor: '#BEC2C9',
+        backgroundColor: '#64CCC5',
         borderRadius: 20,
         borderWidth: 1,
         borderColor: '#fff',
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
-    saveText: {
-        fontSize: 18,
-        fontWeight: '500',
-        textAlign: 'center',
-        paddingTop: 7,
-    },
-    buttonCancel: {
-        width: 100,
-        height: 40,
-        marginLeft: 20,
-        backgroundColor: '#BEC2C9',
-        borderRadius: 20,
-        paddingTop: 5,
+    textStylePlus: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white'
     },
     viewButtons: {
         width: 220,
@@ -354,6 +372,25 @@ const styles = StyleSheet.create({
     },
     viewColors: {
         paddingBottom: 10
+    },
+    card: {
+        paddingBottom: 16,
+        marginHorizontal: 8,
+        width: '90%',
+        minHeight: 150,
+        alignSelf: 'center',
+        backgroundColor: 'rgba(242, 250, 249, 0.9)',
+        borderWidth: 1,
+        borderColor: '#DAFFFB',
+        borderRadius: 10,
+        padding: 10,
+        margin: 10
+    },
+    viewMaterial: {
+        width: 220,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
     }
 });
 
