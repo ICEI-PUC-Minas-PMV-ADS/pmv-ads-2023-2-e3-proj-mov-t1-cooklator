@@ -55,10 +55,6 @@ Na tela de Cadastro, caso o usuário não tenha cadastrado antes, mesmo poderá 
 
 ## TELA TIMER (GUILHERME CUNHA)
 
-# Cooklator
-
-## Timer
-
 ## Histórico de Revisões
 
 | **Data** | **Autor** | **Descrição** | **Versão** |
