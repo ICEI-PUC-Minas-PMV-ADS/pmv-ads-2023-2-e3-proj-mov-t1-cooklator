@@ -77,14 +77,14 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
                             <Paragraph style={styles.titleContent}>
                                 <View style={styles.iconContainer}>
                                     <Icon name="timer-outline" size={20} color="gray"/>
-                                    <Text>Tempo: x minutos</Text>
+                                    <Text style={styles.textIcon}>Tempo: x minutos</Text>
                                 </View>
                                 <View style={styles.iconContainer}>
                                     <Icon name="fruit-watermelon" size={20} color="gray"/>
-                                    <Text>Materiais: 2</Text>
+                                    <Text style={styles.textIcon}>Materiais: 2</Text>
                                 </View>
                                     <Icon name="chart-line" size={20} color="gray"/>
-                                    <Text>R$ 3,00</Text>
+                                    <Text style={styles.textIcon}>R$ 3,00</Text>
                             </Paragraph>
                         </View>
 
@@ -162,6 +162,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginRight: 30,
+    },
+    textIcon: {
+        marginLeft: 5,
     }
 });
 
