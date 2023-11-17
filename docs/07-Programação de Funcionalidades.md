@@ -53,4 +53,25 @@ Na tela de Cadastro, caso o usuário não tenha cadastrado antes, mesmo poderá 
 
 
 
+## TELA TIMER (GUILHERME CUNHA)
 
+# Cooklator
+
+## Timer
+
+## Histórico de Revisões
+
+| **Data** | **Autor** | **Descrição** | **Versão** |
+| --- | --- | --- | --- |
+| **[15/10/2023]** | [Guilherme] | [Elaboração da versão 1 da tela. Falta ser integrada aos menus e as funcionalidades] | [1.0] |
+| **[11/10/2023]** | [Guilherme] | [Integração do componente a tela] | [2.0] |
+
+A tela de timer é uma das funcionalidades da aplicação. O usuário irá iniciar o timer e poderá parar(para a contagem e pode retomar de onde parou) ou pausar(finalizar e salvar). A primeira versão é apenas um componente onde salva os tempos de execucação em memória. Ele distingue uma unidade(hora ou horas), distingue as unidades de tempo(segundos, minutos e horas). Para a entrega final desse componente falta a integração com a Fake API e a mudança dos estilos para se adequar ao restante do projeto.
+
+Links estudo:
+
+- Microfundamentos ADS 3
+- https://acervolima.com/como-criar-um-cronometro-de-contagem-regressiva-usando-reactjs/
+
+<img src="img/timer01.jpg" alt="Timer01">
+<img src="img/timer02.jpg" alt="Timer02">
