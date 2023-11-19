@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
-import CadastroMaterial from "./components/CadastroMaterial";
+import NewMaterial from "./components/NewMaterial";
 import CreateRecipe from "./components/CreateRecipe";
 import FloatingMenu from "./components/FloatingMenu";
 import RecipesInProgress from "./pages/ReceipesInProgress";
@@ -53,8 +53,8 @@ const App = () => {
                                 }}
                             />
                             <AppStack.Screen
-                                name="CadastroMaterial"
-                                component={CadastroMaterial}
+                                name="NewMaterial"
+                                component={NewMaterial}
                                 options={{title: "Cadastrar Receita"}}
                             />
                             <AppStack.Screen
