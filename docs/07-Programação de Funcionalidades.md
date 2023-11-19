@@ -51,6 +51,16 @@ Na tela de Cadastro, caso o usuário não tenha cadastrado antes, mesmo poderá 
 
 <img src="img/REGISTRAR.png" alt="Tela-Registrar-2">
 
+Foi Adicionado uma Rota de fluxo , para verificar se o usuário estar Logado ou não, composto por 3 paginas , a Route, Main e Auth .
+
+
+<img src="img/Route.png" alt="Tela-Route">
+
+<img src="img/Main.png" alt="Main">
+
+<img src="img/Auth.png" alt="Auth">
+
+
 
 
 ## TELA TIMER (GUILHERME CUNHA)
