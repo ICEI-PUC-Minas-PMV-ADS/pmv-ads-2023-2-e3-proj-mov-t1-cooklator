@@ -11,7 +11,7 @@ import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
 import Profile from "./components/Profile";
-import Logo from "./components/Logo";
+import LogoCooklator from "./components/LogoCooklator";
 
 const AppStack = createStackNavigator();
 
@@ -52,7 +52,7 @@ const App = () => {
                                     },
                                     headerRight: () => (
                                         <View style={styles.headerRight}>
-                                            <Logo width={100} height={30} isWithSubtitle={false} />
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
                                         </View>
                                     ),
                                 }}
@@ -70,7 +70,7 @@ const App = () => {
                                     headerTitleStyle: {color: "white"},
                                     headerRight: () => (
                                         <View style={styles.headerRight}>
-                                            <Logo width={100} height={30} isWithSubtitle={false} />
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
                                         </View>
                                     ),
                                 }}
