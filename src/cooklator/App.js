@@ -10,7 +10,7 @@ import CardRecipe from "./components/CardRecipe";
 import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile"
 
 const AppStack = createStackNavigator();
 
