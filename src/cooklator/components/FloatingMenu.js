@@ -54,13 +54,21 @@ const FloatingMenu = () => {
                                     },
                                     color: '#DAFFFB',
                                     style: {backgroundColor: '#64CCC5', elevation: 2 },
+                                    labelStyle: {
+                                        fontWeight: 'bold',
+                                        fontSize: 18
+                                    },
                                 },
                                 {
-                                    icon: 'muffin', label: 'Receitas', onPress: () => {
+                                    icon: 'muffin', label: 'Home', onPress: () => {
                                         handleNavigateToRecipesPage()
                                     },
                                     color: '#DAFFFB',
                                     style: {backgroundColor: '#64CCC5'},
+                                    labelStyle: {
+                                        fontWeight: 'bold',
+                                        fontSize: 18
+                                    },
                                 },
                                 {
                                     icon: 'logout', label: 'Sair', onPress: () => {
@@ -69,6 +77,10 @@ const FloatingMenu = () => {
                                     size: theme.isV3 ? 'small' : 'medium',
                                     color: '#DAFFFB',
                                     style: {backgroundColor: '#64CCC5'},
+                                    labelStyle: {
+                                        fontWeight: 'bold',
+                                        fontSize: 18
+                                    },
                                 },
                             ]}
                             onStateChange={({ open }) => setOpen(open)}

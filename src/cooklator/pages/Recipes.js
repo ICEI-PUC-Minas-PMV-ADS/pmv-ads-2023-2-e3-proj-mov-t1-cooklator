@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, Text} from 'react-native-paper';
+import {View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import Logo from "../components/Logo";
 
 const Recipes = () => {
 
@@ -9,8 +10,7 @@ const Recipes = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.headerText}>Página inicial temporária</Text>
-
+            <Logo  width={350} height={200} isWithSubtitle={true} />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     style={styles.customButton}
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 200,
+        backgroundColor: '#fff'
     },
     headerText: {
         fontSize: 24,
@@ -87,6 +88,11 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "bold",
         paddingTop: 7
+    },
+    logoImage: {
+        width: 350,
+        height: 200,
+        resizeMode: 'contain',
     },
 });
 

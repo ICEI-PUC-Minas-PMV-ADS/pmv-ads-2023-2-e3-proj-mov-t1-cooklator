@@ -11,6 +11,7 @@ import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
 import Profile from "./components/Profile";
+import Logo from "./components/Logo";
 
 const AppStack = createStackNavigator();
 
@@ -48,7 +49,12 @@ const App = () => {
                                     headerTitleStyle: {color: "white"},
                                     presentation: {
                                         color: "#64CCC5"
-                                    }
+                                    },
+                                    headerRight: () => (
+                                        <View style={styles.headerRight}>
+                                            <Logo width={100} height={30} isWithSubtitle={false} />
+                                        </View>
+                                    ),
                                 }}
                             />
                             <AppStack.Screen
@@ -62,6 +68,11 @@ const App = () => {
                                         elevation: 0,
                                     },
                                     headerTitleStyle: {color: "white"},
+                                    headerRight: () => (
+                                        <View style={styles.headerRight}>
+                                            <Logo width={100} height={30} isWithSubtitle={false} />
+                                        </View>
+                                    ),
                                 }}
                             />
                             <AppStack.Screen
@@ -130,5 +141,8 @@ const styles = StyleSheet.create({
     floatingMenu: {
         alignSelf: "flex-end"
     },
+    headerRight: {
+        marginRight: 15
+    }
 });
 export default App;
