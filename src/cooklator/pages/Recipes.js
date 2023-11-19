@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Text} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
-import Logo from "../components/Logo";
+import LogoCooklator from "../components/LogoCooklator";
 
 const Recipes = () => {
 
@@ -10,7 +10,7 @@ const Recipes = () => {
 
     return (
         <View style={styles.container}>
-            <Logo  width={350} height={200} isWithSubtitle={true} />
+            <LogoCooklator width={350} height={200} isWithSubtitle={true} />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     style={styles.customButton}
