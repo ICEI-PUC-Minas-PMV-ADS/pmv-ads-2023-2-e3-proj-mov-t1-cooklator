@@ -19,6 +19,10 @@ const FloatingMenu = () => {
         navigation.navigate('Receitas');
     };
 
+    const handleNavigateToProfilePage = () => {
+        navigation.navigate('Profile');
+    };
+
     const showModal = (message) => {
         setModalMessage(message);
         setModalVisible(true);
@@ -46,6 +50,7 @@ const FloatingMenu = () => {
                             actions={[
                                 {
                                     icon: 'account', label: 'Perfil', onPress: () => {
+                                        handleNavigateToProfilePage()
                                     },
                                     color: '#DAFFFB',
                                     style: {backgroundColor: '#64CCC5', elevation: 2 },

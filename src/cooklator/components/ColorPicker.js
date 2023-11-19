@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     },
     selectedColorText: {
         fontSize: 16,
-        marginTop: 16,
     },
 });
 

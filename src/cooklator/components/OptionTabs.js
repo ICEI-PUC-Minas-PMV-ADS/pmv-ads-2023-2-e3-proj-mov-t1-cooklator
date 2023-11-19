@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import Timer from "./Timer";
+import CardValues from "./CardValues";
 
 const OptionsTabs = () => {
     const [value, setValue] = React.useState('timer');
@@ -10,6 +11,7 @@ const OptionsTabs = () => {
         return {
             ...styles.button,
             backgroundColor: value === buttonValue ? '#64CCC5' : '#DAFFFB',
+            borderColor: '#c4cfce',
         };
     };
 
@@ -68,17 +70,22 @@ const OptionsTabs = () => {
             )}
             {value === 'materials' && (
                 <View>
-                    <Text style={styles.title1}>Materiais aqui</Text>
+                    <Text style={styles.titleTopic}>Materiais aqui</Text>
                 </View>
             )}
             {value === 'values' && (
                 <View>
-                    <Text style={styles.title1}>Valores como preço sugerido, valor materiais, valor por hora e registro de data</Text>
+                    <Text style={styles.titleTopic}>Valores e precificação</Text>
+                    <CardValues cardTitle={'Preço sugerido'} cardSubTitle={'preco calculado'} concatenateCurrency ={true}/>
+                    <CardValues cardTitle={'Materiais'} cardSubTitle={'preco calculado'} concatenateCurrency ={true}/>
+                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={'preco calculado'} concatenateCurrency ={true}/>
                 </View>
             )}
             {value === 'notes' && (
                 <View>
-                    <Text style={styles.title1}>Observações</Text>
+                    <Text style={styles.titleTopic}>Observações</Text>
+                    <CardValues cardTitle={'Data de registro da recieta'} cardSubTitle={'Data'} concatenateCurrency ={false}/>
+
                 </View>
             )}
         </View>
@@ -94,9 +101,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    title1: {
-        fontSize: 30,
-        fontWeight: 'bold',
+    titleTopic: {
+        margin: 15,
+        fontSize: 25,
+        fontWeight: '400',
         textAlign: 'center',
     },
     titleTimer: {
@@ -127,7 +135,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         alignSelf: 'center',
         marginTop: 100
-
     }
 });
 
