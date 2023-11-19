@@ -29,7 +29,7 @@ const CreateRecipe = () => {
     const [selectedColor, setSelectedColor] = useState('#176B87');
 
     const handleNavigateToMaterial = () => {
-        navigation.navigate('CadastroMaterial');
+        navigation.navigate('NewMaterial');
     };
 
     const handleNavigateToRecipesPage = () => {

@@ -1,6 +1,6 @@
 import React from "react";
-import CadastroMaterial from "../components/CadastroMaterial";
+import NewMaterial from "../components/NewMaterial";
 
 export default function Materials() {
-  return <CadastroMaterial />;
+  return <NewMaterial />;
 }
