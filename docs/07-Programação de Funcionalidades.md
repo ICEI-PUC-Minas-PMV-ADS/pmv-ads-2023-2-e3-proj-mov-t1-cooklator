@@ -25,20 +25,21 @@ O primeiro card é para as informações pessoais, nome, e-mail e valor por hora
 
 <img src="img/telaPerfil5.png" alt="Tela-Perfil-5">
 
-## Tela de Cadastro de Materiais (Juliana Dutra Moreira)
+## Tela de Cadastro de Receitas (Juliana Dutra Moreira)
 
-O cadastro de receitas permitirá o usuário fazer o registro inicial da receita com nome, observações, valor da hora e materiais que serão utilizados no desenvolvimento do prato. Estas informações após cadastradas serão exibidas quando o usuário iniciar a receita e serão utilizada para registros e cálculos posteriores relacionados a receita. Nesta tela o usuário poderá colocar um nome desejado no input Nome, inserir observações no input Observações, inserir o valor desejado da hora de trabalho (ou marcar a opção de manter a hora cadastrada no perfil) e poderá cadastrar materiais por meio do botão "+", no qual será encaminhado para o modal/tela de cadastro de material. Esses materiais serão listados nesta tela a medida que o usuário cadastra novos materiais. Ao final, por meio dos botões "Salvar" ou "Cancelar" ele poderá optar pelo registro da receita ou cancelamento para retornar a página de receitas. 
+O cadastro de receitas permitirá ao usuário fazer o registro inicial da receita com nome, observações, valor da hora e cadastrar também, os  materiais que serão utilizados no desenvolvimento do prato. O usuário poderá escolher entre cadastrar o valor da hora usando o valor geral estipulado no cadastro (e exibido na tela de perfil) ou então, colocar o valor desejado no input. Para identificar melhor a receita, o usuário poderá também escolher uma cor a qual será exibida nos cards das receitas. Caso o usuário não selecione, uma cor padrão será atribuída à receita.
 
-No código atual, é possível adicionar um nome, observação e adicionar materiais que serão listados na tela. A adição de materiais está de forma representativa pois esta funcionalidade será desenvolvida de modo separado ao cadastro de material. Os botões ao final da página ainda não executam as funções.
+O usuário deverá, obrigatoriamente, inserir um nome e um valor à receita. Caso ele deixe de preencher estes campos, será impedido de salvar e prosseguir, e além disso, alertas de preenchimento serão exibidos na tela.
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/5bfbcce3-bd35-4c86-833c-06bb284715e1)
+Ao clicar em "Salvar", uma mensagem de sucesso será exibida e o usuário poderá optar por ir para a página inicial ou cadastrar outra receita. Após esta ação, a requisição para o backend é realizada e a receita é armazenada no banco de dados.
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/42905311-2fc1-47c2-a950-7051cea001c6)
+Todas as funcionalidades citadas acima já estão aplicadas, faltando apenas a integração com o cadastro de materiais e a listagem destes.
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/3bf61aa7-9176-44c9-9e6d-96d07b6e85f1)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/08f9ef48-9e3d-4d9a-a559-dda54d92c454)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/a4df5643-c163-468a-9543-dc31703dee31)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/48abb0e0-76f5-48bf-bd22-78b4f97cfb0c)
 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/70581f34-8244-4d9d-afb9-baa38e5ebe84)
 
 ## TELA DE LOGIN E CADASTRO (HECTOR FLORENÇA)
 
@@ -81,3 +82,31 @@ Links estudo:
 
 <img src="img/timer01.jpg" alt="Timer01">
 <img src="img/timer02.jpg" alt="Timer02">
+
+## Tela de Exibição de Receitas e acesso a receita em progresso (Juliana Dutra Moreira)
+
+Na tela de exibição das receitas em progresso, uma lista com cards de cada receita cadastrada será exibida. As receitas exibidas estão sendo resgatadas do banco de dados, sendo as receitas cadastradas na tela de Cadastro de Receitas.
+
+Cada card exibe o título da receita e as informações relacionadas a ela. Há um menu à direita do card no qual o usuário poderá editar os dados, remover e finalizar a receita. Ao clicar em remover, um aviso de validação é exibido e caso o usuário opte por prosseguir com a ação, a receita será deletada no banco de dados e o card desta receita removido da lista da página.
+
+Ao clicar no card o usuário será encaminhado para página da receita em progresso, no qual haverão 4 abas: "Timer", "Materiais", "Valores" e "Notas". 
+
+Na aba "Timer" o usuário poderá utilizar o timer para cronometrar sua receita. Na aba "Materiais", serão exibidos os materiais cadastrados na tela de Cadastro de Materiais durante o Cadastro da Receita. Na aba "Valores", o usuário poderá visualizar a precificação sugerida do trabalho até o momento em que ele se encontra na receita. E por fim, a aba "Notas", onde ele poderá fazer observações.
+
+Ainda não foram implementados o resgate dos dados da receita exibidos nos cards, além da função de editar e finalizar a receita. As funcionalidades das quatro abas estão em progresso e maiores detalhes podem ser confirmados nos relatos de cada tela presente neste tópico de Programação de funcionalidades
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/58c9f093-9bce-49f6-be61-bd9031fd0ffe)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/3c577eab-96db-4562-ae53-83ac58b09730)
+
+
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/b65667d4-92c2-42b3-9db2-7f3a2d033a5a)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/f3fea2bf-f956-46f6-a7cd-70dda9d590f0)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/76b7b564-aec5-4cd2-a3f4-56fabf8020df)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/eef70aa9-5ec3-4f84-bd16-7fe29f2bb3ca)
+
+
