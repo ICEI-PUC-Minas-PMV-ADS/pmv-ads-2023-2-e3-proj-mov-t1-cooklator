@@ -120,6 +120,12 @@ Links estudo:
 <img src="img/timer01.jpg" alt="Timer01">
 <img src="img/timer02.jpg" alt="Timer02">
 
+<div align="center">
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/d86297a8-1dbb-4b4f-9100-6d5421334710" alt="Timer1" style="width: 30%;">
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/a80c1b80-883f-4b72-893b-e37315b2b160" alt="Timer2" style="width: 30%;">
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/35adabfc-7dc8-49b1-9052-340b3d10d524" alt="Timer3" style="width: 30%;">
+</div>
+
 ## Tela de Exibição de Receitas e acesso a receita em progresso (Juliana Dutra Moreira)
 
 Na tela de exibição das receitas em progresso, uma lista com cards de cada receita cadastrada será exibida. As receitas exibidas estão sendo resgatadas do banco de dados, sendo as receitas cadastradas na tela de Cadastro de Receitas.
@@ -136,8 +142,6 @@ Ainda não foram implementados o resgate dos dados da receita exibidos nos cards
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/3c577eab-96db-4562-ae53-83ac58b09730)
 
-
-
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/b65667d4-92c2-42b3-9db2-7f3a2d033a5a)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/f3fea2bf-f956-46f6-a7cd-70dda9d590f0)
@@ -145,5 +149,3 @@ Ainda não foram implementados o resgate dos dados da receita exibidos nos cards
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/76b7b564-aec5-4cd2-a3f4-56fabf8020df)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/eef70aa9-5ec3-4f84-bd16-7fe29f2bb3ca)
-
-
