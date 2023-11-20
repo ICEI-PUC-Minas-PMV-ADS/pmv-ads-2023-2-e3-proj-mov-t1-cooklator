@@ -35,15 +35,21 @@ Além disso, há também as variáveis de validação dos campos "name", "e-mail
 A interface é renderizada dentro de um componente View. Ela consiste em dois cards, cada um contendo campos de entrada e botões.
 O primeiro card é para as informações pessoais, nome, e-mail e valor por hora. Um botão "Editar" é fornecido, mas atualmente, ele apenas imprime uma mensagem no console quando pressionado. O segundo card é para alteração de senha. Ele inclui campos para a senha atual, nova senha e confirmação da nova senha. Cada campo de senha é configurado para ocultar ou mostrar a senha atual e as novas senhas, conforme desejado. Há também um botão "Alterar Senha", que ainda não executa nenhuma ação além de imprimir uma mensagem no console nessa implementação inicial.
 
-<img src="img/telaPerfil1.png" alt="Tela-Perfil-1">
+<img src="img/telaPerfil11.png" alt="Tela-Perfil-11">
 
-<img src="img/telaPerfil2.png" alt="Tela-Perfil-2">
+<img src="img/telaPerfil12.png" alt="Tela-Perfil-12">
 
-<img src="img/telaPerfil3.png" alt="Tela-Perfil-3">
+<img src="img/telaPerfil13.png" alt="Tela-Perfil-13">
 
-<img src="img/telaPerfil4.png" alt="Tela-Perfil-4">
+<img src="img/telaPerfil14.png" alt="Tela-Perfil-14">
 
-<img src="img/telaPerfil5.png" alt="Tela-Perfil-5">
+<img src="img/telaPerfil15.png" alt="Tela-Perfil-15">
+
+<img src="img/telaPerfil16.png" alt="Tela-Perfil-16">
+
+<img src="img/telaPerfil17.png" alt="Tela-Perfil-17">
+
+<img src="img/telaPerfil18.png" alt="Tela-Perfil-18">
 
 ## Tela de Cadastro de Receitas (Juliana Dutra Moreira)
 
