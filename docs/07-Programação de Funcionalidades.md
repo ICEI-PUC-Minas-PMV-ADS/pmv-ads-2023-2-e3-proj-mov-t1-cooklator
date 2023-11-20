@@ -43,6 +43,15 @@ O primeiro card é para as informações pessoais, nome, e-mail e valor por hora
 
 <img src="img/telaPerfil14.png" alt="Tela-Perfil-14">
 
+Nas imagens acima, é possível observar as funções chamadas com o evento de preenchimento dos diversos campos da página. Nelas há a validação dos dados, a alteração das variáveis de validação e das variáveis que irão armazenar os dados informados pelo usuário, caso sejam válidos.Também é possível observar a expressão regular utilizada para verificar a validade do endereço de e-mail inserido pelo usuário:<br>
+<br>
+<strong>"^"</strong>: Representa o início da string, garantindo que a correspondência comece desde o início.<br>
+<strong>"[^\s@]+"</strong>: Corresponde a um ou mais caracteres que não são espaços em branco (\s) nem o símbolo "@".<br>
+<strong>"@"</strong>: Corresponde literalmente ao símbolo "@".<br>
+<strong>"[^\s@]+"</strong>: Outra vez, corresponde a um ou mais caracteres que não são espaços em branco (\s) nem o símbolo "@".<br>
+<strong>"\."</strong>: Corresponde literalmente a um ponto (.) — usado para separar o nome de domínio da parte do domínio de nível superior<br>
+<strong>"[^\s@]+$"</strong>: Corresponde a um ou mais caracteres que não são espaços em branco (\s) nem o símbolo "@", no final da string ($ indica o final da string).<br>
+
 <img src="img/telaPerfil15.png" alt="Tela-Perfil-15">
 
 <img src="img/telaPerfil16.png" alt="Tela-Perfil-16">
@@ -50,6 +59,8 @@ O primeiro card é para as informações pessoais, nome, e-mail e valor por hora
 <img src="img/telaPerfil17.png" alt="Tela-Perfil-17">
 
 <img src="img/telaPerfil18.png" alt="Tela-Perfil-18">
+
+Nas imagens acima, é possível observar a lógica utilizada para acessar os valores das variáveis de validação e de acordo com o seu valor booleano, alterar o estilo do input e apresentar ou não a mensagem de validação correspondente a cada campo da tela.
 
 ## Tela de Cadastro de Receitas (Juliana Dutra Moreira)
 
