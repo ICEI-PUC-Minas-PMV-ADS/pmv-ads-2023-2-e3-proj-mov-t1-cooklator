@@ -4,7 +4,7 @@
 
 ## Diagrama de Classes
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/6004869e-623c-4d1a-8e2a-f535c8db7dae)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/0d7c64fc-4285-4eac-bec4-1b2ea3ca9be3)
 
 ## Modelo ER
 
