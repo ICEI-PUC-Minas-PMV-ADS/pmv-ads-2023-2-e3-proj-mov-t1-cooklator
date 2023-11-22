@@ -2,35 +2,101 @@
   "recipe": [
     {
       "id": 1,
-      "nome": "torta de manteiga escocesa",
-      "valorHora": 3,
-      "aplicaValorPadrao": false,
-      "observacoes": "Testando a receita com flor de sal",
-      "cor": "#176B87"
+      "name": "torta de manteiga escocesa",
+      "hourValue": 3,
+      "appliesDefaultValue": false,
+      "comments": "Testando a receita com flor de sal",
+      "color": "#176B87",
+      "preparationTime": 0,
+      "startDate": "2023-11-21T12:34:56.789Z",
+      "isConcluded": false
     },
     {
-      "nome": "teste da cor",
-      "valorHora": 0,
-      "aplicaValorPadrao": true,
-      "observacoes": "sem escolher cor",
-      "cor": "#64CCC5",
-      "id": 6
+      "name": "Bolo de cenoura",
+      "hourValue": 5,
+      "appliesDefaultValue": false,
+      "comments": "com figos",
+      "color": "#ffc107",
+      "id": 8,
+      "preparationTime": 0,
+      "startDate": "2023-11-21T12:34:56.789Z",
+      "isConcluded": false
     },
     {
-      "nome": "Bolo de cenoura",
-      "valorHora": 5,
-      "aplicaValorPadrao": false,
-      "observacoes": "com figos",
-      "cor": "#ffc107",
-      "id": 8
+      "name": "pudim",
+      "hourValue": 0,
+      "appliesDefaultValue": true,
+      "comments": "",
+      "color": "#98FB98",
+      "id": 9,
+      "preparationTime": 0,
+      "startDate": "2023-11-21T12:34:56.789Z",
+      "isConcluded": false
     },
     {
-      "nome": "pudim",
-      "valorHora": 0,
-      "aplicaValorPadrao": true,
-      "observacoes": "",
-      "cor": "#98FB98",
-      "id": 9
+      "name": "croquete",
+      "hourValue": 5,
+      "appliesDefaultValue": false,
+      "comments": "Testando com queijo provolone",
+      "color": "#cddc39",
+      "preparationTime": 0,
+      "startDate": "2023-11-22T01:26:09.799Z",
+      "isConcluded": false,
+      "id": 10
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Juliana",
+      "email": "ju@tste.com",
+      "password": "senha",
+      "hourValue": 5
+    },
+    {
+      "id": 2,
+      "name": "Juliana Teste",
+      "email": "juteste@tste.com",
+      "password": "senha123",
+      "hourValue": 5
+    }
+  ],
+  "material": [
+    {
+      "id": 1,
+      "idUsuario": 1,
+      "idReceita": 1,
+      "name": "Granulado",
+      "comments": "marca: nestle",
+      "price": 3,
+      "amount": 1
+    },
+    {
+      "id": 2,
+      "idUsuario": 1,
+      "idReceita": 1,
+      "name": "Creme de Leite",
+      "comments": "sem lactose",
+      "price": 6,
+      "amount": 3
+    }
+  ],
+  "costs": [
+    {
+      "id": 1,
+      "idUsuario": 1,
+      "idReceita": 1,
+      "totalMaterialCost": 10,
+      "totalTimeValue": 5,
+      "totalCost": 15
+    },
+    {
+      "id": 2,
+      "idUsuario": 2,
+      "idReceita": 2,
+      "totalMaterialCost": 60,
+      "totalTimeValue": 3,
+      "totalCost": 63
     }
   ]
 }

@@ -7,12 +7,15 @@ POST http://localhost:3000/recipe
 content-type: application/json
 
 {
-  "id": 1,
-  "nome": "torta de manteiga escocesa",
-  "valorHora": 5.00,
-  "aplicaValorPadrao": false,
-  "observacoes": "Testando a receita com flor de sal",
-  "cor":"#176B87"
+  "name": "pudim",
+  "hourValue": 0,
+  "appliesDefaultValue": true,
+  "comments": "",
+  "color": "#98FB98",
+  "id": 9,
+  "preparationTime": 0,
+  "startDate": "2023-11-21T12:34:56.789Z",
+  "isConcluded": false
 }
 
 ### UPDATE RECIPE
@@ -21,11 +24,14 @@ content-type: application/json
 
 {
   "id": 1,
-  "nome": "torta de manteiga escocesa",
-  "valorHora": 3.00,
-  "aplicaValorPadrao": false,
-  "observacoes": "Testando a receita com flor de sal",
-  "cor":"#176B87"
+  "name": "torta de manteiga escocesa",
+  "hourValue": 3.0,
+  "appliesDefaultValue": false,
+  "comments": "Testando a receita com flor de sal",
+  "color":"#176B87",
+  "preparationTime": 0.0,
+  "startDate": "2023-11-21T12:34:56.789Z",
+  "isConcluded": false
 }
 
 

@@ -1,0 +1,54 @@
+#@TOKEN=TOKEN_KEY
+#### LOGIN
+#POST http://localhost:3000/login
+#content-type: application/json
+#
+#{
+#  "email": "klebersouza@pucminas.br",
+#  "password":"pucminas"
+#}
+
+
+### USER LIST
+GET http://localhost:3000/user
+#GET http://localhost:3000/660/user
+#Authorization: Bearer {{TOKEN}}
+
+### CREATE USER
+#POST http://localhost:3000/660/user
+POST http://localhost:3000/user
+content-type: application/json
+#Authorization: Bearer {{TOKEN}}
+
+{
+  "id": 2,
+  "name": "Juliana Teste",
+  "email": "juteste@tste.com",
+  "password": "senha123",
+  "hourValue": 5.0
+}
+
+### UPDATE USER
+PUT http://localhost:3000/user/1
+#PUT http://localhost:3000/660/user/1
+content-type: application/json
+#Authorization: Bearer {{TOKEN}}
+
+{
+  "id": 1,
+  "name": "Juliana",
+  "email": "ju@tste.com",
+  "password": "senha",
+  "hourValue": 5.0
+}
+
+
+### GET USER
+GET http://localhost:3000/user/1
+#GET http://localhost:3000/660/user/1
+#Authorization: Bearer {{TOKEN}}
+
+### DELETE USER
+DELETE http://localhost:3000/user/1
+#DELETE http://localhost:3000/660/user/1
+#Authorization: Bearer {{TOKEN}}

@@ -1,13 +1,7 @@
 import React, {useState} from 'react';
-import {
-    View,
-    StyleSheet,
-    Text,
-    TextInput,
-    Pressable, TouchableHighlight, ScrollView
-} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Card, Checkbox, Dialog, Portal} from 'react-native-paper';
+import {Card, Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
 import config from "../config";
@@ -36,6 +30,11 @@ const CreateRecipe = () => {
         navigation.navigate('Receitas');
     };
 
+    const getCurrentDate = () => {
+        const currentDate = new Date();
+        return currentDate.toISOString();
+    };
+
     const handleAddRecipe = async () => {
         try {
             let isValid = true;
@@ -54,11 +53,14 @@ const CreateRecipe = () => {
 
             if (isValid) {
                 const newRecipe = {
-                    nome: textTitle,
-                    valorHora: hourValueChange,
-                    aplicaValorPadrao: checked,
-                    observacoes: textObs,
-                    cor: selectedColor
+                    name: textTitle,
+                    hourValue: hourValueChange,
+                    appliesDefaultValue: checked,
+                    comments: textObs,
+                    color: selectedColor,
+                    preparationTime: 0.0,
+                    startDate: getCurrentDate(),
+                    isConcluded: false
                 };
 
                 const response = await addRecipe(newRecipe);

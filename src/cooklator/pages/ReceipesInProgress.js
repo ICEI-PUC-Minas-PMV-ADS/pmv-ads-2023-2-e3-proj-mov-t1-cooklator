@@ -28,8 +28,8 @@ const RecipesInProgress = () => {
                 <TouchableRipple onPress={handleCardPress}>
                 <CardRecipe
                     key={recipe.id}
-                    recipeName={recipe.nome}
-                    recipeColor={recipe.cor}
+                    recipeName={recipe.name}
+                    recipeColor={recipe.color}
                     recipeId={recipe.id}
                     setRecipes={setRecipes}
                 />

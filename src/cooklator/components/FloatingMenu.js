@@ -14,13 +14,18 @@ const FloatingMenu = () => {
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [menuActive, setMenuActive] = useState(false);
 
     const handleNavigateToRecipesPage = () => {
-        navigation.navigate('Receitas');
+        if (open) {
+            navigation.navigate('Receitas');
+        }
     };
 
     const handleNavigateToProfilePage = () => {
+        if (open) {
         navigation.navigate('Profile');
+        }
     };
 
     const showModal = (message) => {
@@ -33,6 +38,11 @@ const FloatingMenu = () => {
         setModalMessage('');
     };
 
+    const showModalLogOut = () => {
+        if (open) {
+            showModal('Tem certeza que deseja sair?')
+        }
+    };
     const logOut = () => {
         console.log('saiu')
     };
@@ -72,7 +82,7 @@ const FloatingMenu = () => {
                                 },
                                 {
                                     icon: 'logout', label: 'Sair', onPress: () => {
-                                        showModal('Tem certeza que deseja sair?')
+                                        showModalLogOut()
                                     },
                                     size: theme.isV3 ? 'small' : 'medium',
                                     color: '#DAFFFB',
