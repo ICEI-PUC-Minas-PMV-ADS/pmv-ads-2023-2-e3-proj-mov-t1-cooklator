@@ -5,13 +5,14 @@ import {createStackNavigator} from "@react-navigation/stack";
 import CadastroMaterial from "./components/CadastroMaterial";
 import CreateRecipe from "./components/CreateRecipe";
 import FloatingMenu from "./components/FloatingMenu";
-import RecipesInProgress from "./pages/ReceipesInProgress";
+import RecipesInProgress from "./pages/RecipesInProgress";
 import CardRecipe from "./components/CardRecipe";
 import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
 import Profile from "./components/Profile";
 import LogoCooklator from "./components/LogoCooklator";
+import FinishedRecipes from "./pages/FinishedRecipes";
 
 const AppStack = createStackNavigator();
 
@@ -116,6 +117,24 @@ const App = () => {
                                         elevation: 0,
                                     },
                                     headerTitleStyle: {color: "white"},
+                                }}
+                            />
+                            <AppStack.Screen
+                                name="FinishedRecipes"
+                                component={FinishedRecipes}
+                                options={{
+                                    title: "Receitas Finalizadas",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {color: "white"},
+                                    headerRight: () => (
+                                        <View style={styles.headerRight}>
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                        </View>
+                                    ),
                                 }}
                             />
                         </AppStack.Navigator>

@@ -10,27 +10,40 @@ const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 const recipeApiUrl = config.recipeApiUrl;
 
-const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
+const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions}) => {
 
     const [visible, setVisible] = useState({});
     const {isV3} = useTheme();
     const [modalVisibleConfirmRemove, setModalVisibleConfirmRemove] = useState(false);
     const [modalMessageConfirmRemove, setModalMessageConfirmRemove] = useState('');
+    const [modalVisibleConfirmFinish, setModalVisibleConfirmFinish] = useState(false);
+    const [modalMessageConfirmFinish, setModalMessageConfirmFinish] = useState('');
     const navigation = useNavigation();
 
     const handleNavigateToOptions = () => {
         navigation.navigate('OptionsTabs');
     }
 
-    const showModal = (message) => {
-        setModalMessageConfirmRemove(message);
-        setModalVisibleConfirmRemove(true);
+    const showModal = (message, type) => {
+        if (type === "exclude") {
+            setModalVisibleConfirmRemove(true);
+            setModalMessageConfirmRemove(message);
+        } else if (type === "finish") {
+            setModalVisibleConfirmFinish(true);
+            setModalMessageConfirmFinish(message);
+        }
     };
 
-    const hideModal = () => {
-        setModalVisibleConfirmRemove(false);
-        setModalMessageConfirmRemove('');
+    const hideModal = (type) => {
+        if (type === "exclude") {
+            setModalVisibleConfirmRemove(false);
+            setModalMessageConfirmRemove('');
+        } else if (type === "finish") {
+            setModalVisibleConfirmFinish(false);
+            setModalMessageConfirmFinish('');
+        }
     };
+
     const _toggleMenu = (name) => () => {
         setVisible({...visible, [name]: !visible[name]});
     };
@@ -52,7 +65,7 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
     const _getVisible = (name) => !!visible[name];
 
     const handleConfirmDeleteRecipe = () => {
-        showModal('Tem cereteza que deseja excluir esta receita?')
+        showModal('Tem cereteza que deseja excluir esta receita?', 'exclude')
     };
 
     function deleteRecipe(recipeId) {
@@ -64,6 +77,59 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
         };
 
         return fetch(deleteUrl, requestOptions);
+    }
+
+    const finishRecipe = async (recipeId) => {
+        try {
+            const originalRecipe = await getRecipe(recipeId);
+
+            const updatedRecipeData = {
+                ...originalRecipe,
+                isConcluded: true,
+            };
+
+            const response = await updateRecipe(recipeId, updatedRecipeData);
+            if (response.status === 201 || response.status === 200) {
+                setRecipes((prevRecipes) => prevRecipes.map(recipe =>
+                    recipe.id === recipeId ? {...recipe, ...updatedRecipeData} : recipe
+                ));
+            }
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    }
+
+    const handleConfirmRecipeFinalization = () => {
+        showModal('Tem certeza que deseja finalizar esta receita?', 'finish')
+    };
+
+    const getRecipe = async (recipeId) => {
+        try {
+            const response = await fetch(`${recipeApiUrl}/${recipeId}`);
+            const data = await response.json();
+
+            if (response.status === 200) {
+                return data;
+            } else {
+                console.error('Erro ao obter detalhes da receita:', data);
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        }
+    };
+
+    function updateRecipe(recipeId, updatedRecipeData) {
+        const editUrl = recipeApiUrl + '/' + recipeId;
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedRecipeData),
+        };
+
+        return fetch(editUrl, requestOptions);
     }
 
     return (
@@ -83,8 +149,8 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
                                     <Icon name="fruit-watermelon" size={20} color="gray"/>
                                     <Text style={styles.textIcon}>Materiais: 2</Text>
                                 </View>
-                                    <Icon name="chart-line" size={20} color="gray"/>
-                                    <Text style={styles.textIcon}>R$ 3,00</Text>
+                                <Icon name="chart-line" size={20} color="gray"/>
+                                <Text style={styles.textIcon}>R$ 3,00</Text>
                             </Paragraph>
                         </View>
 
@@ -101,11 +167,15 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
                                         />
                                     }
                                 >
-                                    <Menu.Item onPress={() => {
-                                    }} title="Finalizar Projeto"/>
-                                    <Menu.Item onPress={() => {
-                                    }} title="Editar"/>
-                                    <Divider style={isV3 && styles.md3Divider}/>
+                                    {!hideOptions && (
+                                        <Menu.Item
+                                            onPress={() => handleConfirmRecipeFinalization(recipeId)}
+                                            title="Finalizar Projeto"/>
+                                    )}
+                                    {!hideOptions && (
+                                        <Menu.Item onPress={() => {
+                                        }} title="Editar"/>
+                                    )}
                                     <Menu.Item onPress={() => handleConfirmDeleteRecipe(recipeId)}
                                                title="Remover"/>
                                 </Menu>
@@ -117,9 +187,17 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes}) => {
             <ModalWarning
                 visible={modalVisibleConfirmRemove}
                 message={modalMessageConfirmRemove}
-                onPrimaryButtonPress={hideModal}
+                onPrimaryButtonPress={() => hideModal('exclude')}
                 primaryButtonLabel={'Cancelar'}
                 onSecondaryButtonPress={() => removeRecipe(recipeId)}
+                secondaryButtonLabel="Sim"
+            />
+            <ModalWarning
+                visible={modalVisibleConfirmFinish}
+                message={modalMessageConfirmFinish}
+                onPrimaryButtonPress={() => hideModal('finish')}
+                primaryButtonLabel={'Cancelar'}
+                onSecondaryButtonPress={() => finishRecipe(recipeId)}
                 secondaryButtonLabel="Sim"
             />
         </ScrollView>
@@ -155,7 +233,8 @@ const styles = StyleSheet.create({
         marginVertical: 8,
     },
     containerMenu: {
-        marginRight: 15,
+        paddingRight: 40,
+        marginRight: 30,
         alignItems: 'flex-end',
     },
     iconContainer: {

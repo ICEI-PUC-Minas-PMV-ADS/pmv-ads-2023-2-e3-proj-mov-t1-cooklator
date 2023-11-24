@@ -23,7 +23,7 @@ const Recipes = () => {
 
                 <TouchableOpacity
                     style={styles.customButton}
-                    // onPress={() => navigation.navigate('TelaProjetosFinalizados')}
+                    onPress={() => navigation.navigate('FinishedRecipes')}
                 >
                     <Text style={styles.buttonText}>PROJETOS FINALIZADOS</Text>
                 </TouchableOpacity>
