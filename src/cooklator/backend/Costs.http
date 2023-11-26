@@ -8,8 +8,8 @@ content-type: application/json
 
 {
   "id": 2,
-  "idUsuario": 2,
-  "idReceita": 2,
+  "userId": 2,
+  "recipeId": 2,
   "totalMaterialCost": 60.0,
   "totalTimeValue": 3.0,
   "totalCost": 63.0
@@ -21,8 +21,8 @@ content-type: application/json
 
 {
   "id": 2,
-  "idUsuario": 2,
-  "idReceita": 2,
+  "userId": 2,
+  "recipeId": 2,
   "totalMaterialCost": 10.0,
   "totalTimeValue": 5.0,
   "totalCost": 15.0

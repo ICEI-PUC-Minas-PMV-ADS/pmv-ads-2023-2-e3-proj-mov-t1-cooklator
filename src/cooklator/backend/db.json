@@ -64,8 +64,8 @@
   "material": [
     {
       "id": 1,
-      "idUsuario": 1,
-      "idReceita": 1,
+      "userId": 1,
+      "recipeId": 8,
       "name": "Granulado",
       "comments": "marca: nestle",
       "price": 3,
@@ -73,8 +73,8 @@
     },
     {
       "id": 2,
-      "idUsuario": 1,
-      "idReceita": 1,
+      "userId": 1,
+      "recipeId": 1,
       "name": "Creme de Leite",
       "comments": "sem lactose",
       "price": 6,
@@ -84,16 +84,16 @@
   "costs": [
     {
       "id": 1,
-      "idUsuario": 1,
-      "idReceita": 1,
+      "userId": 1,
+      "recipeId": 1,
       "totalMaterialCost": 10,
       "totalTimeValue": 5,
       "totalCost": 15
     },
     {
       "id": 2,
-      "idUsuario": 2,
-      "idReceita": 2,
+      "userId": 8,
+      "recipeId": 8,
       "totalMaterialCost": 60,
       "totalTimeValue": 3,
       "totalCost": 63

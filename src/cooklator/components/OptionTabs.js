@@ -3,9 +3,18 @@ import { StyleSheet, View, Text } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import Timer from "./Timer";
 import CardValues from "./CardValues";
+import config from "../config";
+import { useState, useEffect } from "react";
 
-const OptionsTabs = () => {
+const costsApiUrl = config.costsApiUrl;
+
+const OptionsTabs = ({ route }) => {
     const [value, setValue] = React.useState('timer');
+    const [suggestedPrice, setSuggestedPrice] = useState(0.00);
+    const [totalMaterial, setTotalMaterial] = useState(0.00);
+    const [totalValueHour, setTotalValueHour] = useState(0.00);
+    const [recipeDate, setRecipeDate] = useState(0.00);
+    const { recipe } = route.params;
 
     const buttonStyle = (buttonValue) => {
         return {
@@ -14,6 +23,69 @@ const OptionsTabs = () => {
             borderColor: '#c4cfce',
         };
     };
+
+    const fetchDataByField = async (recipeId, field, condicionalValue) => {
+        try {
+            const response = await fetch(`${costsApiUrl}`);
+            const data = await response.json();
+
+            if (response.status === 200) {
+                const matchingCost = data.find(cost => cost.recipeId === recipeId);
+                return matchingCost ? { [field]: matchingCost[field] } : { [field]: condicionalValue };
+            } else {
+                console.error('Erro ao obter lista de custos', data);
+                return { [field]: condicionalValue };
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+            return { [field]: condicionalValue };
+        }
+    };
+
+    const getSuggestedPrice = async (recipeId) => {
+        return fetchDataByField(recipeId, 'totalCost', 0);
+    };
+
+    const getTotalMaterial = async (recipeId) => {
+        return fetchDataByField(recipeId, 'totalMaterialCost', 0);
+    };
+
+    const getTotalValueHour = async (recipeId) => {
+        return fetchDataByField(recipeId, 'totalTimeValue', 0);
+    };
+
+    const getRecipeDate = async (recipe) => {
+        return recipe.startDate ? recipe.startDate :  "10/10/2023";
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [suggestedPriceData, totalMaterialData, totalValueHourData, starDateData] = await Promise.all([
+                    getSuggestedPrice(recipe.id),
+                    getTotalMaterial(recipe.id),
+                    getTotalValueHour(recipe.id),
+                    getRecipeDate(recipe)
+                ]);
+
+                setSuggestedPrice(suggestedPriceData.totalCost);
+                setTotalMaterial(totalMaterialData.totalMaterialCost);
+                setTotalValueHour(totalValueHourData.totalTimeValue)
+                setRecipeDate(starDateData)
+            } catch (error) {
+                console.error('Erro ao obter dados:', error);
+            }
+        };
+
+        fetchData();
+    }, [recipe.id]);
+
+    const formatarData = (dataString) => {
+        const options = {day: '2-digit', month: '2-digit', year: 'numeric'};
+        const data = new Date(dataString);
+
+        return data.toLocaleDateString('pt-BR', options).replace(/\//g, '/');
+    }
 
     const labelStyle = () => {
         return {
@@ -24,9 +96,9 @@ const OptionsTabs = () => {
 
     return (
         <View style={styles.container}>
-        <View style={styles.viewRecipeTitle}>
-            <Text style={styles.title}>Titulo da Receita</Text>
-        </View>
+            <View style={styles.viewRecipeTitle}>
+                <Text style={styles.title}>{recipe.name}</Text>
+            </View>
             <SegmentedButtons
                 value={value}
                 onValueChange={setValue}
@@ -36,28 +108,24 @@ const OptionsTabs = () => {
                         label: 'Timer',
                         style: buttonStyle('timer'),
                         labelStyle: labelStyle('timer'),
-
                     },
                     {
                         value: 'materials',
                         label: 'Materiais',
                         style: buttonStyle('materials'),
                         labelStyle: labelStyle('timer'),
-
                     },
                     {
                         value: 'values',
                         label: 'Valores',
                         style: buttonStyle('values'),
                         labelStyle: labelStyle('timer'),
-
                     },
                     {
                         value: 'notes',
                         label: 'Notas',
                         style: buttonStyle('notes'),
                         labelStyle: labelStyle('timer'),
-
                     },
                 ]}
                 style={styles.group}
@@ -65,7 +133,7 @@ const OptionsTabs = () => {
             {value === 'timer' && (
                 <View style={styles.timeView}>
                     <Text style={styles.titleTimer}>TIMER</Text>
-                    <Timer/>
+                    <Timer />
                 </View>
             )}
             {value === 'materials' && (
@@ -76,16 +144,15 @@ const OptionsTabs = () => {
             {value === 'values' && (
                 <View>
                     <Text style={styles.titleTopic}>Valores e precificação</Text>
-                    <CardValues cardTitle={'Preço sugerido'} cardSubTitle={'preco calculado'} concatenateCurrency ={true}/>
-                    <CardValues cardTitle={'Materiais'} cardSubTitle={'preco calculado'} concatenateCurrency ={true}/>
-                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={'preco calculado'} concatenateCurrency ={true}/>
+                    <CardValues cardTitle={'Preço sugerido'} cardSubTitle={suggestedPrice} concatenateCurrency={true} />
+                    <CardValues cardTitle={'Materiais'} cardSubTitle={totalMaterial} concatenateCurrency={true} />
+                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={totalValueHour} concatenateCurrency={true} />
                 </View>
             )}
             {value === 'notes' && (
                 <View>
                     <Text style={styles.titleTopic}>Observações</Text>
-                    <CardValues cardTitle={'Data de registro da recieta'} cardSubTitle={'Data'} concatenateCurrency ={false}/>
-
+                    <CardValues cardTitle={'Data de registro da receita'} cardSubTitle={formatarData(recipeDate)} concatenateCurrency={false} />
                 </View>
             )}
         </View>
@@ -137,7 +204,5 @@ const styles = StyleSheet.create({
         marginTop: 100
     }
 });
-
-OptionsTabs.title = 'Teste';
 
 export default OptionsTabs;
