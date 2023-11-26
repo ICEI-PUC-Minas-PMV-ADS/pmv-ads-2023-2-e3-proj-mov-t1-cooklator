@@ -65,7 +65,7 @@ const CreateRecipe = () => {
 
                 const response = await addRecipe(newRecipe);
 
-                if (response.status === 201) {
+                if (response.status === 201 || response.status === 200) {
                     const data = await response.json();
                     showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
                 }

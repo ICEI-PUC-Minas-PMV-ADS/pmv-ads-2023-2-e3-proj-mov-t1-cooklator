@@ -1,9 +1,9 @@
 ### COSTS LIST
-GET http://localhost:3000/costs
+GET https://cooklator-backend.onrender.com/costs
 
 
 ### CREATE COSTS
-POST http://localhost:3000/costs
+POST https://cooklator-backend.onrender.com/costs
 content-type: application/json
 
 {
@@ -16,7 +16,7 @@ content-type: application/json
 }
 
 ### UPDATE COSTS
-PUT http://localhost:3000/costs/1
+PUT https://cooklator-backend.onrender.com/costs/1
 content-type: application/json
 
 {
@@ -30,7 +30,7 @@ content-type: application/json
 
 
 ### GET COSTS
-GET http://localhost:3000/costs/1
+GET https://cooklator-backend.onrender.com/costs/1
 
 ### DELETE COSTS
-DELETE http://localhost:3000/costs/1
+DELETE https://cooklator-backend.onrender.com/costs/1

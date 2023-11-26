@@ -1,9 +1,9 @@
 ### MATERIAL LIST
-GET http://localhost:3000/material
+GET https://cooklator-backend.onrender.com/material
 
 
 ### CREATE MATERIAL
-POST http://localhost:3000/material
+POST https://cooklator-backend.onrender.com/material
 content-type: application/json
 
 {
@@ -17,7 +17,7 @@ content-type: application/json
 }
 
 ### UPDATE MATERIAL
-PUT http://localhost:3000/material/1
+PUT https://cooklator-backend.onrender.com/material/1
 content-type: application/json
 
 {
@@ -32,7 +32,7 @@ content-type: application/json
 
 
 ### GET MATERIAL
-GET http://localhost:3000/material/1
+GET https://cooklator-backend.onrender.com/material/1
 
 ### DELETE MATERIAL
-DELETE http://localhost:3000/material/1
+DELETE https://cooklator-backend.onrender.com/material/1

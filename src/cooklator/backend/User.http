@@ -1,6 +1,6 @@
 #@TOKEN=TOKEN_KEY
 #### LOGIN
-#POST http://localhost:3000/login
+#POST https://cooklator-backend.onrender.com/login
 #content-type: application/json
 #
 #{
@@ -10,13 +10,13 @@
 
 
 ### USER LIST
-GET http://localhost:3000/user
-#GET http://localhost:3000/660/user
+GET https://cooklator-backend.onrender.com/user
+#GET https://cooklator-backend.onrender.com/660/user
 #Authorization: Bearer {{TOKEN}}
 
 ### CREATE USER
-#POST http://localhost:3000/660/user
-POST http://localhost:3000/user
+#POST https://cooklator-backend.onrender.com/660/user
+POST https://cooklator-backend.onrender.com/user
 content-type: application/json
 #Authorization: Bearer {{TOKEN}}
 
@@ -29,8 +29,8 @@ content-type: application/json
 }
 
 ### UPDATE USER
-PUT http://localhost:3000/user/1
-#PUT http://localhost:3000/660/user/1
+PUT https://cooklator-backend.onrender.com/user/1
+#PUT https://cooklator-backend.onrender.com/660/user/1
 content-type: application/json
 #Authorization: Bearer {{TOKEN}}
 
@@ -44,11 +44,11 @@ content-type: application/json
 
 
 ### GET USER
-GET http://localhost:3000/user/1
-#GET http://localhost:3000/660/user/1
+GET https://cooklator-backend.onrender.com/user/1
+#GET https://cooklator-backend.onrender.com/660/user/1
 #Authorization: Bearer {{TOKEN}}
 
 ### DELETE USER
-DELETE http://localhost:3000/user/1
-#DELETE http://localhost:3000/660/user/1
+DELETE https://cooklator-backend.onrender.com/user/1
+#DELETE https://cooklator-backend.onrender.com/660/user/1
 #Authorization: Bearer {{TOKEN}}

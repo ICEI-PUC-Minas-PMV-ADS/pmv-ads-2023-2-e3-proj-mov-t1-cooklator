@@ -1,6 +1,6 @@
 const config = {
-    recipeApiUrl: 'http://localhost:3000/recipe',
-    costsApiUrl: 'http://localhost:3000/costs',
+    recipeApiUrl: 'https://cooklator-backend.onrender.com/recipe',
+    costsApiUrl: 'https://cooklator-backend.onrender.com/costs',
 };
 
 export default config;

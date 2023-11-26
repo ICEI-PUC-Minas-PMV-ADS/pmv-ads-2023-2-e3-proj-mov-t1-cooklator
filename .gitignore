@@ -9,3 +9,10 @@
 *.lock
 *.xml
 node_modules/.yarn-integrity
+*.xml
+*.http
+.idea/httpRequests/http-requests-log.http
+.idea/httpRequests/http-client.cookies
+*.html
+*.cookies
+.idea/httpRequests/http-client.cookies

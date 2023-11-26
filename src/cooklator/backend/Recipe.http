@@ -1,9 +1,9 @@
 ### GET RECIPE LIST
-GET http://localhost:3000/recipe
+GET https://cooklator-backend.onrender.com/recipe
 
 
 ### CREATE RECIPE
-POST http://localhost:3000/recipe
+POST https://cooklator-backend.onrender.com/recipe
 content-type: application/json
 
 {
@@ -12,14 +12,14 @@ content-type: application/json
   "appliesDefaultValue": true,
   "comments": "",
   "color": "#98FB98",
-  "id": 9,
+  "id": 2,
   "preparationTime": 0,
   "startDate": "2023-11-21T12:34:56.789Z",
   "isConcluded": false
 }
 
 ### UPDATE RECIPE
-PUT http://localhost:3000/recipe/1
+PUT https://cooklator-backend.onrender.com/recipe/1
 content-type: application/json
 
 {
@@ -36,7 +36,7 @@ content-type: application/json
 
 
 ### GET RECIPE
-GET http://localhost:3000/recipe/1
+GET https://cooklator-backend.onrender.com/recipe/1
 
 ### DELETE RECIPE
-DELETE http://localhost:3000/recipe/4
+DELETE https://cooklator-backend.onrender.com/recipe/4
