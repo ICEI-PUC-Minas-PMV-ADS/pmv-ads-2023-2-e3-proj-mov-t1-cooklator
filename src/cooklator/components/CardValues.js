@@ -1,18 +1,35 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Card } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import {Card, IconButton} from 'react-native-paper';
 
-const CardValues = ({ cardTitle, cardSubTitle, concatenateCurrency }) => {
+const CardValues = ({ cardTitle, cardSubTitle, concatenateCurrency, subtitleFontSize, showIcon, onPressIcon, chosenIcon, colorIcon }) => {
     const formattedSubtitle = concatenateCurrency ? `R$ ${cardSubTitle}` : cardSubTitle;
+
+    const subtitleStyle = {
+        ...styles.subtitle,
+        fontSize: subtitleFontSize || styles.subtitle.fontSize
+    };
+
+    const personalizeIcon = chosenIcon || "example-icon";
+
+    const personalizeColorIcon = colorIcon || '#176B87';
 
     return (
         <Card style={styles.card}>
             <Card.Title
                 titleStyle={styles.title}
-                subtitleStyle={styles.subtitle}
+                subtitleStyle={subtitleStyle}
                 title={cardTitle}
                 subtitle={formattedSubtitle}
             />
+            {showIcon && (
+                <IconButton
+                    icon={personalizeIcon}
+                    iconColor={personalizeColorIcon}
+                    size={20}
+                    onPress={onPressIcon}
+                />
+            )}
         </Card>
     );
 };

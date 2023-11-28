@@ -1,20 +1,58 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { SegmentedButtons } from 'react-native-paper';
+import {StyleSheet, View, Text} from 'react-native';
+import {SegmentedButtons} from 'react-native-paper';
 import Timer from "./Timer";
 import CardValues from "./CardValues";
 import config from "../config";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
+import ModalWarning from "./ModalWarning";
+import ModalWithInput from "./ModalWithInput";
 
 const costsApiUrl = config.costsApiUrl;
+const recipeApiUrl = config.recipeApiUrl;
 
-const OptionsTabs = ({ route }) => {
+const OptionsTabs = ({route}) => {
     const [value, setValue] = React.useState('timer');
     const [suggestedPrice, setSuggestedPrice] = useState(0.00);
     const [totalMaterial, setTotalMaterial] = useState(0.00);
     const [totalValueHour, setTotalValueHour] = useState(0.00);
     const [recipeDate, setRecipeDate] = useState(0.00);
-    const { recipe } = route.params;
+    const {recipe} = route.params;
+    const [recipeData, setRecipe] = useState(recipe);
+    const [modalVisibleConfirmEdition, setModalVisibleConfirmEdition] = useState(false);
+    const [modalMessageConfirmEdition, setModalMessageConfirmEdition] = useState('');
+    const [modalVisibleEdition, setModalVisibleEdition] = useState(false);
+    const [modalMessageEdition, setModalMessageEdition] = useState('');
+    const [inputValue, setInputValue] = useState('');
+
+    const showModal = (message, typeModal) => {
+        if (typeModal === "confirm") {
+            setModalVisibleConfirmEdition(true);
+            setModalMessageConfirmEdition(message);
+        } else if (typeModal === "edit") {
+            setModalVisibleEdition(true);
+            setModalMessageEdition(message);
+        }
+    };
+
+    const hideModal = (typeModal) => {
+        if (typeModal === "confirm") {
+            setModalVisibleConfirmEdition(false);
+            setModalMessageConfirmEdition('');
+        } else if (typeModal === "edit") {
+            setModalVisibleEdition(false);
+            setModalMessageEdition('');
+        }
+
+    };
+
+    const handleConfirmCommentEdition = async () => {
+        showModal('Deseja editar o comentário desta receita?', 'confirm')
+    };
+
+    const handleInputCommentEdition = async () => {
+        showModal('Insira seu novo comentário?', 'edit')
+    };
 
     const buttonStyle = (buttonValue) => {
         return {
@@ -24,38 +62,38 @@ const OptionsTabs = ({ route }) => {
         };
     };
 
-    const fetchDataByField = async (recipeId, field, condicionalValue) => {
+    const fetchCostsByField = async (recipeId, field, condicionalValue) => {
         try {
             const response = await fetch(`${costsApiUrl}`);
             const data = await response.json();
 
             if (response.status === 200) {
                 const matchingCost = data.find(cost => cost.recipeId === recipeId);
-                return matchingCost ? { [field]: matchingCost[field] } : { [field]: condicionalValue };
+                return matchingCost ? {[field]: matchingCost[field]} : {[field]: condicionalValue};
             } else {
                 console.error('Erro ao obter lista de custos', data);
-                return { [field]: condicionalValue };
+                return {[field]: condicionalValue};
             }
         } catch (error) {
             console.error('Erro na requisição:', error);
-            return { [field]: condicionalValue };
+            return {[field]: condicionalValue};
         }
     };
 
     const getSuggestedPrice = async (recipeId) => {
-        return fetchDataByField(recipeId, 'totalCost', 0);
+        return fetchCostsByField(recipeId, 'totalCost', 0);
     };
 
     const getTotalMaterial = async (recipeId) => {
-        return fetchDataByField(recipeId, 'totalMaterialCost', 0);
+        return fetchCostsByField(recipeId, 'totalMaterialCost', 0);
     };
 
     const getTotalValueHour = async (recipeId) => {
-        return fetchDataByField(recipeId, 'totalTimeValue', 0);
+        return fetchCostsByField(recipeId, 'totalTimeValue', 0);
     };
 
     const getRecipeDate = async (recipe) => {
-        return recipe.startDate ? recipe.startDate :  "10/10/2023";
+        return recipe.startDate ? recipe.startDate : "10/10/2023";
     };
 
     useEffect(() => {
@@ -87,12 +125,50 @@ const OptionsTabs = ({ route }) => {
         return data.toLocaleDateString('pt-BR', options).replace(/\//g, '/');
     }
 
+    const getRecipeObs = () => {
+        return recipeData.comments;
+    }
+
     const labelStyle = () => {
         return {
             fontSize: 14,
             fontWeight: 'bold',
         };
     };
+
+    const updateRecipe = async (recipeId, newCommets) => {
+        try {
+            const updatedRecipeData = {
+                ...recipe,
+                comments: newCommets,
+            };
+
+            const response = await makeRecipeUpdateRequest(recipeId, updatedRecipeData);
+
+            if (response.status === 201 || response.status === 200) {
+                setRecipe(updatedRecipeData)
+                hideModal('edit');
+                hideModal('confirm');
+            }
+
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    }
+
+    function makeRecipeUpdateRequest(recipeId, updatedRecipeData) {
+        const editUrl = recipeApiUrl + '/' + recipeId;
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedRecipeData),
+        };
+
+        return fetch(editUrl, requestOptions);
+    }
 
     return (
         <View style={styles.container}>
@@ -133,7 +209,7 @@ const OptionsTabs = ({ route }) => {
             {value === 'timer' && (
                 <View style={styles.timeView}>
                     <Text style={styles.titleTimer}>TIMER</Text>
-                    <Timer />
+                    <Timer/>
                 </View>
             )}
             {value === 'materials' && (
@@ -144,17 +220,48 @@ const OptionsTabs = ({ route }) => {
             {value === 'values' && (
                 <View>
                     <Text style={styles.titleTopic}>Valores e precificação</Text>
-                    <CardValues cardTitle={'Preço sugerido'} cardSubTitle={suggestedPrice} concatenateCurrency={true} />
-                    <CardValues cardTitle={'Materiais'} cardSubTitle={totalMaterial} concatenateCurrency={true} />
-                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={totalValueHour} concatenateCurrency={true} />
+                    <CardValues cardTitle={'Preço sugerido'} cardSubTitle={suggestedPrice} concatenateCurrency={true}/>
+                    <CardValues cardTitle={'Materiais'} cardSubTitle={totalMaterial} concatenateCurrency={true}/>
+                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={totalValueHour} concatenateCurrency={true}/>
                 </View>
             )}
             {value === 'notes' && (
                 <View>
-                    <Text style={styles.titleTopic}>Observações</Text>
-                    <CardValues cardTitle={'Data de registro da receita'} cardSubTitle={formatarData(recipeDate)} concatenateCurrency={false} />
+                    <Text style={styles.titleTopic}></Text>
+                    <CardValues cardTitle={'Observações cadastradas:'} cardSubTitle={getRecipeObs()}
+                                concatenateCurrency={false} subtitleFontSize={20}
+                                showIcon={true} onPressIcon={handleConfirmCommentEdition}
+                                colorIcon="#04364A"
+                                chosenIcon="lead-pencil"/>
+                    <CardValues cardTitle={'Data de registro da receita'} cardSubTitle={formatarData(recipeDate)}
+                                concatenateCurrency={false}/>
                 </View>
             )}
+            <ModalWarning
+                visible={modalVisibleConfirmEdition}
+                message={modalMessageConfirmEdition}
+                onPrimaryButtonPress={() => handleInputCommentEdition()}
+                primaryButtonLabel="Sim"
+                onSecondaryButtonPress={() => hideModal('confirm')}
+                secondaryButtonLabel={'Cancelar'}
+            />
+            <ModalWithInput
+                visible={modalVisibleEdition}
+                message="Insira o novo comentário: "
+                inputValue={inputValue}
+                onPrimaryButtonPress={(value) => {
+                    updateRecipe(recipe.id, value)
+                    setInputValue('');
+                    hideModal('edit');
+                    hideModal('confirm')
+                }}
+                primaryButtonLabel="Salvar"
+                onSecondaryButtonPress={() => {
+                    hideModal('edit')
+                    hideModal('confirm');
+                }}
+                secondaryButtonLabel="Não salvar"
+            />
         </View>
     );
 };
