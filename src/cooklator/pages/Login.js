@@ -9,14 +9,13 @@ import Logo from '../components/Logo';
 
 import { useNavigation } from '@react-navigation/native';
 import {useUser} from '../contexts/UserContext';
-
 import {login} from '../services/auth.services';
 
 const Login = () => {
 
   const navigation = useNavigation();
-  const {setSigned, setName} = useUser();
-
+  const [signed, setSigned] = useState({});
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -66,7 +65,7 @@ const Login = () => {
           style={styles.button}
           mode="contained"
           icon="login"
-          onPress={() => setSigned(true)}>
+          onPress={() => setSigned(handleLogin)}>
           LOGIN
         </Button>
         <Button

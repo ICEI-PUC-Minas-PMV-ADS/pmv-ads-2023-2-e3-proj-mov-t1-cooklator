@@ -30,11 +30,11 @@
     "react-native-screens": "^3.26.0",
     "react-native-vector-icons": "^10.0.0",
     "react-native-web": "~0.19.6",
-    "react-navigation": "^5.0.0",
-    "react-navigation-stack": "^2.10.4"
+    "react-navigation": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
   "private": true
 }
+

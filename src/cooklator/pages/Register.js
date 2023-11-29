@@ -23,7 +23,8 @@ const Register = () => {
     register({
       name: name,
       email: email,
-      password: password
+      password: password,
+      hourValue: 10
     }).then( res => {
       console.log(res);
 
