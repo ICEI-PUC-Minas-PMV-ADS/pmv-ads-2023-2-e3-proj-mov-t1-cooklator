@@ -1,23 +1,20 @@
 import React from "react";
-import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {StyleSheet, View} from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
+import {createStackNavigator} from "@react-navigation/stack";
 import CadastroMaterial from "./components/CadastroMaterial";
 import CreateRecipe from "./components/CreateRecipe";
 import FloatingMenu from "./components/FloatingMenu";
 import RecipesInProgress from "./pages/RecipesInProgress";
 import CardRecipe from "./components/CardRecipe";
-import { PaperProvider } from "react-native-paper";
+import {PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
 import Profile from "./components/Profile";
 import LogoCooklator from "./components/LogoCooklator";
 import FinishedRecipes from "./pages/FinishedRecipes";
-<<<<<<< Updated upstream
-=======
 import Login from "./pages/Login";
 import Register from "./pages/Register";
->>>>>>> Stashed changes
 
 const AppStack = createStackNavigator();
 
@@ -28,8 +25,33 @@ const App = () => {
                 <View style={styles.container}>
 
                     <View style={styles.containerNavigator}>
-<<<<<<< Updated upstream
-                        <AppStack.Navigator initialRouteName="Recipes">
+                        <AppStack.Navigator initialRouteName="Login">
+                            <AppStack.Screen name="Login" component={Login}
+                                             options={{
+                                                 headerStyle: {
+                                                     backgroundColor: "#DAFFFB",
+                                                     shadowOpacity: 0,
+                                                     elevation: 0,
+                                                 },
+                                                 headerTitleStyle: {
+                                                     color: "#04364A",
+                                                     fontSize: 24,
+                                                 },
+                                             }}
+                            />
+                            <AppStack.Screen name="Register" component={Register}
+                                             options={{
+                                                 headerStyle: {
+                                                     backgroundColor: "#DAFFFB",
+                                                     shadowOpacity: 0,
+                                                     elevation: 0,
+                                                 },
+                                                 headerTitleStyle: {
+                                                     color: "#04364A",
+                                                     fontSize: 24,
+                                                 },
+                                             }}
+                            />
                             <AppStack.Screen name="Receitas" component={Recipes}
                                              options={{
                                                  headerStyle: {
@@ -42,35 +64,6 @@ const App = () => {
                                                      fontSize: 24,
                                                  },
                                              }}
-=======
-                        <AppStack.Navigator initialRouteName="Login">
-                            <AppStack.Screen name="Login" component={Login}
-                                options={{
-                                    headerStyle: {
-                                        backgroundColor: "#DAFFFB",
-                                        shadowOpacity: 0,
-                                        elevation: 0,
-                                    },
-                                    headerTitleStyle: {
-                                        color: "#04364A",
-                                        fontSize: 24,
-                                    },
-                                }}
-                            />
-
-                            <AppStack.Screen name="Register" component={Register}
-                                options={{
-                                    headerStyle: {
-                                        backgroundColor: "#DAFFFB",
-                                        shadowOpacity: 0,
-                                        elevation: 0,
-                                    },
-                                    headerTitleStyle: {
-                                        color: "#04364A",
-                                        fontSize: 24,
-                                    },
-                                }}
->>>>>>> Stashed changes
                             />
                             <AppStack.Screen
                                 name="CadastrarReceita"
@@ -82,13 +75,13 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: { color: "white" },
+                                    headerTitleStyle: {color: "white"},
                                     presentation: {
                                         color: "#64CCC5"
                                     },
                                     headerRight: () => (
                                         <View style={styles.headerRight}>
-                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false}/>
                                         </View>
                                     ),
                                 }}
@@ -103,10 +96,10 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: { color: "white" },
+                                    headerTitleStyle: {color: "white"},
                                     headerRight: () => (
                                         <View style={styles.headerRight}>
-                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false}/>
                                         </View>
                                     ),
                                 }}
@@ -121,14 +114,14 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: { color: "white" },
+                                    headerTitleStyle: {color: "white"},
                                 }}
                             />
                             <AppStack.Screen
                                 name="MenuFlutuante"
                                 component={FloatingMenu}
                             />
-                            <AppStack.Screen name="CardRecipe" component={CardRecipe} />
+                            <AppStack.Screen name="CardRecipe" component={CardRecipe}/>
                             <AppStack.Screen
                                 name="OptionsTabs"
                                 component={OptionsTabs}
@@ -139,8 +132,8 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: { color: "white" },
-                                }} />
+                                    headerTitleStyle: {color: "white"},
+                                }}/>
                             <AppStack.Screen
                                 name="Profile"
                                 component={Profile}
@@ -151,7 +144,7 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: { color: "white" },
+                                    headerTitleStyle: {color: "white"},
                                 }}
                             />
                             <AppStack.Screen
@@ -164,10 +157,10 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: { color: "white" },
+                                    headerTitleStyle: {color: "white"},
                                     headerRight: () => (
                                         <View style={styles.headerRight}>
-                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false}/>
                                         </View>
                                     ),
                                 }}
@@ -175,7 +168,7 @@ const App = () => {
                         </AppStack.Navigator>
                     </View>
                     <View style={styles.floatingMenu}>
-                        <FloatingMenu />
+                        <FloatingMenu/>
                     </View>
                 </View>
 
