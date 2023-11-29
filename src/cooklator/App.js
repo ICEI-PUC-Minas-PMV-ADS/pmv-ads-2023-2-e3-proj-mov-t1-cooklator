@@ -13,6 +13,7 @@ import OptionsTabs from "./components/OptionTabs";
 import Profile from "./components/Profile";
 import LogoCooklator from "./components/LogoCooklator";
 import FinishedRecipes from "./pages/FinishedRecipes";
+import Login from "./pages/Login";
 
 const AppStack = createStackNavigator();
 
@@ -23,8 +24,8 @@ const App = () => {
                 <View style={styles.container}>
 
                     <View style={styles.containerNavigator}>
-                        <AppStack.Navigator initialRouteName="Recipes">
-                            <AppStack.Screen name="Receitas" component={Recipes}
+                        <AppStack.Navigator initialRouteName="Login">
+                            <AppStack.Screen name="Login" component={Login}
                                              options={{
                                                  headerStyle: {
                                                      backgroundColor: "#DAFFFB",
