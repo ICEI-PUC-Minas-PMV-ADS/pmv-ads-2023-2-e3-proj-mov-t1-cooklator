@@ -149,3 +149,39 @@ Ainda não foram implementados o resgate dos dados da receita exibidos nos cards
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/76b7b564-aec5-4cd2-a3f4-56fabf8020df)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/eef70aa9-5ec3-4f84-bd16-7fe29f2bb3ca)
+
+## Tela de Recuperação de Senha (Gabriel Eduardo Palhares)
+
+Código principal do `App.js`, onde ao iniciar a página, realiza a chamada dos demais componentes, criando então o resultado visual final, que pode ser visualizado no lado direito da imagem abaixo. O código foi desenvolvido através da plataforma `Expo.Dev`, conforme foi lecionado pelo professor Kleber Jacques no microfundamento de Desenvolvimento de Aplicações Móveis.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/34951844/e8aab045-ecba-4255-87c6-36c1b6bf789c)
+
+O componente `LogoCooklator.js` corresponde ao primeiro elemento visual da tela, sendo esse o Logo do projeto: Cooklator. A estilização e código mantêm o mesmo padrão visual das outras telas do projeto, de forma a manter o modelo visual proposto. No presente código, é feita a chamada da imagem e também sua estilização, através do `View`, `Image` e `StyleSheet`.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/34951844/f66e65cf-2609-4711-adc7-775ac20d7e3c)
+
+O componente `RecuperaSenha.js` cria um elemento de texto simples que corresponde ao título de página: "Recuperar senha". A estilização também está contida dentro desse componente, seguindo o padrão dos demais componentes que compõem a tela.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/34951844/77dbb3b2-e67f-45ba-b65a-ef1ed4dd8c65)
+
+O componente `EmailInput.js` cria um elemento de `TextInput` na tela, utilizando o Hook `useState` do React para mostrar o seguinte texto dentro do Input: "Informe seu e-mail". No ato do usuário clicar nesse input, esse texto desaparece, realizando a alteração de estado do mesmo e o deixando em branco, dessa forma permitindo que o usuário possa preencher o elemento e inserir seu e-mail. No código desse componente também contêm a estilização do mesmo, de forma simples e objetiva.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/34951844/a1c02bad-8712-4bbc-90be-d71f4a0fff7c)
+
+O componente `ButtonStyle.js` cria um elemento pressionável na tela de recuperação de senha e também contêm a estilização desse elemento. Inicialmente foi feita apenas a criação visual do botão, posteriormente ele também conterá a lógica de envio do e-mail de recuperação e será a ação final da página, onde após o usuário ter preenchido o input de "Informe o seu e-mail" e clicar no botão, receberá no e-mail informado um link/token para concluir a recuperação de sua senha.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/34951844/c5d93d42-55b0-4e8f-9984-47546761a4ec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
