@@ -11,8 +11,11 @@
   "dependencies": {
     "@expo-google-fonts/comfortaa": "^0.2.3",
     "@expo/webpack-config": "^19.0.0",
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
     "@react-navigation/stack": "^6.3.19",
+    "axios": "^1.6.2",
     "expo": "~49.0.13",
     "expo-app-loading": "^2.1.1",
     "expo-font": "~11.4.0",
@@ -37,4 +40,3 @@
   },
   "private": true
 }
-

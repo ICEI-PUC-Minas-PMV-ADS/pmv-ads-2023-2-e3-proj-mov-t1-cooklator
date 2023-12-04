@@ -1,5 +1,5 @@
-import React from "react";
-import {StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from "react";
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import CadastroMaterial from "./components/CadastroMaterial";
@@ -7,7 +7,7 @@ import CreateRecipe from "./components/CreateRecipe";
 import FloatingMenu from "./components/FloatingMenu";
 import RecipesInProgress from "./pages/RecipesInProgress";
 import CardRecipe from "./components/CardRecipe";
-import {PaperProvider} from "react-native-paper";
+import {MD2Colors, PaperProvider} from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
 import Profile from "./components/Profile";
@@ -15,18 +15,50 @@ import LogoCooklator from "./components/LogoCooklator";
 import FinishedRecipes from "./pages/FinishedRecipes";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AppStack = createStackNavigator();
 
 const App = () => {
+
+    const [user, setUser] = useState(null);
+    const [isLogado, setIsLogado] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const updateUser = async () => {
+        try {
+        const userData  = await AsyncStorage.getItem('@USER_DATA');
+        const user = userData ? JSON.parse(userData) : null;
+        setUser(user);
+
+        setIsLogado(user !== null && user !== undefined);
+        } catch (error) {
+            console.error('Erro ao obter dados do usuário:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        updateUser();
+    }, []);
+
+    const loginComponent = () => <Login updateUser={updateUser} />;
+    const initialRouteName = isLoading ? "Login" : (isLogado ? "Recipes" : "Login");
+
+    if (isLoading) {
+        return (
+            <ActivityIndicator animating={true} color={MD2Colors.red800}/>
+        );
+    }
     return (
         <PaperProvider>
             <NavigationContainer>
                 <View style={styles.container}>
 
                     <View style={styles.containerNavigator}>
-                        <AppStack.Navigator initialRouteName="Login">
-                            <AppStack.Screen name="Login" component={Login}
+                        <AppStack.Navigator initialRouteName={initialRouteName}>
+                            <AppStack.Screen name="Login" component={loginComponent}
                                              options={{
                                                  headerStyle: {
                                                      backgroundColor: "#DAFFFB",
@@ -52,8 +84,9 @@ const App = () => {
                                                  },
                                              }}
                             />
-                            <AppStack.Screen name="Receitas" component={Recipes}
-                                             options={{
+                            <AppStack.Screen name="Recipes" component={Recipes}
+                                             options={({ route }) => ({
+                                                 title: `Receitas de ${route.params?.user?.name}`,
                                                  headerStyle: {
                                                      backgroundColor: "#DAFFFB",
                                                      shadowOpacity: 0,
@@ -63,7 +96,7 @@ const App = () => {
                                                      color: "#04364A",
                                                      fontSize: 24,
                                                  },
-                                             }}
+                                             })}
                             />
                             <AppStack.Screen
                                 name="CadastrarReceita"

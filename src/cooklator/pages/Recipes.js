@@ -1,20 +1,24 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Text} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute } from '@react-navigation/native';
 import LogoCooklator from "../components/LogoCooklator";
 
 const Recipes = () => {
 
+
     const navigation = useNavigation();
+    const route = useRoute();
+    const user = route.params?.user;
 
     return (
         <View style={styles.container}>
+            <Text style={styles.welcomeText}>Bem vindo(a), {route.params?.user?.name} </Text>
             <LogoCooklator width={350} height={200} isWithSubtitle={true} />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     style={styles.customButton}
-                    onPress={() => navigation.navigate('RecipesInProgress')}
+                    onPress={() => navigation.navigate('RecipesInProgress', { user: user.id })}
                 >
                     <Text style={styles.buttonText}>PROJETOS EM ANDAMENTO</Text>
                 </TouchableOpacity>
@@ -23,7 +27,7 @@ const Recipes = () => {
 
                 <TouchableOpacity
                     style={styles.customButton}
-                    onPress={() => navigation.navigate('FinishedRecipes')}
+                    onPress={() => navigation.navigate('FinishedRecipes', { user: user.id })}
                 >
                     <Text style={styles.buttonText}>PROJETOS FINALIZADOS</Text>
                 </TouchableOpacity>
@@ -87,6 +91,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         fontSize: 15,
         fontWeight: "bold",
+        paddingTop: 7
+    },
+    welcomeText: {
+        color: '#64CCC5',
+        letterSpacing: 2,
+        justifyContent: 'center',
+        fontSize: 25,
+        fontWeight: "700",
         paddingTop: 7
     },
     logoImage: {

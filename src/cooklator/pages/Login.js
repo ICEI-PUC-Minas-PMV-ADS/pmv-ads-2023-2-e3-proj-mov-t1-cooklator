@@ -10,8 +10,9 @@ import Logo from '../components/Logo';
 import { useNavigation } from '@react-navigation/native';
 import {useUser} from '../contexts/UserContext';
 import {login} from '../services/auth.services';
+import Recipes from "./Recipes";
 
-const Login = () => {
+const Login = ({ updateUser }) => {
 
   const navigation = useNavigation();
   const [signed, setSigned] = useState({});
@@ -25,12 +26,14 @@ const Login = () => {
       email: email,
       password: password
     }).then( res => {
-      console.log(res);
 
-      if(res && res.user){
-        setSigned(true);
-        setName(res.user.name);
+      if(res){
+        updateUser(res);
+        AsyncStorage.setItem('@USER_DATA', JSON.stringify(res)).then();
         AsyncStorage.setItem('@TOKEN_KEY', res.accessToken).then();
+        navigation.navigate('Recipes', { user: res });
+        setSigned(true);
+        setName(res.name);
       }else{
          Alert.alert('Atenção', 'Usuário ou senha inválidos!');
       }
@@ -62,10 +65,10 @@ const Login = () => {
           left={<TextInput.Icon name="key" />}
         />
         <Button
-          style={styles.button}
-          mode="contained"
-          icon="login"
-          onPress={() => setSigned(handleLogin)}>
+            style={styles.button}
+            mode="contained"
+            icon="login"
+            onPress={handleLogin}>
           LOGIN
         </Button>
         <Button

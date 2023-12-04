@@ -15,7 +15,8 @@ content-type: application/json
   "id": 2,
   "preparationTime": 0,
   "startDate": "2023-11-21T12:34:56.789Z",
-  "isConcluded": false
+  "isConcluded": false,
+  "userId": 9
 }
 
 ### UPDATE RECIPE
@@ -31,7 +32,8 @@ content-type: application/json
   "color":"#176B87",
   "preparationTime": 0.0,
   "startDate": "2023-11-21T12:34:56.789Z",
-  "isConcluded": false
+  "isConcluded": false,
+  "userId": 9
 }
 
 
