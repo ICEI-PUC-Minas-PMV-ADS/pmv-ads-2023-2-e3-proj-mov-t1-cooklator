@@ -42,14 +42,12 @@ export const login = async (param) => {
     );
 
     if (matchingUsers.length > 0) {
-      // Retornar o primeiro usuário correspondente (você pode ajustar isso conforme necessário)
       const matchedUser = matchingUsers[0];
       return {
         name: matchedUser.name,
         id: matchedUser.id,
       };
     } else {
-      // Se não houver correspondências, tratar como autenticação falhada
       return null;
     }
 

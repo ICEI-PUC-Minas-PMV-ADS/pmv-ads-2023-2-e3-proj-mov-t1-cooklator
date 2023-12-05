@@ -200,9 +200,11 @@ const App = () => {
                             />
                         </AppStack.Navigator>
                     </View>
-                    <View style={styles.floatingMenu}>
-                        <FloatingMenu/>
-                    </View>
+                    {isLogado && (
+                        <View style={styles.floatingMenu}>
+                            <FloatingMenu/>
+                        </View>
+                    )}
                 </View>
 
             </NavigationContainer>
