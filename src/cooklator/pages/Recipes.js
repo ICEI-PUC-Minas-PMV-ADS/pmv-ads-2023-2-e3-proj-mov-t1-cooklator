@@ -69,7 +69,7 @@ const Recipes = () => {
 
                 <TouchableOpacity
                     style={styles.customButton}
-                    onPress={() => navigation.navigate('Profile')}
+                    onPress={() => navigation.navigate('Profile', { user : user })}
                 >
                     <Text style={styles.buttonText}>PERFIL</Text>
                 </TouchableOpacity>

@@ -1,13 +1,13 @@
-import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
-import { Button } from 'react-native-paper';
-import { TextInput } from 'react-native-paper';
-import { Checkbox } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
-import { Card } from 'react-native-paper';
+import React, {useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Button, Card, Checkbox, TextInput} from 'react-native-paper';
+import config from "../config";
+import {useRoute} from "@react-navigation/native";
 // import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // import AppBar from './AppBar'
+
+const usersApiUrl = config.usersApiUrl;
 
 const Profile = () => {
 
@@ -28,21 +28,31 @@ const Profile = () => {
         }
     });
 
+    const route = useRoute();
+    const user = route.params?.user;
+    const [userProfile, setUserProfile] = React.useState(user);
     const [checked, setChecked] = React.useState(false);
-
-    const [name, setName] = React.useState("Usuário Teste");
+    const [name, setName] = React.useState(userProfile.name);
     const [isNameValid, setIsNameValid] = React.useState(true);
-    const [email, setEmail] = React.useState("usuarioteste@email.com");
+    const [email, setEmail] = React.useState(userProfile.email);
     const [isEmailValid, setIsEmailValid] = React.useState(true);
     const [currentPassword, setCurrentPassword] = React.useState("");
     const [newPassword, setNewPassword] = React.useState("");
     const [isNewPasswordValid, setIsNewPasswordValid] = React.useState(true);
     const [newPasswordConfirmation, setNewPasswordConfirmation] = React.useState("");
     const [isNewPasswordConfirmationValid, setIsNewPasswordConfirmationValid] = React.useState(true);
-    const [valueHour, setValueHour] = React.useState("35");
+    const [valueHour, setValueHour] = React.useState(userProfile.hourValue);
     const [hideCurrentPassword, setHideCurrentPassword] = React.useState(true);
     const [hideNewPassword, setHideNewPassword] = React.useState(true);
     const [hideNewPasswordConfirmation, setHideNewPasswordConfirmation] = React.useState(true);
+    const [modalMessage, setModalMessage] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+
+    useEffect(() => {
+        if (user) {
+            setUserProfile(user)
+        }
+    }, [user]);
 
     const currentPasswordChange = e => {
         const currentPassword = e.target.value;
@@ -97,6 +107,101 @@ const Profile = () => {
         return regex.test(email);
     }
 
+    const updateUser = async () => {
+        try {
+            if ((name !== '' && (name.length >= 5 && name.length <= 15)) && validateEmail(email) && !isNaN(valueHour)) {
+
+                const userUpdated = {
+                    email: email,
+                    name: name,
+                    hourValue: valueHour,
+                    password: userProfile.password
+                };
+
+                const response = await updateUserRequest(userUpdated);
+
+                if (response.status === 201 || response.status === 200) {
+                    showModal('Usuário editado com sucesso!');
+                }
+            } else {
+                setIsNameValid(name !== '' && (name.length >= 5 && name.length <= 15));
+                setIsEmailValid(validateEmail(email));
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const updatePassword = async () => {
+        try {
+            let userData = getUserData();
+            if (userData.password !== currentPassword) {
+                console.log('Senha incorreta!')
+            } else {
+                if ((newPassword !== '' && newPassword.length === 8) && (newPasswordConfirmation !== '' && newPasswordConfirmation.length === 8 && newPasswordConfirmation === newPassword)) {
+
+                    const userPasswordUpdated = {
+                        email: userProfile.email,
+                        name: userProfile.name,
+                        hourValue: userProfile.hourValue,
+                        password: newPassword
+                    }
+
+                    const response = await updateUserPasswordRequest(userPasswordUpdated);
+
+                    if (response.status === 201 || response.status === 200) {
+                        showModal('Usuário editado com sucesso!');
+                    }
+                } else {
+                    setIsNewPasswordValid(newPassword !== '' && newPassword.length === 8);
+                    setIsNewPasswordConfirmationValid(newPasswordConfirmation !== '' && newPasswordConfirmation.length === 8 && newPasswordConfirmation === newPassword)
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function getUserData() {
+        fetch(usersApiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+
+                return data.filter(userDb => userDb === userProfile.id);
+            })
+            .catch((error) => console.error('Erro ao buscar as receitas:', error));
+    }
+
+    function updateUserRequest(userUpdated) {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userUpdated),
+        };
+
+        return fetch(usersApiUrl + '/' + userProfile.id, requestOptions);
+    }
+
+    function updateUserPasswordRequest(userPasswordUpdated) {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userPasswordUpdated),
+        };
+
+        return fetch(usersApiUrl + '/' + userProfile.id, requestOptions);
+    }
+
+    const showModal = (message) => {
+        setModalMessage(message);
+        setModalVisible(true);
+    };
+
     return (
 
         <ScrollView>
@@ -147,7 +252,7 @@ const Profile = () => {
                             </View>
                         </View>
 
-                        <Button icon="square-edit-outline" mode="contained" onPress={() => console.log('Pressed')}>
+                        <Button icon="square-edit-outline" mode="contained" disabled={!isNameValid || !isEmailValid || isNaN(valueHour)} onPress={updateUser}>
                             Editar
                         </Button>
 
@@ -189,10 +294,11 @@ const Profile = () => {
                         {!isNewPasswordConfirmationValid && <Text style={styles.invalidInput}>Confirmação de senha inválida</Text>}
 
                         <Button
+                            disabled={!isNewPasswordValid || !isNewPasswordConfirmationValid}
                             style={{marginVertical: 10}}
                             icon="square-edit-outline"
                             mode="contained"
-                            onPress={() => console.log('Pressed')}>
+                            onPress={updatePassword}>
                             Alterar Senha
                         </Button>
 
