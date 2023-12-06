@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
@@ -86,7 +86,7 @@ const App = () => {
                             />
                             <AppStack.Screen name="Recipes" component={Recipes}
                                              options={({ route }) => ({
-                                                 title: `Receitas de ${route.params?.user?.name}`,
+                                                 title: "Receitas",
                                                  headerStyle: {
                                                      backgroundColor: "#DAFFFB",
                                                      shadowOpacity: 0,

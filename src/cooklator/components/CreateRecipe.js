@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {Card, Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
@@ -21,13 +21,15 @@ const CreateRecipe = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [selectedColor, setSelectedColor] = useState('#176B87');
+    const route = useRoute();
+    const user = route.params?.user;
 
     const handleNavigateToMaterial = () => {
         navigation.navigate('CadastroMaterial');
     };
 
     const handleNavigateToRecipesPage = () => {
-        navigation.navigate('Receitas');
+        navigation.navigate('Recipes');
     };
 
     const getCurrentDate = () => {
@@ -36,6 +38,7 @@ const CreateRecipe = () => {
     };
 
     const handleAddRecipe = async () => {
+        console.log(user)
         try {
             let isValid = true;
             setNameError('')
@@ -52,15 +55,22 @@ const CreateRecipe = () => {
             }
 
             if (isValid) {
+
+                let chosenHourValue = hourValueChange;
+                if (checked) {
+                    chosenHourValue = user.hourValue;
+                }
+
                 const newRecipe = {
                     name: textTitle,
-                    hourValue: hourValueChange,
+                    hourValue: chosenHourValue,
                     appliesDefaultValue: checked,
                     comments: textObs,
                     color: selectedColor,
                     preparationTime: '',
                     startDate: getCurrentDate(),
-                    isConcluded: false
+                    isConcluded: false,
+                    userId: user.id
                 };
 
                 const response = await addRecipe(newRecipe);
@@ -221,7 +231,8 @@ const CreateRecipe = () => {
                         </View>
                         <ModalWarning visible={modalVisible} message={modalMessage}
                                       onPrimaryButtonPress={handleResetForm}
-                                      primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
+                                      primaryButtonLabel={'Sim'}
+                                      onSecondaryButtonPress={handleNavigateToRecipesPage}
                                       secondaryButtonLabel={"Não"}/>
                     </View>
                 </View>

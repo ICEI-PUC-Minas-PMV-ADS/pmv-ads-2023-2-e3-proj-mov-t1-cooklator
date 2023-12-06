@@ -35,7 +35,6 @@ export const login = async (param) => {
 
 
     const response = await axios.get(`${usersUrl}`);
-    console.log(response.data);
 
     const matchingUsers = response.data.filter(user =>
         user.username === param.username && user.password === param.password
@@ -46,6 +45,10 @@ export const login = async (param) => {
       return {
         name: matchedUser.name,
         id: matchedUser.id,
+        hourValue: matchedUser.hourValue,
+        email: matchedUser.email,
+        password: matchedUser.password,
+
       };
     } else {
       return null;

@@ -17,6 +17,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [hourValue, setHourValue] = useState('');
 
   const handleRegister = () => {
 
@@ -24,7 +25,7 @@ const Register = () => {
       name: name,
       email: email,
       password: password,
-      hourValue: 10
+      hourValue: hourValue
     }).then( res => {
       console.log(res);
 
@@ -42,6 +43,17 @@ const Register = () => {
     });
     
   }
+
+  const handleInputChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+
+    const formattedValue = numericValue.replace(
+        /(\d)(?=(\d{2})+(?!\d))/g,
+        '$1.'
+    );
+
+    setHourValue(formattedValue);
+  };
 
   return (
     <Container>
@@ -76,6 +88,13 @@ const Register = () => {
           secureTextEntry
           onChangeText={(text) => setPassword(text)}
           left={<TextInput.Icon name="key" />}
+        />
+        <Input
+            label="Valor da hora (você poderá alterar posteriormente)"
+            value={hourValue}
+            placeholder="R$ 0,00"
+            onChangeText={handleInputChange}
+            left={<TextInput.Icon name="key" />}
         />
         <Button
           style={styles.button}
