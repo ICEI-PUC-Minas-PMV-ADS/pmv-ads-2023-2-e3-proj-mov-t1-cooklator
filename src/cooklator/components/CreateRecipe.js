@@ -58,7 +58,7 @@ const CreateRecipe = () => {
                     appliesDefaultValue: checked,
                     comments: textObs,
                     color: selectedColor,
-                    preparationTime: 0.0,
+                    preparationTime: '',
                     startDate: getCurrentDate(),
                     isConcluded: false
                 };

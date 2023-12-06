@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
+import config from "../config";
 
-const Timer = () => {
+const recipeApiUrl = config.recipeApiUrl;
+
+const Timer = ({ recipe }) => {
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const [previousTimes, setPreviousTimes] = useState([]);
@@ -19,8 +22,29 @@ const Timer = () => {
         setTime(0);
     };
 
-    const handleSave = () => {
+    function makeRecipeUpdateRequest(id, updatedRecipeData) {
+        const editUrl = recipeApiUrl + '/' + id;
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedRecipeData),
+        };
+
+        return fetch(editUrl, requestOptions);
+    }
+
+    const handleSave = async () => {
         setPreviousTimes([...previousTimes, time]);
+        console.log(calculate(time))
+        const updatedRecipeData = {
+            ...recipe,
+            preparationTime: calculate(time),
+        };
+
+        await makeRecipeUpdateRequest(recipe.id, updatedRecipeData);
         handleReset();
     };
 
@@ -56,7 +80,7 @@ const Timer = () => {
 
     return (
         <View style={styles.outerContainer}>
-            <View style={styles.container}>
+               <View style={styles.container}>
                 <View style={styles.timerContainer}>
                     <Text style={styles.timerText}>Tempo decorrido: {calculate(time)}</Text>
                 </View>
@@ -68,14 +92,7 @@ const Timer = () => {
                 ) : (
                     <Button title="Começar" onPress={handleStart} />
                 )}
-                <Text style={styles.previousTimesTitle}>Receitas anteriores</Text>
-                <FlatList
-                    data={previousTimes}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => (
-                        <Text>{calculate(item)}</Text>
-                    )}
-                />
+
             </View>
         </View>
     );
@@ -89,6 +106,9 @@ const styles = StyleSheet.create({
     },
     container: {
         width: '80%',
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 15,
     },
     timerContainer: {
         alignItems: 'center',
@@ -105,5 +125,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
 });
+
 
 export default Timer;

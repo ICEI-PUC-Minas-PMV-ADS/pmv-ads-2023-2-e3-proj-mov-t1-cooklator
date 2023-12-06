@@ -48,6 +48,7 @@ const RecipesList = ({ isConcluded, hideOptions }) => {
                         recipeId={recipe.id}
                         setRecipes={setRecipes}
                         hideOptions={hideOptions}
+                        time={recipe.preparationTime || 'Sem timer rodado'}
                     />
                 </TouchableRipple>
             ))}

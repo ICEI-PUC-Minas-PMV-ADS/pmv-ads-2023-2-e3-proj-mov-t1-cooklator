@@ -10,7 +10,7 @@ const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 const recipeApiUrl = config.recipeApiUrl;
 
-const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions}) => {
+const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions, time}) => {
 
     const [visible, setVisible] = useState({});
     const {isV3} = useTheme();
@@ -143,7 +143,7 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions}
                             <Paragraph style={styles.titleContent}>
                                 <View style={styles.iconContainer}>
                                     <Icon name="timer-outline" size={20} color="gray"/>
-                                    <Text style={styles.textIcon}>Tempo: x minutos</Text>
+                                    <Text style={styles.textIcon}>Tempo: {time}</Text>
                                 </View>
                                 <View style={styles.iconContainer}>
                                     <Icon name="fruit-watermelon" size={20} color="gray"/>
