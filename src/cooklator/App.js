@@ -202,7 +202,7 @@ const App = () => {
                     </View>
                     {isLogado && (
                         <View style={styles.floatingMenu}>
-                            <FloatingMenu/>
+                            <FloatingMenu userProfile={user}/>
                         </View>
                     )}
                 </View>

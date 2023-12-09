@@ -7,7 +7,7 @@ import ModalWarning from "./ModalWarning";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-const FloatingMenu = () => {
+const FloatingMenu = ({ userProfile }) => {
 
     const [visible, setVisible] = React.useState(true);
     const [open, setOpen] = React.useState(false);
@@ -19,13 +19,13 @@ const FloatingMenu = () => {
 
     const handleNavigateToRecipesPage = () => {
         if (open) {
-            navigation.navigate('Receitas');
+            navigation.navigate('Recipes');
         }
     };
 
     const handleNavigateToProfilePage = () => {
-        if (open) {
-        navigation.navigate('Profile');
+        if (open && userProfile) {
+            navigation.navigate('Profile', { user: userProfile });
         }
     };
 
