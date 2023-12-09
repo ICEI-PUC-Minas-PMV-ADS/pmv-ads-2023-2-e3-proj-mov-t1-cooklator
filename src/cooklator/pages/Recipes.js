@@ -37,7 +37,6 @@ const Recipes = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.welcomeText}>Bem vindo(a), {user.name} </Text>
-            {/*<Text style={styles.welcomeText}>Bem vindo(a), {route.params?.user?.name} </Text>*/}
             <LogoCooklator width={350} height={200} isWithSubtitle={true} />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity

@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import CadastroMaterial from "./components/CadastroMaterial";
@@ -16,6 +16,7 @@ import FinishedRecipes from "./pages/FinishedRecipes";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const AppStack = createStackNavigator();
 
@@ -95,6 +96,13 @@ const App = () => {
                                                  headerTitleStyle: {
                                                      color: "#04364A",
                                                      fontSize: 24,
+                                                 },
+                                                 headerLeft: () => {
+                                                     return isLogado ? null : (
+                                                         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                                                             <Icon name="arrow-left" size={24} color="#04364A" />
+                                                         </TouchableOpacity>
+                                                     );
                                                  },
                                              })}
                             />

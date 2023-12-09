@@ -15,7 +15,6 @@ const FloatingMenu = ({ userProfile }) => {
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
-    const [menuActive, setMenuActive] = useState(false);
 
     const handleNavigateToRecipesPage = () => {
         if (open) {
