@@ -1,14 +1,14 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, StyleSheet, TouchableOpacity, Image, ActivityIndicator} from 'react-native';
 import {MD2Colors, Text} from 'react-native-paper';
-import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/native';
+import {useFocusEffect, useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import LogoCooklator from "../components/LogoCooklator";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Recipes = () => {
 
     const navigation = useNavigation();
-    const route = useRoute();
+    const isFocused = useIsFocused();
     const [user, setUser] = useState(null);
 
     const fetchUserFromLocalStorage = useCallback(async () => {
@@ -24,11 +24,9 @@ const Recipes = () => {
         }
     }, []);
 
-    useFocusEffect(() => {
-        if (!user) {
-            fetchUserFromLocalStorage();
-        }
-    });
+    useEffect(() => {
+        fetchUserFromLocalStorage();
+    }, [isFocused]);
 
     if (!user) {
         return <ActivityIndicator animating={true} color={MD2Colors.red800} />;

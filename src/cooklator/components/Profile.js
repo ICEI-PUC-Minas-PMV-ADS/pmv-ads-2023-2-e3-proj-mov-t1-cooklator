@@ -3,6 +3,7 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Button, Card, Checkbox, TextInput} from 'react-native-paper';
 import config from "../config";
 import {useRoute} from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // import AppBar from './AppBar'
@@ -121,6 +122,8 @@ const Profile = () => {
                 const response = await updateUserRequest(userUpdated);
 
                 if (response.status === 201 || response.status === 200) {
+                    const data = await response.json();
+                    AsyncStorage.setItem('@USER_DATA', JSON.stringify(data)).then();
                     showModal('Usuário editado com sucesso!');
                 }
             } else {
