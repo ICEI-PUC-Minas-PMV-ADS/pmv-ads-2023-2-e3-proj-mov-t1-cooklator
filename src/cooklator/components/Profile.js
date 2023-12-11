@@ -117,7 +117,7 @@ const Profile = () => {
             setIsLoading(true);
             if ((name !== '' && (name.length >= 5 && name.length <= 15)) && validateEmail(email) && !isNaN(valueHour)) {
                 let userData = await verifyUserEmail();
-                if (userData.id !== userProfile.id) {
+                if (userData !== null && userData.id !== userProfile.id) {
                     showModal('E-mail já em uso!')
                 } else {
                     const userUpdated = {
