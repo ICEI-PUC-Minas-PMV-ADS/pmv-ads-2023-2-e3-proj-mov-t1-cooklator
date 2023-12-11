@@ -61,7 +61,7 @@ const Register = () => {
           label="Nome"
           value={name}
           onChangeText={(text) => setName(text)}
-          left={<TextInput.Icon name="account" />}
+          left={<TextInput.Icon name="trash-can" />}
         />
         <Input
           label="Email"

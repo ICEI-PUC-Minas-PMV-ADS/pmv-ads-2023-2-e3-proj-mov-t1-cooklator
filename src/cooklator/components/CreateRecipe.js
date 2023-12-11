@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
-import {
-    View,
-    StyleSheet,
-    Text,
-    TextInput,
-    Pressable, TouchableHighlight
-} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {Checkbox} from 'react-native-paper';
+import React, { useState, useEffect } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Card, Checkbox } from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
 import config from "../config";
 
+
 const recipeApiUrl = config.recipeApiUrl;
 
-const CreateRecipe = () => {
+const CreateRecipe = ({ route }) => {
 
     const [textTitle, setTextTitle] = useState('');
     const [textObs, setTextObs] = useState('');
@@ -37,42 +32,42 @@ const CreateRecipe = () => {
     };
 
     const handleAddRecipe = async () => {
-            try {
-                let isValid = true;
-                setNameError('')
-                setHourValueError('')
+        try {
+            let isValid = true;
+            setNameError('')
+            setHourValueError('')
 
-                if (textTitle.trim() === '') {
-                    setNameError('O nome da receita é obrigatório');
-                    isValid = false;
-                }
-
-                if (hourValueChange <= 0 && checked === false) {
-                    setHourValueError('O valor da hora deve ser maior que zero ou marque o valor padrão');
-                    isValid = false;
-                }
-
-                if (isValid) {
-                    const newRecipe = {
-                        nome: textTitle,
-                        valorHora: hourValueChange,
-                        aplicaValorPadrao: checked,
-                        observacoes: textObs,
-                        cor: selectedColor
-                    };
-
-                    const response = await addRecipe(newRecipe);
-
-                    if (response.status === 201) {
-                        const data = await response.json();
-                        showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
-                    }
-                }
-            } catch
-                (error) {
-                console.error('Erro:', error);
+            if (textTitle.trim() === '') {
+                setNameError('O nome da receita é obrigatório');
+                isValid = false;
             }
-        };
+
+            if (hourValueChange <= 0 && checked === false) {
+                setHourValueError('O valor da hora deve ser maior que zero ou marque o valor padrão');
+                isValid = false;
+            }
+
+            if (isValid) {
+                const newRecipe = {
+                    nome: textTitle,
+                    valorHora: hourValueChange,
+                    aplicaValorPadrao: checked,
+                    observacoes: textObs,
+                    cor: selectedColor
+                };
+
+                const response = await addRecipe(newRecipe);
+
+                if (response.status === 201 || response.status === 200) {
+                    const data = await response.json();
+                    showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
+                }
+            }
+        } catch
+        (error) {
+            console.error('Erro:', error);
+        }
+    };
 
     function addRecipe(newRecipe) {
         const requestOptions = {
@@ -165,6 +160,7 @@ const CreateRecipe = () => {
 
                     </View>
                 </View>
+                <Text style={styles.errorMessageObs}>{hourValueError}</Text>
                 <View style={styles.checkboxContainer}>
                     <Checkbox.Android
                         status={checked ? 'checked' : 'unchecked'}
@@ -174,40 +170,53 @@ const CreateRecipe = () => {
                     />
                     <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
                 </View>
-                <Text style={styles.errorMessageObs}>{hourValueError}</Text>
+            </Card>
+
+            <Card style={[styles.card, { minHeight: 10 }]} elevation={3}>
                 <View style={styles.viewColors}>
-                    <ColorPicker onColorSelect={handleColorSelect}/>
+                    <ColorPicker onColorSelect={handleColorSelect} />
                 </View>
-                <Text style={styles.textMaterialTitle}>Materiais:</Text>
-                <Pressable
-                    style={[styles.button, styles.buttonOpen]}
-                    onPress={handleNavigateToMaterial}>
-                    <Text style={styles.textStylePlus}>+</Text>
-                </Pressable>
+            </Card>
 
-                <View style={styles.viewButtons}>
-
-                    <View style={styles.viewButtons}>
-                        <TouchableHighlight
-                            style={styles.buttonCancel}
-                            onPress={handleNavigateToRecipesPage}>
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                        </TouchableHighlight>
-                    </View>
-
-                    <View style={styles.viewButtons}>
-                        <TouchableHighlight
-                            style={styles.buttonSave}
-                            onPress={handleAddRecipe}>
-                            <Text style={styles.saveText}>Salvar</Text>
-                        </TouchableHighlight>
-                    </View>
+            <Card style={[styles.card, { minHeight: 10 }]} elevation={3}>
+                <View style={styles.viewMaterial}>
+                    <Text style={styles.textMaterialTitle}>Materiais:</Text>
+                    <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={handleNavigateToMaterial}>
+                        <Text style={styles.textStylePlus}>+</Text>
+                    </Pressable>
                 </View>
-                <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={handleResetForm }
-                              primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
-                              secondaryButtonLabel={"Não"}/>
+            </Card>
+
+            <View style={styles.viewButtons}>
+                <View>
+                    <TouchableHighlight
+                        style={[styles.buttonSave, { marginRight: 150, marginLeft: 30 }]}
+                        onPress={handleNavigateToRecipesPage}
+                        underlayColor="#176B87"
+                    >
+                        <Text style={styles.textStyle}>Cancelar</Text>
+                    </TouchableHighlight>
+                </View>
+                <View>
+                    <TouchableHighlight
+                        style={styles.buttonSave}
+                        onPress={handleAddRecipe}
+                        underlayColor="#176B87"
+                    >
+                        <Text style={styles.textStyle}>Salvar</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
+            <ModalWarning visible={modalVisible} message={modalMessage}
+                onPrimaryButtonPress={handleResetForm}
+                primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
+                secondaryButtonLabel={"Não"} />
         </View>
+                </View >
+            </View >
+        </ScrollView >
     );
 };
 

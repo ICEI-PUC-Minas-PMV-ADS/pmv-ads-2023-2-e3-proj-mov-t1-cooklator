@@ -3,12 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import NewMaterial from '../components/NewMaterial';
 
 const Stack = createNativeStackNavigator();
 
 const Main = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="NewMaterial">
       <Stack.Screen
         name="Login"
         component={Login}

@@ -1,16 +1,20 @@
 import React from "react";
-import {StyleSheet, View} from 'react-native';
-import {NavigationContainer} from "@react-navigation/native";
-import {createStackNavigator} from "@react-navigation/stack";
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import NewMaterial from "./components/NewMaterial";
 import CreateRecipe from "./components/CreateRecipe";
 import FloatingMenu from "./components/FloatingMenu";
 import RecipesInProgress from "./pages/ReceipesInProgress";
 import CardRecipe from "./components/CardRecipe";
-import {PaperProvider} from "react-native-paper";
+import { PaperProvider } from "react-native-paper";
 import Recipes from "./pages/Recipes";
 import OptionsTabs from "./components/OptionTabs";
-import Profile from "./components/Profile"
+import Profile from "./components/Profile";
+import LogoCooklator from "./components/LogoCooklator";
+import FinishedRecipes from "./pages/FinishedRecipes";
+import Login from "./pages/Login";
+import Register from './pages/Register'
 
 const AppStack = createStackNavigator();
 
@@ -21,8 +25,46 @@ const App = () => {
                 <View style={styles.container}>
 
                     <View style={styles.containerNavigator}>
-                        <AppStack.Navigator initialRouteName="Recipes">
-                            <AppStack.Screen name="Receitas" component={Recipes}/>
+                        <AppStack.Navigator initialRouteName="NewMaterial">
+                            <AppStack.Screen name="Login" component={Login}
+                                options={{
+                                    headerStyle: {
+                                        backgroundColor: "#DAFFFB",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {
+                                        color: "#04364A",
+                                        fontSize: 24,
+                                    },
+                                }}
+                            />
+                            <AppStack.Screen name="Register" component={Register}
+                                options={{
+                                    headerStyle: {
+                                        backgroundColor: "#DAFFFB",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {
+                                        color: "#04364A",
+                                        fontSize: 24,
+                                    },
+                                }}
+                            />
+                            <AppStack.Screen name="Receitas" component={Recipes}
+                                options={{
+                                    headerStyle: {
+                                        backgroundColor: "#DAFFFB",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: {
+                                        color: "#04364A",
+                                        fontSize: 24,
+                                    },
+                                }}
+                            />
                             <AppStack.Screen
                                 name="CadastrarReceita"
                                 component={CreateRecipe}
@@ -33,10 +75,15 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: {color: "white"},
+                                    headerTitleStyle: { color: "white" },
                                     presentation: {
                                         color: "#64CCC5"
-                                    }
+                                    },
+                                    headerRight: () => (
+                                        <View style={styles.headerRight}>
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                        </View>
+                                    ),
                                 }}
                             />
                             <AppStack.Screen
@@ -49,30 +96,79 @@ const App = () => {
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
-                                    headerTitleStyle: {color: "white"},
+                                    headerTitleStyle: { color: "white" },
+                                    headerRight: () => (
+                                        <View style={styles.headerRight}>
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                        </View>
+                                    ),
                                 }}
                             />
                             <AppStack.Screen
                                 name="NewMaterial"
                                 component={NewMaterial}
-                                options={{title: "Cadastrar Receita"}}
+                                options={{
+                                    title: "Cadastrar material",
+                                    headerStyle: {
+                                        backgroundColor: "#64CCC5",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: { color: "white" },
+                                }}
                             />
                             <AppStack.Screen
                                 name="MenuFlutuante"
                                 component={FloatingMenu}
                             />
-                            <AppStack.Screen name="CardRecipe" component={CardRecipe}/>
-                            <AppStack.Screen name="OptionsTabs" component={OptionsTabs}
-                                             options={{title: "Continuar Receita"}}/>
+                            <AppStack.Screen name="CardRecipe" component={CardRecipe} />
+                            <AppStack.Screen
+                                name="OptionsTabs"
+                                component={OptionsTabs}
+                                options={{
+                                    title: "Continuar Receita",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: { color: "white" },
+                                }} />
                             <AppStack.Screen
                                 name="Profile"
                                 component={Profile}
-                                options={{title: "Perfil"}}
+                                options={{
+                                    title: "Perfil",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: { color: "white" },
+                                }}
+                            />
+                            <AppStack.Screen
+                                name="FinishedRecipes"
+                                component={FinishedRecipes}
+                                options={{
+                                    title: "Receitas Finalizadas",
+                                    headerStyle: {
+                                        backgroundColor: "#176B87",
+                                        shadowOpacity: 0,
+                                        elevation: 0,
+                                    },
+                                    headerTitleStyle: { color: "white" },
+                                    headerRight: () => (
+                                        <View style={styles.headerRight}>
+                                            <LogoCooklator width={100} height={30} isWithSubtitle={false} />
+                                        </View>
+                                    ),
+                                }}
                             />
                         </AppStack.Navigator>
                     </View>
                     <View style={styles.floatingMenu}>
-                        <FloatingMenu/>
+                        <FloatingMenu />
                     </View>
                 </View>
 
