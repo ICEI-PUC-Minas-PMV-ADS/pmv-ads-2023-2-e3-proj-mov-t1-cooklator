@@ -23,7 +23,9 @@ content-type: application/json
   "name": "Ju Teste",
   "email": "ju@ju.com",
   "password": "senha123",
-  "hourValue": 5.0
+  "hourValue": 5.0,
+  "applyToAllProjects": false
+
 }
 
 
@@ -38,7 +40,8 @@ content-type: application/json
   "name": "Juliana",
   "email": "ju@tste.com",
   "password": "senha",
-  "hourValue": 5.0
+  "hourValue": 5.0,
+  "applyToAllProjects": false
 }
 
 

@@ -24,6 +24,7 @@ const CreateRecipe = () => {
     const [selectedColor, setSelectedColor] = useState('#176B87');
     const route = useRoute();
     const user = route.params?.user;
+    const applyToAllProjects = user?.applyToAllProjects || false;
 
     const handleNavigateToMaterial = () => {
         navigation.navigate('CadastroMaterial');
@@ -50,19 +51,17 @@ const CreateRecipe = () => {
                 isValid = false;
             }
 
-            if (hourValueChange <= 0 && checked === false) {
+            console.log(hourValueChange <= 0)
+            console.log(checked === false)
+            console.log(!applyToAllProjects)
+            if (hourValueChange <= 0 && checked === false && !applyToAllProjects) {
                 setHourValueError('Insira um valor ou marque o valor padrão');
                 isValid = false;
             }
 
             if (isValid) {
 
-                const chosenHourValue = checked ? user.hourValue : hourValueChange;
-
-                // let chosenHourValue = hourValueChange;
-                // if (checked) {
-                //     chosenHourValue = user.hourValue;
-                // }
+                const chosenHourValue = checked || user.applyToAllProjects ? user.hourValue : hourValueChange;
 
                 const newRecipe = {
                     name: textTitle,
@@ -97,11 +96,10 @@ const CreateRecipe = () => {
 
                 if (responseCost.status !== 201 && responseCost.status !== 200) {
                     console.error('Erro ao criar custo:', responseCost);
-                    return;
+                } else {
+                    showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
                 }
             }
-
-            showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
         } catch
             (error) {
             console.error('Erro:', error);
@@ -187,7 +185,7 @@ const CreateRecipe = () => {
                                 placeholderTextColor="#606b6a"
 
                             />
-
+                            {!applyToAllProjects && (
                             <View style={styles.viewButtons}>
                                 <View style={styles.viewValue}>
                                     <Text style={styles.textHourValue}> Valor da hora:</Text>
@@ -202,16 +200,19 @@ const CreateRecipe = () => {
 
                                 </View>
                             </View>
+                            )}
+                            {!applyToAllProjects && (
+                                <View style={styles.checkboxContainer}>
+                                    <Checkbox.Android
+                                        status={checked ? 'checked' : 'unchecked'}
+                                        onPress={() => {
+                                            setChecked(!checked);
+                                        }}
+                                    />
+                                    <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
+                                </View>
+                            )}
                             <Text style={styles.errorMessageObs}>{hourValueError}</Text>
-                            <View style={styles.checkboxContainer}>
-                                <Checkbox.Android
-                                    status={checked ? 'checked' : 'unchecked'}
-                                    onPress={() => {
-                                        setChecked(!checked);
-                                    }}
-                                />
-                                <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
-                            </View>
                         </Card>
 
                         <Card style={[styles.card, {minHeight: 10}]} elevation={3}>

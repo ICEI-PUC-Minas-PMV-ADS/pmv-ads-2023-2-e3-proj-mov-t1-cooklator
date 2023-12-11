@@ -12,7 +12,7 @@ const costsApiUrl = config.costsApiUrl;
 const recipeApiUrl = config.recipeApiUrl;
 
 const OptionsTabs = ({route}) => {
-    const [value, setValue] = React.useState('values');
+    const [value, setValue] = React.useState('timer');
     const [suggestedPrice, setSuggestedPrice] = useState(0.00);
     const [totalMaterial, setTotalMaterial] = useState(0.00);
     const [totalValueHour, setTotalValueHour] = useState(0.00);

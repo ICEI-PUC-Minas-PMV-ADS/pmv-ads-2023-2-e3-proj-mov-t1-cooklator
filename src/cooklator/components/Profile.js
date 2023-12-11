@@ -34,7 +34,7 @@ const Profile = () => {
     const route = useRoute();
     const user = route.params?.user;
     const [userProfile, setUserProfile] = React.useState(user);
-    const [checked, setChecked] = React.useState(false);
+    const [checked, setChecked] = React.useState(user.applyToAllProjects);
     const [name, setName] = React.useState(userProfile.name);
     const [isNameValid, setIsNameValid] = React.useState(true);
     const [email, setEmail] = React.useState(userProfile.email);
@@ -52,6 +52,7 @@ const Profile = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
     const [isLoadingPasswordChange, setIsLoadingPasswordChange] = useState(false)
+    const [applyToAllProjects, setApplyToAllProjects] = React.useState(false);
 
     useEffect(() => {
         if (user) {
@@ -107,6 +108,11 @@ const Profile = () => {
         }
     }
 
+    const updateCheckboxState = () => {
+        setChecked(!checked);
+        setApplyToAllProjects(!checked);
+    };
+
     function validateEmail(email) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
@@ -124,7 +130,8 @@ const Profile = () => {
                         email: email,
                         name: name,
                         hourValue: valueHour,
-                        password: userProfile.password
+                        password: userProfile.password,
+                        applyToAllProjects: applyToAllProjects,
                     };
 
                     const response = await updateUserRequest(userUpdated);
@@ -285,9 +292,7 @@ const Profile = () => {
                                 <Text style={{fontWeight: 'bold', fontSize: 12}}>Fixar para todos os projetos</Text>
                                 <Checkbox
                                     status={checked ? 'checked' : 'unchecked'}
-                                    onPress={() => {
-                                        setChecked(!checked);
-                                    }}
+                                    onPress={updateCheckboxState}
                                 />
                             </View>
                         </View>
