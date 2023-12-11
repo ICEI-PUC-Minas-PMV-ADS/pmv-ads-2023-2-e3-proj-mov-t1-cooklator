@@ -116,20 +116,24 @@ const Profile = () => {
         try {
             setIsLoading(true);
             if ((name !== '' && (name.length >= 5 && name.length <= 15)) && validateEmail(email) && !isNaN(valueHour)) {
+                let userData = await verifyUserEmail();
+                if (userData.id !== userProfile.id) {
+                    showModal('E-mail já em uso!')
+                } else {
+                    const userUpdated = {
+                        email: email,
+                        name: name,
+                        hourValue: valueHour,
+                        password: userProfile.password
+                    };
 
-                const userUpdated = {
-                    email: email,
-                    name: name,
-                    hourValue: valueHour,
-                    password: userProfile.password
-                };
+                    const response = await updateUserRequest(userUpdated);
 
-                const response = await updateUserRequest(userUpdated);
-
-                if (response.status === 201 || response.status === 200) {
-                    const data = await response.json();
-                    AsyncStorage.setItem('@USER_DATA', JSON.stringify(data)).then();
-                    showModal('Usuário editado com sucesso!');
+                    if (response.status === 201 || response.status === 200) {
+                        const data = await response.json();
+                        AsyncStorage.setItem('@USER_DATA', JSON.stringify(data)).then();
+                        showModal('Usuário editado com sucesso!');
+                    }
                 }
             } else {
                 setIsNameValid(name !== '' && (name.length >= 5 && name.length <= 15));
@@ -180,6 +184,20 @@ const Profile = () => {
 
         const matchingUsers = response.data.filter(user =>
             user.id === userProfile.id
+        );
+
+        if (matchingUsers.length > 0) {
+            return matchingUsers[0];
+        } else {
+            return null;
+        }
+    }
+
+    async function verifyUserEmail() {
+        const response = await axios.get(`${usersApiUrl}`);
+
+        const matchingUsers = response.data.filter(user =>
+            user.email === email
         );
 
         if (matchingUsers.length > 0) {
