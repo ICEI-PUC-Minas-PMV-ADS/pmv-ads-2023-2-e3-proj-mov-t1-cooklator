@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import config from "../config";
+import axios from "axios";
+import {getRecipeCost, makeCostsUpdateRequest} from './ApiUtils'
+
 
 const recipeApiUrl = config.recipeApiUrl;
+const costsApiUrl = config.costsApiUrl;
 
 const Timer = ({ recipe }) => {
     const [time, setTime] = useState(0);
@@ -36,15 +40,44 @@ const Timer = ({ recipe }) => {
         return fetch(editUrl, requestOptions);
     }
 
+    const calculateSuggestedPrice = async (recipe, time) => {
+        try {
+            const matchingCosts = await getRecipeCost(recipe.userId, recipe.id);
+            let timeRecipe;
+            timeRecipe = time / 3600
+
+            const newTimeValue = parseFloat(timeRecipe) * parseFloat(recipe.preparationTime)
+
+            const matchingCost = matchingCosts[0];
+            const costDb = matchingCost.totalMaterialCost;
+            const newTotalCost = costDb + newTimeValue;
+
+            const updatedCostData = {
+                ...matchingCost,
+                totalTimeValue: newTimeValue.toFixed(2),
+                totalCost: newTotalCost.toFixed(2),
+            };
+
+            const updatedRecipeData = {
+                ...recipe,
+                preparationTime: calculate(time),
+                totalCost: newTotalCost.toFixed(2),
+            };
+
+            await makeRecipeUpdateRequest(recipe.id, updatedRecipeData);
+            await makeCostsUpdateRequest(matchingCost.id, updatedCostData)
+
+        } catch (error) {
+            console.error('Erro ao buscar custo correspondente:', error);
+        }
+    }
+
     const handleSave = async () => {
         setPreviousTimes([...previousTimes, time]);
         console.log(calculate(time))
-        const updatedRecipeData = {
-            ...recipe,
-            preparationTime: calculate(time),
-        };
 
-        await makeRecipeUpdateRequest(recipe.id, updatedRecipeData);
+        await calculateSuggestedPrice(recipe, time);
+
         handleReset();
     };
 

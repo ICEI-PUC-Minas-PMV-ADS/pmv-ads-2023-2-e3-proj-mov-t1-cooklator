@@ -4,7 +4,7 @@ import { TouchableRipple } from 'react-native-paper';
 import CardRecipe from '../components/CardRecipe';
 import config from '../config';
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {UserContext} from "../contexts/UserContext";
+import {getRecipeCost, makeCostsUpdateRequest} from "./ApiUtils";
 
 const RecipesList = ({ isConcluded, hideOptions }) => {
     const [recipes, setRecipes] = useState([]);
@@ -24,7 +24,6 @@ const RecipesList = ({ isConcluded, hideOptions }) => {
             fetch(userRecipeApiUrl)
                 .then((response) => response.json())
                 .then((data) => {
-
                     const userRecipes = data.filter(recipe => user && recipe.userId === user);
                     setRecipes(userRecipes);
                 })
@@ -49,6 +48,7 @@ const RecipesList = ({ isConcluded, hideOptions }) => {
                         setRecipes={setRecipes}
                         hideOptions={hideOptions}
                         time={recipe.preparationTime || 'Sem timer rodado'}
+                        totalCost={recipe.totalCost}
                     />
                 </TouchableRipple>
             ))}

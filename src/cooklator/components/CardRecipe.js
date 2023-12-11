@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Platform, ScrollView, StyleSheet, View, Text} from 'react-native';
-import {Card, Title, Paragraph, Appbar, Menu, Divider, useTheme} from 'react-native-paper';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Appbar, Card, Menu, Paragraph, Title, useTheme} from 'react-native-paper';
 import ModalWarning from "./ModalWarning";
 import config from "../config";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,7 +10,8 @@ const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 const recipeApiUrl = config.recipeApiUrl;
 
-const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions, time}) => {
+const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
+                        time, totalCost}) => {
 
     const [visible, setVisible] = useState({});
     const {isV3} = useTheme();
@@ -103,6 +104,15 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
         showModal('Tem certeza que deseja finalizar esta receita?', 'finish')
     };
 
+    const getTotalCost = (totalCost) => {
+        const recipeCost = parseFloat(totalCost)
+        if (recipeCost !== null && recipeCost !== undefined) {
+            return recipeCost.toFixed(2);
+        } else {
+            return '0.00';
+        }
+    };
+
     const getRecipe = async (recipeId) => {
         try {
             const response = await fetch(`${recipeApiUrl}/${recipeId}`);
@@ -150,7 +160,7 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
                                     <Text style={styles.textIcon}>Materiais: 2</Text>
                                 </View>
                                 <Icon name="chart-line" size={20} color="gray"/>
-                                <Text style={styles.textIcon}>R$ 3,00</Text>
+                                <Text style={styles.textIcon}>R$ {getTotalCost(totalCost)}</Text>
                             </Paragraph>
                         </View>
 

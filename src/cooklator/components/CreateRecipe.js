@@ -5,6 +5,7 @@ import {Card, Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
 import config from "../config";
+import {createCost} from "./ApiUtils";
 
 const recipeApiUrl = config.recipeApiUrl;
 
@@ -56,10 +57,12 @@ const CreateRecipe = () => {
 
             if (isValid) {
 
-                let chosenHourValue = hourValueChange;
-                if (checked) {
-                    chosenHourValue = user.hourValue;
-                }
+                const chosenHourValue = checked ? user.hourValue : hourValueChange;
+
+                // let chosenHourValue = hourValueChange;
+                // if (checked) {
+                //     chosenHourValue = user.hourValue;
+                // }
 
                 const newRecipe = {
                     name: textTitle,
@@ -70,16 +73,35 @@ const CreateRecipe = () => {
                     preparationTime: '',
                     startDate: getCurrentDate(),
                     isConcluded: false,
-                    userId: user.id
+                    userId: user.id,
+                    totalCost: 0
                 };
 
-                const response = await addRecipe(newRecipe);
+                const responseRecipe  = await addRecipe(newRecipe);
 
-                if (response.status === 201 || response.status === 200) {
-                    const data = await response.json();
-                    showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
+                if (responseRecipe.status !== 201 && responseRecipe.status !== 200) {
+                    console.error('Erro ao adicionar receita:', responseRecipe);
+                    return;
+                }
+
+                    const recipeData = await responseRecipe.json();
+                    const newCost = {
+                        userId: user.id,
+                        recipeId: recipeData.id,
+                        totalMaterialCost: 0,
+                        totalTimeValue: 0,
+                        totalCost: 0,
+                    };
+
+                const responseCost = await createCost(newCost);
+
+                if (responseCost.status !== 201 && responseCost.status !== 200) {
+                    console.error('Erro ao criar custo:', responseCost);
+                    return;
                 }
             }
+
+            showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
         } catch
             (error) {
             console.error('Erro:', error);
@@ -193,20 +215,20 @@ const CreateRecipe = () => {
                         </Card>
 
                         <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
-                        <View style={styles.viewColors}>
+                            <View style={styles.viewColors}>
                                 <ColorPicker onColorSelect={handleColorSelect}/>
                             </View>
                         </Card>
 
                         <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
-                        <View style={styles.viewMaterial}>
-                            <Text style={styles.textMaterialTitle}>Materiais:</Text>
-                            <Pressable
-                                style={[styles.button, styles.buttonOpen]}
-                                onPress={handleNavigateToMaterial}>
-                                <Text style={styles.textStylePlus}>+</Text>
-                            </Pressable>
-                        </View>
+                            <View style={styles.viewMaterial}>
+                                <Text style={styles.textMaterialTitle}>Materiais:</Text>
+                                <Pressable
+                                    style={[styles.button, styles.buttonOpen]}
+                                    onPress={handleNavigateToMaterial}>
+                                    <Text style={styles.textStylePlus}>+</Text>
+                                </Pressable>
+                            </View>
                         </Card>
 
                         <View style={styles.viewButtons}>

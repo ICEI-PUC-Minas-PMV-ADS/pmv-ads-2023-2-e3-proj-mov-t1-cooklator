@@ -12,7 +12,7 @@ const costsApiUrl = config.costsApiUrl;
 const recipeApiUrl = config.recipeApiUrl;
 
 const OptionsTabs = ({route}) => {
-    const [value, setValue] = React.useState('timer');
+    const [value, setValue] = React.useState('values');
     const [suggestedPrice, setSuggestedPrice] = useState(0.00);
     const [totalMaterial, setTotalMaterial] = useState(0.00);
     const [totalValueHour, setTotalValueHour] = useState(0.00);
@@ -62,61 +62,51 @@ const OptionsTabs = ({route}) => {
         };
     };
 
-    const fetchCostsByField = async (recipeId, field, condicionalValue) => {
-        try {
-            const response = await fetch(`${costsApiUrl}`);
-            const data = await response.json();
-
-            if (response.status === 200) {
-                const matchingCost = data.find(cost => cost.recipeId === recipeId);
-                return matchingCost ? {[field]: matchingCost[field]} : {[field]: condicionalValue};
-            } else {
-                console.error('Erro ao obter lista de custos', data);
-                return {[field]: condicionalValue};
-            }
-        } catch (error) {
-            console.error('Erro na requisição:', error);
-            return {[field]: condicionalValue};
-        }
-    };
-
-    const getSuggestedPrice = async (recipeId) => {
-        return fetchCostsByField(recipeId, 'totalCost', 0);
-    };
-
-    const getTotalMaterial = async (recipeId) => {
-        return fetchCostsByField(recipeId, 'totalMaterialCost', 0);
-    };
-
-    const getTotalValueHour = async (recipeId) => {
-        return fetchCostsByField(recipeId, 'totalTimeValue', 0);
-    };
-
     const getRecipeDate = async (recipe) => {
         return recipe.startDate ? recipe.startDate : "10/10/2023";
-    };
+    }
 
-    useEffect(() => {
-        const fetchData = async () => {
+    const fetchData = async () => {
+        const fetchCostsByField = async (recipeId, field, defaultValue) => {
             try {
-                const [suggestedPriceData, totalMaterialData, totalValueHourData, starDateData] = await Promise.all([
-                    getSuggestedPrice(recipe.id),
-                    getTotalMaterial(recipe.id),
-                    getTotalValueHour(recipe.id),
-                    getRecipeDate(recipe)
-                ]);
+                const response = await fetch(`${costsApiUrl}`);
+                const data = await response.json();
 
-                setSuggestedPrice(suggestedPriceData.totalCost);
-                setTotalMaterial(totalMaterialData.totalMaterialCost);
-                setTotalValueHour(totalValueHourData.totalTimeValue)
-                setRecipeDate(starDateData)
+                if (response.status === 200) {
+                    const matchingCost = data.find(cost => cost.recipeId === recipeId);
+                    return matchingCost ? matchingCost[field] : defaultValue;
+                } else {
+                    console.error('Erro ao obter lista de custos', data);
+                    return defaultValue;
+                }
             } catch (error) {
-                console.error('Erro ao obter dados:', error);
+                console.error('Erro na requisição:', error);
+                return defaultValue;
             }
         };
 
-        fetchData();
-    }, [recipe.id]);
+        try {
+            const [suggestedPriceData, totalMaterialData, totalValueHourData, starDateData] = await Promise.all([
+                fetchCostsByField(recipe.id, 'totalCost', 0),
+                fetchCostsByField(recipe.id, 'totalMaterialCost', 0),
+                fetchCostsByField(recipe.id, 'totalTimeValue', 0),
+                getRecipeDate(recipe),
+            ]);
+
+            setSuggestedPrice(suggestedPriceData);
+            setTotalMaterial(totalMaterialData);
+            setTotalValueHour(totalValueHourData);
+            setRecipeDate(starDateData);
+        } catch (error) {
+            console.error('Erro ao obter dados:', error);
+        }
+    };
+
+    useEffect(() => {
+        if (value === 'values') {
+            fetchData();
+        }
+    }, [value, recipe.id]);
 
     const formatarData = (dataString) => {
         const options = {day: '2-digit', month: '2-digit', year: 'numeric'};
@@ -222,7 +212,7 @@ const OptionsTabs = ({route}) => {
                     <Text style={styles.titleTopic}>Valores e precificação</Text>
                     <CardValues cardTitle={'Preço sugerido'} cardSubTitle={suggestedPrice} concatenateCurrency={true}/>
                     <CardValues cardTitle={'Materiais'} cardSubTitle={totalMaterial} concatenateCurrency={true}/>
-                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={totalValueHour} concatenateCurrency={true}/>
+                    <CardValues cardTitle={'Valor tempo de trabalho'} cardSubTitle={totalValueHour} concatenateCurrency={true}/>
                 </View>
             )}
             {value === 'notes' && (
@@ -233,8 +223,10 @@ const OptionsTabs = ({route}) => {
                                 showIcon={true} onPressIcon={handleConfirmCommentEdition}
                                 colorIcon="#04364A"
                                 chosenIcon="lead-pencil"/>
-                    <CardValues cardTitle={'Data de registro da receita'} cardSubTitle={formatarData(recipeDate)}
+                    <CardValues cardTitle={'Data de registro da receita:'} cardSubTitle={formatarData(recipeDate)}
                                 concatenateCurrency={false}/>
+                    <CardValues cardTitle={'Valor cadastrado por hora:'} cardSubTitle={recipe.hourValue}
+                                concatenateCurrency={true}/>
                 </View>
             )}
             <ModalWarning
