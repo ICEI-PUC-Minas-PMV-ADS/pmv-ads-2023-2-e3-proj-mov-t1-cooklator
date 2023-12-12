@@ -45,8 +45,7 @@ const Timer = ({ recipe }) => {
             const matchingCosts = await getRecipeCost(recipe.userId, recipe.id);
             let timeRecipe;
             timeRecipe = time / 3600
-
-            const newTimeValue = parseFloat(timeRecipe) * parseFloat(recipe.preparationTime)
+            const newTimeValue = parseFloat(timeRecipe) * parseFloat(recipe.hourValue)
 
             const matchingCost = matchingCosts[0];
             const costDb = matchingCost.totalMaterialCost;
