@@ -64,12 +64,6 @@ const Register = () => {
 
   return (
     <Container>
-    <Button
-          style={styles.button1}
-          icon="keyboard-return"
-          mode="contained"
-          onPress={() => navigation.goBack()}>
-        </Button>
       <View style={styles.header}>
         <Logo />
       </View>
