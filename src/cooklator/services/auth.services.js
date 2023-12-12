@@ -37,7 +37,7 @@ export const login = async (param) => {
     const response = await axios.get(`${usersUrl}`);
 
     const matchingUsers = response.data.filter(user =>
-        user.username === param.username && user.password === param.password
+        user.email === param.email && user.password === param.password
     );
 
     if (matchingUsers.length > 0) {
