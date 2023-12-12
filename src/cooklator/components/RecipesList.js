@@ -14,8 +14,8 @@ const RecipesList = ({ isConcluded, hideOptions }) => {
     const route = useRoute();
     const user = route.params?.user;
 
-    const handleCardPress = (recipe) => {
-        navigation.navigate('OptionsTabs', { recipe });
+    const handleCardPress = (recipe, hideOptions) => {
+        navigation.navigate('OptionsTabs', { recipe, hideOptions });
     };
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const RecipesList = ({ isConcluded, hideOptions }) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {filteredRecipes.map((recipe) => (
-                <TouchableRipple key={recipe.id} onPress={() => handleCardPress(recipe)}>
+                <TouchableRipple key={recipe.id} onPress={() => handleCardPress(recipe, hideOptions)}>
                     <CardRecipe
                         key={recipe.id}
                         recipeName={recipe.name}
