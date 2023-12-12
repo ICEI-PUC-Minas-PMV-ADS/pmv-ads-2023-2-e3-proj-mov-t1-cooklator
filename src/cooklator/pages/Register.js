@@ -9,15 +9,18 @@ import Logo from '../components/Logo';
 import { useNavigation } from '@react-navigation/native';
 
 import {register} from '../services/auth.services';
+import ModalWarning from "../components/ModalWarning";
 
 const Register = () => {
 
   const navigation = useNavigation();
-  
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hourValue, setHourValue] = useState('');
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleRegister = () => {
 
@@ -30,18 +33,11 @@ const Register = () => {
       console.log(res);
 
       if(res){
-
-        Alert.alert('Atenção', 'Usuário Cadastrado com sucesso!',[
-          { text: "OK", onPress: () => navigation.goBack() }
-        ]);
-
+        showModal('Usuário cadastrado com sucesso!');
       }else{
-
-         Alert.alert('Atenção', 'Usuário não cadastrado! Tente novamente mais tarde =D');
+        showModal('Erro ao cadastrar Usuário!');
       }
-
     });
-    
   }
 
   const handleInputChange = (text) => {
@@ -53,6 +49,17 @@ const Register = () => {
     );
 
     setHourValue(formattedValue);
+  };
+
+  const showModal = (message) => {
+    setModalMessage(message);
+    setModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setModalVisible(false);
+    setModalMessage('');
+    navigation.navigate('Login');
   };
 
   return (
@@ -103,6 +110,8 @@ const Register = () => {
           onPress={handleRegister}>
           REGISTRAR
         </Button>
+        <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal}
+                      primaryButtonLabel={'OK'}/>
         <Button
           style={styles.button}
           icon="cancel"
@@ -120,7 +129,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#176B87',
     borderTopColor:'#000',
     marginBottom: 8,
-    
+
   },
   button1: {
     backgroundColor:'#176B87',
@@ -129,7 +138,7 @@ const styles = StyleSheet.create({
     width:10,
     height:20,
     marginTop: 5,
-    
+
   },
   textHeader: {
     textAlign: 'center',
