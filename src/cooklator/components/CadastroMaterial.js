@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View, ScrollView, Alert } from 'react-native';
 import {
     useFonts,
     Comfortaa_300Light,
@@ -9,11 +9,14 @@ import {
     Comfortaa_600SemiBold,
     Comfortaa_700Bold,
 } from '@expo-google-fonts/comfortaa';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Você pode escolher diferentes conjuntos de ícones
+import { useNavigation } from '@react-navigation/native';
 
-export default function CadastroMaterial() {
 
-    const [value] = React.useState();
+const CadastroMaterial = () => {
+
+    const navigation = useNavigation();
+    const [materialValue, setMaterialValue] = React.useState('R$0,00');
+    const [savedMaterials, setSavedmaterials] = React.useState([]);
 
     let [fontsLoaded] = useFonts({
         Comfortaa_300Light,
@@ -23,66 +26,118 @@ export default function CadastroMaterial() {
         Comfortaa_700Bold,
     });
 
+    const [material, setMaterial] = React.useState({
+        nome: '',
+        quantidade: '',
+        valor: '',
+        observacoes: '',
+    });
+
+    const handleAdd = () => {
+        if (material.nome == '' || material.quantidade == '' || material.valor == '') {
+            Alert.alert('Por favor', 'Informe os dados do material')
+        } else {
+            const newMaterial = { ...material, valor: materialValue };
+            setSavedmaterials([...savedMaterials, newMaterial]);
+            setMaterial({
+                nome: '',
+                quantidade: '',
+                valor: '',
+                observacoes: '',
+            });
+        }
+    };
+
+    const handleInputChange = (text) => {
+        const numericValue = text.replace(/[^0-9]/g, '');
+
+        const formattedValue = numericValue.replace(
+            /(\d)(?=(\d{2})+(?!\d))/g,
+            '$1.'
+        );
+
+        setMaterialValue(`R$ ${formattedValue}`);
+    };
+
+    const handleSave = () => {
+        console.log('Salvo');
+    }
+
     return (
-        <View style={styles.container}>
-            <Text style={[styles.tittle, {marginTop: 10}]}>
-                Novo projeto
-            </Text>
-            <View
-                style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    alignSelf: 'stretch',
-                }}
-            />
-            <Text style={[styles.div, {marginTop: 10}]}>
-                Materiais
-            </Text>
-            <View style={styles.box1}>
-                <View style={styles.box2}>
-                    <TextInput
-                        editable
-                        maxLength={40}
-                        value={value}
-                        style={styles.input}
-                        placeholder='Nome do material'
-                    />
-                    <TextInput
-                        editable
-                        maxLength={40}
-                        value={value}
-                        style={styles.input}
-                        placeholder='Quantidade'
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.container}>
+                <Text style={[styles.headerText, { marginTop: 10 }]}>
+                    Materiais
+                </Text>
+                <View style={styles.box1}>
+                    <View style={styles.box2}>
+                        <TextInput
+                            maxLength={40}
+                            value={material.nome}
+                            style={styles.input}
+                            placeholder='Nome do material'
+                            onChangeText={(text) => setMaterial({ ...material, nome: text })}
+                        />
+                        <TextInput
+                            keyboardType='numeric'
+                            maxLength={40}
+                            value={material.quantidade}
+                            style={styles.input}
+                            placeholder='Quantidade'
+                            onChangeText={(text) => setMaterial({ ...material, quantidade: text })}
+                        />
+                        <TextInput
+                            keyboardType='numeric'
+                            maxLength={40}
+                            value={material.valor}
+                            style={styles.input}
+                            placeholder='Valor'
+                            onChangeText={(text) => {
+                                setMaterial({ ...material, valor: text })
+                                handleInputChange(text)
+                            }}
+                        />
+                        <TextInput
+                            maxLength={40}
+                            value={material.observacoes}
+                            style={styles.input}
+                            placeholder='Notas e observações'
+                            onChangeText={(text) => setMaterial({ ...material, observacoes: text })}
+                        />
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Pressable style={styles.buttonSave} onPress={handleAdd}>
+                            <Text style={styles.saveText}>
+                                +
+                            </Text>
+                        </Pressable>
+                        <Pressable style={styles.buttonSave} onPress={() => navigation.navigate('CadastrarReceita', { newMaterial })} >
+                            <Text style={styles.saveText}>
+                                Salvar
+                            </Text>
+                        </Pressable>
+                    </View>
+                    <View>
+                        <Text style={styles.headerText}>Materiais Salvos</Text>
+                        {savedMaterials.map((newMaterial, index) => (
+                            <View key={index} style={styles.savedMaterialContainer}>
+                                <Text style={styles.savedMaterialTitle}>{newMaterial.nome}</Text>
 
-                    />
-                    <TextInput
-                        editable
-                        maxLength={40}
-                        value={value}
-                        style={styles.input}
-                        placeholder='Valor'
+                                <Text style={styles.savedMaterialLabel}>Quantidade:</Text>
+                                <Text style={styles.savedMaterialText}>{newMaterial.quantidade}</Text>
 
-                    />
-                    <TextInput
-                        editable
-                        maxLength={40}
-                        value={value}
-                        style={styles.input}
-                        placeholder='Notas e observações'
+                                <Text style={styles.savedMaterialLabel}>Valor unidade:</Text>
+                                <Text style={styles.savedMaterialText}>{newMaterial.valor}</Text>
 
-                    />
+                                <Text style={styles.savedMaterialLabel}>Observações:</Text>
+                                <Text style={styles.savedMaterialText}>{newMaterial.observacoes}</Text>
+                            </View>
+                        ))}
+                    </View>
                 </View>
-                <View style={styles.buttonContainer}>
-                    <Pressable style={styles.button}>
-                        +
-                    </Pressable>
-                    <Pressable style={styles.button}>
-                        Salvar
-                    </Pressable>
-                </View>
+                <StatusBar style="auto" />
             </View>
-            <StatusBar style="auto" />
-        </View>
+        </ScrollView>
     );
 }
 
@@ -90,56 +145,75 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+    headerText: {
+        fontSize: 25,
+        textAlign: 'center',
+        fontWeight: 'bold',
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 5
-    },
-    button: {
-        backgroundColor: '#50555C',
-        borderRadius: 10,
         padding: 5,
+    },
+    buttonSave: {
+        width: 100,
+        height: 40,
+        backgroundColor: '#64CCC5',
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: '#fff',
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
+    saveText: {
+        fontFamily: 'Comfortaa_600SemiBold',
+        fontSize: 15,
         textAlign: 'center',
-        fontFamily: 'Comfortaa_700Bold',
-        margin: 5
+        margin: '0px',
+        paddingTop: '5px',
+        fontWeight: '500',
+        color: 'white',
     },
-    tittle:{
-        fontSize: 25,
-        marginTop: 20,
+    input: {
         fontFamily: 'Comfortaa_300Light',
-        paddingBottom: 30
-    },
-    div:{
-        fontFamily: 'Comfortaa_300Light',
-        backgroundColor: '#E5E5E5'
-    },
-    input:{
-        fontFamily: 'Comfortaa_300Light',
-        backgroundColor: '#E5E5E5',
-        borderColor: '#eee',
+        backgroundColor: 'white',
+        borderColor: '#64CCC5',
         borderWidth: 1,
         borderRadius: 5,
         width: 274,
         height: 38,
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 8,
     },
-    box1: {
-        backgroundColor: '#E5E5E5',
-        width: 305,
-        height: 327,
-        borderRadius: 20,
-        marginTop: 10
+
+    savedMaterialLabel: {
+        fontWeight: 'bold',
+        fontSize: '18px',
     },
-    box2: {
-        backgroundColor: '#C4C4C482',
-        width: 305,
-        height: 177,
-        marginTop: 50,
-        padding: 10
+    savedMaterialTitle: {
+        fontSize: '18px',
+        fontWeight: 'bold',
+        marginBottom: 5,
+        backgroundColor: '#D3D3D3',
     },
-    footer: {
-        borderTopColor: 'black'
+    savedMaterialText: {
+        marginBottom: 10,
+    },
+    scrollContainer: {
+        flexGrow: 1,
+    },
+    savedMaterialContainer: {
+        backgroundColor: '#e9e9e9'
     }
 });
+
+
+export default CadastroMaterial;

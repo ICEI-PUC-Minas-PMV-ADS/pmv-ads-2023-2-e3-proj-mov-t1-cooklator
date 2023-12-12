@@ -149,9 +149,9 @@ const App = () => {
                                 name="CadastroMaterial"
                                 component={CadastroMaterial}
                                 options={{
-                                    title: "Cadastrar Receita",
+                                    title: "Cadastrar Material",
                                     headerStyle: {
-                                        backgroundColor: "#176B87",
+                                        backgroundColor: "#64CCC5",
                                         shadowOpacity: 0,
                                         elevation: 0,
                                     },
