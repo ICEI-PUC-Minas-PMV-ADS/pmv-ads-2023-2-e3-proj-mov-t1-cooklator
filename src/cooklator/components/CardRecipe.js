@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Appbar, Card, Menu, Paragraph, Title, useTheme } from 'react-native-paper';
 import ModalWarning from "./ModalWarning";
@@ -26,18 +26,22 @@ const CardRecipe = ({ recipeName, recipeColor, recipeId, setRecipes, hideOptions
         navigation.navigate('OptionsTabs');
     }
 
-    function loadData() {
-        fetch(config.materialsUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                const filteredMaterials = data.filter(material => material.recipeId === recipeId || Number(material.recipeId) === recipeId);
-                const count = filteredMaterials.length;
-
-                setCount(count);
-
-            })
-            .catch((error) => console.error('Erro ao buscar as receitas:', error));
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(config.materialsUrl);
+            const data = await response.json();
+            const filteredMaterials = data.filter(material => material.recipeId === recipeId || Number(material.recipeId) === recipeId);
+            const count = filteredMaterials.length;
+            setCount(count);
+          } catch (error) {
+            console.error('Erro ao buscar as receitas:', error);
+          }
+        };
+    
+        fetchData();
+    
+      }, []); 
 
     const showModal = (message, type) => {
         if (type === "exclude") {
@@ -155,7 +159,6 @@ const CardRecipe = ({ recipeName, recipeColor, recipeId, setRecipes, hideOptions
 
         return fetch(editUrl, requestOptions);
     }
-
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Card style={styles.card}>
@@ -163,7 +166,6 @@ const CardRecipe = ({ recipeName, recipeColor, recipeId, setRecipes, hideOptions
                 <Card.Content>
                     <View style={styles.cardContent}>
                         <View>
-                            {loadData()}
                             <Title style={styles.titleText}>{recipeName}</Title>
                             <Paragraph style={styles.titleContent}>
                                 <View style={styles.iconContainer}>
