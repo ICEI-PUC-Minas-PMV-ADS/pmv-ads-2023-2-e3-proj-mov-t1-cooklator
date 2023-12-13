@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ScrollView } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import Timer from "./Timer";
 import { Card } from 'react-native-paper';
-
 import CardValues from "./CardValues";
 import config from "../config";
 import { useState, useEffect } from "react";
@@ -181,7 +180,7 @@ const OptionsTabs = ({ route }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.viewRecipeTitle}>
                 <Text style={styles.title}>{recipe.name}</Text>
             </View>
@@ -306,11 +305,14 @@ const OptionsTabs = ({ route }) => {
                 }}
                 secondaryButtonLabel="Não salvar"
             />
-        </View>
+        </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
+    containerScroll: {
+        flexGrow: 1,
+    },
     container: {
         marginVertical: 16,
     },
