@@ -33,17 +33,29 @@ O código utiliza o hook useState do React para criar vários estados. Os estado
 Além disso, há também as variáveis de validação dos campos "name", "e-mail", "newPassword" e "newPasswordConfirmation". Essas variáveis são, respectivamente: "isNameValid", "isEmailValid", "isNewPasswordValid" e "isNewPasswordConfirmationValid".
 
 A interface é renderizada dentro de um componente View. Ela consiste em dois cards, cada um contendo campos de entrada e botões.
-O primeiro card é para as informações pessoais, nome, e-mail e valor por hora. Um botão "Editar" é fornecido, mas atualmente, ele apenas imprime uma mensagem no console quando pressionado. O segundo card é para alteração de senha. Ele inclui campos para a senha atual, nova senha e confirmação da nova senha. Cada campo de senha é configurado para ocultar ou mostrar a senha atual e as novas senhas, conforme desejado. Há também um botão "Alterar Senha", que ainda não executa nenhuma ação além de imprimir uma mensagem no console nessa implementação inicial.
+O primeiro card é para as informações pessoais, nome, e-mail e valor por hora. Ao clicar em editar, a variável booleana "isLoading" altera seu valor para "true", o que aciona a animação de carregamento no botão. Caso os campos estejam válidos, uma requisição é feita para o backend com as informações inseridas pelo usuário. Caso a resposta da requisição seja ok, os dados atualizados são armazenados em LocalStorage e um modal com uma mensagem de sucesso é apresentado para o usuário. O segundo card é para alteração de senha. Ele inclui campos para a senha atual, nova senha e confirmação da nova senha. Cada campo de senha é configurado para ocultar ou mostrar a senha atual e as novas senhas, conforme desejado. Há também um botão "Alterar Senha" que ao ser acionado realiza as validações necessárias, como a autenticação da senha atual do usuário e o número de caracteres exigido na nova senha. Uma requisição é realizada ao backend com as informações da nova senha e uma mensagem de sucesso é apresentada para o usuário caso a resposta seja de sucesso.
 
-<img src="img/telaPerfil11.png" alt="Tela-Perfil-11">
+![Captura de tela 2023-12-12 230957](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/05511a9e-efed-42ae-b0b1-01a4685b2a19)
 
-<img src="img/telaPerfil12.png" alt="Tela-Perfil-12">
+![Captura de tela 2023-12-12 231107](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/48749c84-83de-4a72-9dda-8beabab65450)
 
-<img src="img/telaPerfil13.png" alt="Tela-Perfil-13">
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/e3291582-4535-4fb8-8874-df05746c2ca8)
 
-<img src="img/telaPerfil14.png" alt="Tela-Perfil-14">
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/f52d954e-2c19-415d-9c0f-871c2c38bb2b)
 
-Nas imagens acima, é possível observar as funções chamadas com o evento de preenchimento dos diversos campos da página. Nelas há a validação dos dados, a alteração das variáveis de validação e das variáveis que irão armazenar os dados informados pelo usuário, caso sejam válidos.Também é possível observar a expressão regular utilizada para verificar a validade do endereço de e-mail inserido pelo usuário:<br>
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/05219af2-02fc-42b4-92d2-014205b4923c)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/d714df50-d346-4cb4-8950-70a55e7c9fce)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/3d294fed-9d2c-472a-827c-a374153903b0)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/26d1ff9b-7711-490b-b491-02cd01687541)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/87f7915e-1524-4e36-81df-166c4099a584)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/85afb479-d2f5-4044-b70e-11f47745940d)
+
+Nas imagens acima, é possível observar as funções chamadas com o evento de preenchimento dos diversos campos da página. Nelas há a validação dos dados, a alteração das variáveis de validação e das variáveis que irão armazenar os dados informados pelo usuário, caso sejam válidos. Além disso, é possível observar as requisições realizadas para o backend e as diferentes ações de acordo com a resposta obtida. Também é possível observar a expressão regular utilizada para verificar a validade do endereço de e-mail inserido pelo usuário:<br>
 <br>
 <strong>"^"</strong>: Representa o início da string, garantindo que a correspondência comece desde o início.<br>
 <strong>"[^\s@]+"</strong>: Corresponde a um ou mais caracteres que não são espaços em branco (\s) nem o símbolo "@".<br>
@@ -52,15 +64,15 @@ Nas imagens acima, é possível observar as funções chamadas com o evento de p
 <strong>"\."</strong>: Corresponde literalmente a um ponto (.) — usado para separar o nome de domínio da parte do domínio de nível superior<br>
 <strong>"[^\s@]+$"</strong>: Corresponde a um ou mais caracteres que não são espaços em branco (\s) nem o símbolo "@", no final da string ($ indica o final da string).<br>
 
-<img src="img/telaPerfil15.png" alt="Tela-Perfil-15">
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/43107d47-b155-4b67-b8aa-d8d26dbf3da9)
 
-<img src="img/telaPerfil16.png" alt="Tela-Perfil-16">
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/c79ca946-2788-434d-8949-dfadc42f7724)
 
-<img src="img/telaPerfil17.png" alt="Tela-Perfil-17">
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/9686eef0-1532-4c47-9272-f792eada9ba5)
 
-<img src="img/telaPerfil18.png" alt="Tela-Perfil-18">
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/dea17f96-e332-4d47-872a-ade05a9fea93)
 
-Nas imagens acima, é possível observar a lógica utilizada para acessar os valores das variáveis de validação e de acordo com o seu valor booleano, alterar o estilo do input e apresentar ou não a mensagem de validação correspondente a cada campo da tela.
+Também é possível observar a lógica utilizada para acessar os valores das variáveis de validação e de acordo com o seu valor booleano, alterar o estilo do input e apresentar ou não a mensagem de validação correspondente a cada campo da tela.
 
 ## Tela de Cadastro de Receitas (Juliana Dutra Moreira)
 
