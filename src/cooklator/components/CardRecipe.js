@@ -1,28 +1,42 @@
-import React, {useState} from 'react';
-import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Appbar, Card, Menu, Paragraph, Title, useTheme} from 'react-native-paper';
+import React, { useState } from 'react';
+import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Appbar, Card, Menu, Paragraph, Title, useTheme } from 'react-native-paper';
 import ModalWarning from "./ModalWarning";
 import config from "../config";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 const recipeApiUrl = config.recipeApiUrl;
 
-const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
-                        time, totalCost}) => {
+const CardRecipe = ({ recipeName, recipeColor, recipeId, setRecipes, hideOptions,
+    time, totalCost }) => {
 
     const [visible, setVisible] = useState({});
-    const {isV3} = useTheme();
+    const { isV3 } = useTheme();
     const [modalVisibleConfirmRemove, setModalVisibleConfirmRemove] = useState(false);
     const [modalMessageConfirmRemove, setModalMessageConfirmRemove] = useState('');
     const [modalVisibleConfirmFinish, setModalVisibleConfirmFinish] = useState(false);
     const [modalMessageConfirmFinish, setModalMessageConfirmFinish] = useState('');
+    const [count, setCount] = useState(0);
     const navigation = useNavigation();
 
     const handleNavigateToOptions = () => {
         navigation.navigate('OptionsTabs');
+    }
+
+    function loadData() {
+        fetch(config.materialsUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                const filteredMaterials = data.filter(material => material.recipeId === recipeId || Number(material.recipeId) === recipeId);
+                const count = filteredMaterials.length;
+
+                setCount(count);
+
+            })
+            .catch((error) => console.error('Erro ao buscar as receitas:', error));
     }
 
     const showModal = (message, type) => {
@@ -46,7 +60,7 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
     };
 
     const _toggleMenu = (name) => () => {
-        setVisible({...visible, [name]: !visible[name]});
+        setVisible({ ...visible, [name]: !visible[name] });
     };
 
     const removeRecipe = async (recipeId) => {
@@ -58,7 +72,7 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
             }
 
         } catch
-            (error) {
+        (error) {
             console.error('Erro:', error);
         }
     }
@@ -92,7 +106,7 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
             const response = await updateRecipe(recipeId, updatedRecipeData);
             if (response.status === 201 || response.status === 200) {
                 setRecipes((prevRecipes) => prevRecipes.map(recipe =>
-                    recipe.id === recipeId ? {...recipe, ...updatedRecipeData} : recipe
+                    recipe.id === recipeId ? { ...recipe, ...updatedRecipeData } : recipe
                 ));
             }
         } catch (error) {
@@ -145,27 +159,28 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Card style={styles.card}>
-                <Card.Cover style={{...styles.cardCover, backgroundColor: recipeColor}}/>
+                <Card.Cover style={{ ...styles.cardCover, backgroundColor: recipeColor }} />
                 <Card.Content>
                     <View style={styles.cardContent}>
                         <View>
+                            {loadData()}
                             <Title style={styles.titleText}>{recipeName}</Title>
                             <Paragraph style={styles.titleContent}>
                                 <View style={styles.iconContainer}>
-                                    <Icon name="timer-outline" size={20} color="gray"/>
+                                    <Icon name="timer-outline" size={20} color="gray" />
                                     <Text style={styles.textIcon}>Tempo: {time}</Text>
                                 </View>
                                 <View style={styles.iconContainer}>
-                                    <Icon name="fruit-watermelon" size={20} color="gray"/>
-                                    <Text style={styles.textIcon}>Materiais: 2</Text>
+                                    <Icon name="fruit-watermelon" size={20} color="gray" />
+                                    <Text style={styles.textIcon}>Materiais: {count}</Text>
                                 </View>
-                                <Icon name="chart-line" size={20} color="gray"/>
+                                <Icon name="chart-line" size={20} color="gray" />
                                 <Text style={styles.textIcon}>R$ {getTotalCost(totalCost)}</Text>
                             </Paragraph>
                         </View>
 
                         <View style={styles.containerMenu}>
-                            <Appbar.Header style={{backgroundColor: 'transparent', width: 45}}>
+                            <Appbar.Header style={{ backgroundColor: 'transparent', width: 45 }}>
                                 <Menu
                                     visible={_getVisible('menu1')}
                                     onDismiss={_toggleMenu('menu1')}
@@ -173,21 +188,21 @@ const CardRecipe = ({recipeName, recipeColor, recipeId, setRecipes, hideOptions,
                                         <Appbar.Action
                                             icon={MORE_ICON}
                                             onPress={_toggleMenu('menu1')}
-                                            {...(!isV3 && {color: 'white'})}
+                                            {...(!isV3 && { color: 'white' })}
                                         />
                                     }
                                 >
                                     {!hideOptions && (
                                         <Menu.Item
                                             onPress={() => handleConfirmRecipeFinalization(recipeId)}
-                                            title="Finalizar Projeto"/>
+                                            title="Finalizar Projeto" />
                                     )}
                                     {!hideOptions && (
                                         <Menu.Item onPress={() => {
-                                        }} title="Editar"/>
+                                        }} title="Editar" />
                                     )}
                                     <Menu.Item onPress={() => handleConfirmDeleteRecipe(recipeId)}
-                                               title="Remover"/>
+                                        title="Remover" />
                                 </Menu>
                             </Appbar.Header>
                         </View>

@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import config from "../config";
 import { Pressable, StyleSheet, Text, TextInput, View, ScrollView, Alert } from 'react-native';
 import {
     useFonts,
@@ -16,7 +17,6 @@ const CadastroMaterial = () => {
 
     const navigation = useNavigation();
     const [materialValue, setMaterialValue] = React.useState('R$0,00');
-    const [savedMaterials, setSavedmaterials] = React.useState([]);
 
     let [fontsLoaded] = useFonts({
         Comfortaa_300Light,
@@ -34,17 +34,26 @@ const CadastroMaterial = () => {
     });
 
     const handleAdd = () => {
+        const recipeId = localStorage.getItem("recipeId");
+
         if (material.nome == '' || material.quantidade == '' || material.valor == '') {
-            Alert.alert('Por favor', 'Informe os dados do material')
+            Alert.alert('Por favor', 'Informe os dados do material ')
         } else {
-            const newMaterial = { ...material, valor: materialValue };
-            setSavedmaterials([...savedMaterials, newMaterial]);
+            const newMaterial = { ...material, valor: materialValue, recipeId };
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newMaterial),
+            };
             setMaterial({
                 nome: '',
                 quantidade: '',
                 valor: '',
                 observacoes: '',
             });
+            return fetch(config.materialsUrl, requestOptions);
         }
     };
 
@@ -106,33 +115,11 @@ const CadastroMaterial = () => {
                         />
                     </View>
                     <View style={styles.buttonContainer}>
-                        <Pressable style={styles.buttonSave} onPress={handleAdd}>
-                            <Text style={styles.saveText}>
-                                +
-                            </Text>
-                        </Pressable>
-                        <Pressable style={styles.buttonSave} onPress={() => navigation.navigate('CadastrarReceita', { newMaterial })} >
+                        <Pressable style={styles.buttonSave} onPress={handleAdd} >
                             <Text style={styles.saveText}>
                                 Salvar
                             </Text>
                         </Pressable>
-                    </View>
-                    <View>
-                        <Text style={styles.headerText}>Materiais Salvos</Text>
-                        {savedMaterials.map((newMaterial, index) => (
-                            <View key={index} style={styles.savedMaterialContainer}>
-                                <Text style={styles.savedMaterialTitle}>{newMaterial.nome}</Text>
-
-                                <Text style={styles.savedMaterialLabel}>Quantidade:</Text>
-                                <Text style={styles.savedMaterialText}>{newMaterial.quantidade}</Text>
-
-                                <Text style={styles.savedMaterialLabel}>Valor unidade:</Text>
-                                <Text style={styles.savedMaterialText}>{newMaterial.valor}</Text>
-
-                                <Text style={styles.savedMaterialLabel}>Observações:</Text>
-                                <Text style={styles.savedMaterialText}>{newMaterial.observacoes}</Text>
-                            </View>
-                        ))}
                     </View>
                 </View>
                 <StatusBar style="auto" />

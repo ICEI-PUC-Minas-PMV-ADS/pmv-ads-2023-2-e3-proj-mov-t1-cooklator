@@ -26,9 +26,6 @@ const CreateRecipe = () => {
     const user = route.params?.user;
     const applyToAllProjects = user?.applyToAllProjects || false;
 
-    const handleNavigateToMaterial = () => {
-        navigation.navigate('CadastroMaterial');
-    };
 
     const handleNavigateToRecipesPage = () => {
         navigation.navigate('Recipes');
