@@ -155,16 +155,21 @@ const OptionsTabs = ({ route }) => {
         localStorage.setItem("recipeId", recipe.id);
         navigation.navigate('CadastroMaterial');
     };
-
-    function loadData() {
-        fetch(config.materialsUrl)
+    useEffect(() => {
+        const loadData = async () => {
+            fetch(config.materialsUrl)
             .then((response) => response.json())
             .then((data) => {
                 const filteredMaterials = data.filter(material => material.recipeId === recipe.id ||  Number(material.recipeId) === recipe.id);
                 setMaterialsArray(filteredMaterials);
             })
             .catch((error) => console.error('Erro ao buscar as receitas:', error));
-    }
+        };
+    
+        loadData();
+    
+      }, []); 
+
     function makeRecipeUpdateRequest(recipeId, updatedRecipeData) {
         const editUrl = recipeApiUrl + '/' + recipeId;
 
@@ -237,7 +242,6 @@ const OptionsTabs = ({ route }) => {
 
             {value === 'materials' && (
                 <View>
-                    {loadData()}
                     <Card style={[styles.card, { minHeight: 10 }]} elevation={3}>
                         <View style={styles.viewMaterial}>
                             <Text style={styles.textMaterialTitle}>Materiais:</Text>
