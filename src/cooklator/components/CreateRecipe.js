@@ -218,17 +218,6 @@ const CreateRecipe = () => {
                             </View>
                         </Card>
 
-                        <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
-                            <View style={styles.viewMaterial}>
-                                <Text style={styles.textMaterialTitle}>Materiais:</Text>
-                                <Pressable
-                                    style={[styles.button, styles.buttonOpen]}
-                                    onPress={handleNavigateToMaterial}>
-                                    <Text style={styles.textStylePlus}>+</Text>
-                                </Pressable>
-                            </View>
-                        </Card>
-
                         <View style={styles.viewButtons}>
                             <View>
                                 <TouchableHighlight
