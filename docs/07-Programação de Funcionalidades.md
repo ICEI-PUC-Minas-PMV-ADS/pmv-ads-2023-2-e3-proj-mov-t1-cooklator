@@ -110,6 +110,7 @@ Foi Adicionado uma Rota de fluxo , para verificar se o usuário estar Logado ou 
 | **[15/10/2023]** | [Guilherme] | [Elaboração da versão 1 da tela. Falta ser integrada aos menus e as funcionalidades] | [1.0] |
 | **[11/10/2023]** | [Guilherme] | [Integração do componente a tela] | [2.0] |
 | **[05/12/2023]** | [Guilherme] | [Integração do componente ao backend, correção de visuais] | [3.0] |
+| **[12/12/2023]** | [Guilherme] | [Integração do componente ao backend de outras telas, correção de visuais] | [3.0] |
 
 A tela de timer é uma das funcionalidades da aplicação. O usuário irá iniciar o timer e poderá parar(para a contagem e pode retomar de onde parou) ou pausar(finalizar e salvar). A primeira versão é apenas um componente onde salva os tempos de execucação em memória. Ele distingue uma unidade(hora ou horas), distingue as unidades de tempo(segundos, minutos e horas). Para a entrega final desse componente falta a integração com a Fake API e a mudança dos estilos para se adequar ao restante do projeto.
 
@@ -124,7 +125,9 @@ Links estudo:
 <img src="img/timer02.jpg" alt="Timer02">
 <img src="img/pinkTimer.png" alt="pinkTimer">
 <img src="img/imagem_2023-12-05_225423849.pngg" alt="list">
-
+<img src="img/menu1.jpg" alt="Menu01">
+<img src="img/menu2.jpg" alt="Menu02">
+<img src="img/menu3.jpg" alt="Menu03">
 <div align="center">
   <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/d86297a8-1dbb-4b4f-9100-6d5421334710" alt="Timer1" style="width: 30%;">
   <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/a80c1b80-883f-4b72-893b-e37315b2b160" alt="Timer2" style="width: 30%;">
