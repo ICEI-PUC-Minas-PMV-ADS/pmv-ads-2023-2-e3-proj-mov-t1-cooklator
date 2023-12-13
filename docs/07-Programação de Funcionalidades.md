@@ -76,19 +76,21 @@ Também é possível observar a lógica utilizada para acessar os valores das va
 
 ## Tela de Cadastro de Receitas (Juliana Dutra Moreira)
 
-O cadastro de receitas permitirá ao usuário fazer o registro inicial da receita com nome, observações, valor da hora e cadastrar também, os  materiais que serão utilizados no desenvolvimento do prato. O usuário poderá escolher entre cadastrar o valor da hora usando o valor geral estipulado no cadastro (e exibido na tela de perfil) ou então, colocar o valor desejado no input. Para identificar melhor a receita, o usuário poderá também escolher uma cor a qual será exibida nos cards das receitas. Caso o usuário não selecione, uma cor padrão será atribuída à receita.
+O cadastro de receitas permitirá ao usuário fazer o registro inicial da receita com nome, observações e valor da horao. O usuário poderá escolher entre cadastrar o valor da hora usando o valor geral estipulado no cadastro (e exibido na tela de perfil) ou então, colocar o valor desejado no input. Para identificar melhor a receita, o usuário poderá também escolher uma cor a qual será exibida nos cards das receitas. Caso o usuário não selecione, uma cor padrão será atribuída à receita.
 
 O usuário deverá, obrigatoriamente, inserir um nome e um valor à receita. Caso ele deixe de preencher estes campos, será impedido de salvar e prosseguir, e além disso, alertas de preenchimento serão exibidos na tela.
 
 Ao clicar em "Salvar", uma mensagem de sucesso será exibida e o usuário poderá optar por ir para a página inicial ou cadastrar outra receita. Após esta ação, a requisição para o backend é realizada e a receita é armazenada no banco de dados.
 
-Todas as funcionalidades citadas acima já estão aplicadas, faltando apenas a integração com o cadastro de materiais e a listagem destes.
+Caso em no Perfil o usuário selecione a opção "Fixar para todos os projetos" o checkbox e input de valores de horas serão ocultados do cadastro.
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/08f9ef48-9e3d-4d9a-a559-dda54d92c454)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/48abb0e0-76f5-48bf-bd22-78b4f97cfb0c)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/70581f34-8244-4d9d-afb9-baa38e5ebe84)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/5540f24b-f62f-4308-9016-2877610f4386)
 
 ## TELA DE LOGIN E CADASTRO (HECTOR FLORENÇA)
 
@@ -150,13 +152,11 @@ Links estudo:
 
 Na tela de exibição das receitas em progresso, uma lista com cards de cada receita cadastrada será exibida. As receitas exibidas estão sendo resgatadas do banco de dados, sendo as receitas cadastradas na tela de Cadastro de Receitas.
 
-Cada card exibe o título da receita e as informações relacionadas a ela. Há um menu à direita do card no qual o usuário poderá editar os dados, remover e finalizar a receita. Ao clicar em remover, um aviso de validação é exibido e caso o usuário opte por prosseguir com a ação, a receita será deletada no banco de dados e o card desta receita removido da lista da página.
+Cada card exibe o título da receita e as informações relacionadas a ela. Há um menu à direita do card no qual o usuário poderá remover e finalizar a receita. Ao clicar em remover, um aviso de validação é exibido e caso o usuário opte por prosseguir com a ação, a receita será deletada no banco de dados e o card desta receita removido da lista da página. Caso o usuário opte por finalziar a receita, o card a receita não será mais exibido em "Projetos em Andamento" e poderá ser visualizada em "Porjetos Finalizados".  
 
 Ao clicar no card o usuário será encaminhado para página da receita em progresso, no qual haverão 4 abas: "Timer", "Materiais", "Valores" e "Notas". 
 
-Na aba "Timer" o usuário poderá utilizar o timer para cronometrar sua receita. Na aba "Materiais", serão exibidos os materiais cadastrados na tela de Cadastro de Materiais durante o Cadastro da Receita. Na aba "Valores", o usuário poderá visualizar a precificação sugerida do trabalho até o momento em que ele se encontra na receita. E por fim, a aba "Notas", onde ele poderá fazer observações.
-
-Ainda não foram implementados o resgate dos dados da receita exibidos nos cards, além da função de editar e finalizar a receita. As funcionalidades das quatro abas estão em progresso e maiores detalhes podem ser confirmados nos relatos de cada tela presente neste tópico de Programação de funcionalidades
+Na aba "Timer" o usuário poderá utilizar o timer para cronometrar sua receita. Na aba "Materiais", serão exibidos os materiais cadastrados e também poderá cadastrar novas receitas. Na aba "Valores", o usuário poderá visualizar a precificação sugerida do trabalho até o momento em que ele se encontra na receita. E por fim, a aba "Notas", possuem informações como data de cadastro da receita, as observações acdastradas que podem ser editadas e o valor cadastrado para hora de trabalho
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/58c9f093-9bce-49f6-be61-bd9031fd0ffe)
 
@@ -169,3 +169,10 @@ Ainda não foram implementados o resgate dos dados da receita exibidos nos cards
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/76b7b564-aec5-4cd2-a3f4-56fabf8020df)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/eef70aa9-5ec3-4f84-bd16-7fe29f2bb3ca)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/122485af-a79b-4eb4-8548-3aa6cfa41e33)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/c4940a85-07e1-4366-a7f4-1f8fc66edc88)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/d7a3b9a9-3d7e-4a3a-a818-155fa86a69cc)
+
