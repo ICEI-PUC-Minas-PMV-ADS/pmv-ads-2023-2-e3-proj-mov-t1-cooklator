@@ -16,7 +16,7 @@
 
 ## Modelo Físico
 
-Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
+Os scripts de criação das tabelas estão localizados no arquivo banco.sql, o qual pode ser acessado na pasta src deste repositório ou por meio do seguinte link: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/blob/e48f610b13442c45332bb6f73bed01b3c87d1e69/src/banco.sql
 
 ## Tecnologias Utilizadas
 
