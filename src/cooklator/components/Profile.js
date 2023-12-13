@@ -44,6 +44,7 @@ const Profile = () => {
     const [isNewPasswordValid, setIsNewPasswordValid] = React.useState(null);
     const [newPasswordConfirmation, setNewPasswordConfirmation] = React.useState("");
     const [isNewPasswordConfirmationValid, setIsNewPasswordConfirmationValid] = React.useState(null);
+    const [isNewPasswordConfirmationEqualsValid, setIsNewPasswordConfirmationEqualsValid] = React.useState(null);
     const [valueHour, setValueHour] = React.useState(userProfile.hourValue);
     const [hideCurrentPassword, setHideCurrentPassword] = React.useState(true);
     const [hideNewPassword, setHideNewPassword] = React.useState(true);
@@ -67,7 +68,8 @@ const Profile = () => {
 
     const newPasswordConfirmationChange = e => {
         const newPasswordConfirmation = e.target.value;
-        setIsNewPasswordConfirmationValid(newPasswordConfirmation !== '' && newPasswordConfirmation.length === 8 && newPasswordConfirmation === newPassword)
+        setIsNewPasswordConfirmationValid(newPasswordConfirmation !== '' && newPasswordConfirmation.length === 8);
+        setIsNewPasswordConfirmationEqualsValid(newPasswordConfirmation === newPassword);
         setNewPasswordConfirmation(newPasswordConfirmation);
     }
 
@@ -347,6 +349,8 @@ const Profile = () => {
                         />
                         {isNewPasswordConfirmationValid !== null && !isNewPasswordConfirmationValid &&
                             <Text style={styles.invalidInput}>A nova senha deve conter 8 caracteres</Text>}
+                        {isNewPasswordConfirmationEqualsValid !== null && !isNewPasswordConfirmationEqualsValid &&
+                            <Text style={styles.invalidInput}>Confirmação de nova senha inválida.</Text>}
 
                         <Button
                             disabled={currentPassword === '' || !isNewPasswordValid || !isNewPasswordConfirmationValid}
