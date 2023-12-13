@@ -11,6 +11,7 @@ import {
     Comfortaa_700Bold,
 } from '@expo-google-fonts/comfortaa';
 import { useNavigation } from '@react-navigation/native';
+import {getRecipeCost, makeCostsUpdateRequest} from "./ApiUtils";
 
 
 const CadastroMaterial = () => {
@@ -33,13 +34,13 @@ const CadastroMaterial = () => {
         observacoes: '',
     });
 
-    const handleAdd = () => {
+    const handleAdd = async () => {
         const recipeId = localStorage.getItem("recipeId");
 
         if (material.nome == '' || material.quantidade == '' || material.valor == '') {
             Alert.alert('Por favor', 'Informe os dados do material ')
         } else {
-            const newMaterial = { ...material, valor: materialValue, recipeId };
+            const newMaterial = {...material, valor: materialValue, recipeId};
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -53,8 +54,39 @@ const CadastroMaterial = () => {
                 valor: '',
                 observacoes: '',
             });
-            return fetch(config.materialsUrl, requestOptions);
+
+            const response = await fetch(config.materialsUrl, requestOptions);
+
+            if (response.ok) {
+                const userDataString  = localStorage.getItem("@USER_DATA");
+                const userData = JSON.parse(userDataString);
+                const userId = userData.id;
+                console.log(userId)
+                await updateMaterialCost(recipeId, userId);
+            } else {
+                console.error('Erro ao adicionar material:', response.status, response.statusText);
+            }
         }
+    };
+
+    const updateMaterialCost = async (recipeId, userId) => {
+        const matchingCosts = await getRecipeCost(parseInt(userId, 10), parseInt(recipeId, 10));
+        const matchingCost = matchingCosts[0];
+        const costMaterialDb = matchingCost.totalMaterialCost;
+
+        const formattedMaterialValue = materialValue.replace(/^R\$ /, '')
+        const materialCost =  parseInt(formattedMaterialValue) * parseInt(material.quantidade);
+        const totalMaterialCost = parseInt(costMaterialDb) + materialCost;
+
+        const newTotalCost = parseInt(matchingCost.totalCost) + materialCost
+
+        const updatedCostData = {
+            ...matchingCost,
+            totalMaterialCost: totalMaterialCost,
+            totalCost: newTotalCost,
+        };
+
+        await makeCostsUpdateRequest(matchingCost.id, updatedCostData)
     };
 
     const handleInputChange = (text) => {
