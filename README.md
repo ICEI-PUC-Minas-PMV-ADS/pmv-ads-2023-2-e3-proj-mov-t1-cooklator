@@ -6,6 +6,9 @@
 
 `02/2023`
 
+![Logosemsubtitulo2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/d47992da-007d-423a-a1c4-0d939565200d)
+
+
 Cooklator é um projeto que visa facilitar e ajudar a vida do autônomo ou da pessoa que precisa de uma forma de precificar seu trabalho. A plataforma oferece essa solução com um cálculo baseado no custo dos materiais e no tempo gasto, assim para o usuário ter seu trabalho precificado e organizar seus gastos.
 
 ## Integrantes
