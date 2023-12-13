@@ -76,6 +76,11 @@ Também é possível observar a lógica utilizada para acessar os valores das va
 
 ## Tela de Cadastro de Receitas (Juliana Dutra Moreira)
 
+Artefatos da funcionalidade:
+- CreateRecipe.js
+- ModalWarning,js
+- ColorPicker.js
+
 O cadastro de receitas permitirá ao usuário fazer o registro inicial da receita com nome, observações e valor da horao. O usuário poderá escolher entre cadastrar o valor da hora usando o valor geral estipulado no cadastro (e exibido na tela de perfil) ou então, colocar o valor desejado no input. Para identificar melhor a receita, o usuário poderá também escolher uma cor a qual será exibida nos cards das receitas. Caso o usuário não selecione, uma cor padrão será atribuída à receita.
 
 O usuário deverá, obrigatoriamente, inserir um nome e um valor à receita. Caso ele deixe de preencher estes campos, será impedido de salvar e prosseguir, e além disso, alertas de preenchimento serão exibidos na tela.
@@ -150,6 +155,14 @@ Links estudo:
 
 ## Tela de Exibição de Receitas e acesso a receita em progresso (Juliana Dutra Moreira)
 
+Artefatos da funcionalidade:
+- RecipesInProgress.js
+- RecipesList,js
+- FinishedRecipes.js
+- CardRecipe.js
+- ModalWarning.js
+- ModalWithInput.js
+
 Na tela de exibição das receitas em progresso, uma lista com cards de cada receita cadastrada será exibida. As receitas exibidas estão sendo resgatadas do banco de dados, sendo as receitas cadastradas na tela de Cadastro de Receitas.
 
 Cada card exibe o título da receita e as informações relacionadas a ela. Há um menu à direita do card no qual o usuário poderá remover e finalizar a receita. Ao clicar em remover, um aviso de validação é exibido e caso o usuário opte por prosseguir com a ação, a receita será deletada no banco de dados e o card desta receita removido da lista da página. Caso o usuário opte por finalziar a receita, o card a receita não será mais exibido em "Projetos em Andamento" e poderá ser visualizada em "Porjetos Finalizados".  
@@ -175,4 +188,18 @@ Na aba "Timer" o usuário poderá utilizar o timer para cronometrar sua receita.
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/c4940a85-07e1-4366-a7f4-1f8fc66edc88)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/d7a3b9a9-3d7e-4a3a-a818-155fa86a69cc)
+
+## Tela de Exibição de Valores e calculos de precificação (Juliana Dutra Moreira)
+
+Artefatos da funcionalidade:
+- Timer.js
+- OptionsTabs,js
+- CreateRecipe.js
+- CadastroMaterial.js
+- ModalWarning.js
+- ApiUtils.js
+
+Ao acessar o card da receita o usuário pode visualizar em "Valores" os valores e precificação da receita. Quando o usuário utiliza o timer e finaliza o tempo, os calculos de valor por hora já são realziados e exibidos nesta aba de valores. De igual modo, no cadastro de materiais, a medida que os materiais são cadastrados eles são somados ao total de materiais e ao total do preço final sugerido pela aplicação.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/0035a61c-7676-487f-a737-d33014cf458a)
 
