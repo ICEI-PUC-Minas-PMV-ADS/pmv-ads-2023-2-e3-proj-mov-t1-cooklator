@@ -1,6 +1,26 @@
 # Registro de Testes de Software
 
-A seguir são descritos os testes funcionais a serem executados:
+| Caso de Teste | CT-05 - Cadastro de receitas |
+|---------------|--------------------------|
+| Requisitos Associados | RF-005 - A aplicação deve permitir ao usuário o cadastro e exibição das receitas e precificação na plataforma |
+| Objetivo do Teste | Verificar o cadastro de uma receita |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo "Cadastrar Nova Receita" <br> 3- Preencher os campos e clicar em salvar |
+| Critérios de Êxito | Fazer o cadastro da receita corretamente e impedir que uma receita seja criada sem nome e valor por hora. |
+| Conclusão do teste | O cadastro da receita foi realizado com sucesso. Mensagens de validações para nome e valor da hora são exibidas ao serem deixados em branco, pois são critérios obrigatórios no cadastro. Caso a opção de fixar o valor da hora cadastrada esteja marcada no perfil, os campos de preenchimento de valores não estarão disponíveis no cadastro da receita. Após prencher os dados corretamente e clicar em salvar, uma mensagem de sucesso é exibida |
+| Print dos Testes |
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/0a29f1cb-5715-4f13-bfd1-7283958f2a32
+
+| Caso de Teste | CT-06 - Exibição e edição de dados da receita |
+|---------------|--------------------------|
+| Requisitos Associados | RF-006 - A aplicação deve permitir a edição dos dados referentes aos insumos e receitas do usuário |
+| Objetivo do Teste | Visualizar e fazer a edição dos dados de uma receita |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo "Projetos em andamento" <br> 3- Escolher a receita desejada <br> 4- Fazer a visualização ou edição desejada |
+| Critérios de Êxito | Ao acessar as receitas, o usuário poderá visualizar e editar as informações relacionadas à receita. As alterações serão salvas e já exibidas |
+| Conclusão do teste | Teste ocorrido com sucesso. Ao acessar a receitas o usuário seleciona a receita desejada e são exibidas as informações relacionadas a receita como materiais, valores, observações, data de criação e outros. A edição do campo observação foi alterada com sucesso |
+| Print dos Testes |
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/7d240860-e880-4662-a2de-5b3de7cde87e
 
 | Caso de Teste | CT-07 - Edição de dados de conta do usuário |
 |---------------|--------------------------|
@@ -11,9 +31,3 @@ A seguir são descritos os testes funcionais a serem executados:
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/107152636/c478eed5-67e4-426f-94e7-2bf9be21a3a9
 
-## Avaliação
-
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
-
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
