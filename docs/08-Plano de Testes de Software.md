@@ -30,19 +30,19 @@ A seguir são descritos os testes funcionais a serem executados:
 | Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo para criação ou continuação de uma receita <br> 3- Acessar a aba do timer <br> 4- Ativar ou pausar o timer para início ou continuação de uma receita. |
 | Critérios de Êxito | Ao ativar o timer o tempo da receita deverá ser registrado. Caso o usuário pause e retorne posteriormente a receita e reative o timer, o tempo deverá ser acrescido no tempo anterior e desse modo, exibir o tempo total decorrido da confecção do prato.
 
-| Caso de Teste | CT-05 - Cadastro de receitas, precificação e exibição das receitas |
+| Caso de Teste | CT-05 - Cadastro de receitas |
 |---------------|--------------------------|
 | Requisitos Associados | RF-005 - A aplicação deve permitir ao usuário o cadastro e exibição das receitas e precificação na plataforma |
-| Objetivo do Teste | Verificar o cadastro, precificação e exibição de uma receita na aplicação |
-| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo de receitas <br> 3- Escolher a opção de cadastrar ou visualizar receitas anteriores |
-| Critérios de Êxito | Ao acessar as receitas, o usuário poderá criar uma nova receita e também visualizar as receitas já finalizadas. No campo das receitas finalizadas, a receita com os materiais, custos, tempo de prepararo, valor final sugerido (precificação) deverão ser exibidos corretamente.
+| Objetivo do Teste | Verificar o cadastro de uma receita |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo "Cadastrar Nova Receita" <br> 3- Preencher os campos e clicar em salvar |
+| Critérios de Êxito | Fazer o cadastro da receita corretamente e impedir que uma receita seja criada sem nome e valor por hora.
 
-| Caso de Teste | CT-06 - Edição de dados da receita |
+| Caso de Teste | CT-06 - Exibição e edição de dados da receita |
 |---------------|--------------------------|
 | Requisitos Associados | RF-006 - A aplicação deve permitir a edição dos dados referentes aos insumos e receitas do usuário |
-| Objetivo do Teste | Fazer a edição dos dados de uma receita|
-| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo para criação ou continuação de uma receita <br> 3- Escolher a receita desejada e acessar o campo de materiais e observações <br> 4- Fazer a edição desejada selecionando o campo de edição |
-| Critérios de Êxito | Ao acessar as receitas, o usuário poderá editar os materiais e as informações relacionadas a ele. As alterações serão salvas e já exibidas na lista de materiais e observações.
+| Objetivo do Teste | Visualizar e fazer a edição dos dados de uma receita |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo "Projetos em andamento" <br> 3- Escolher a receita desejada <br> 4- Fazer a visualização ou edição desejada |
+| Critérios de Êxito | Ao acessar as receitas, o usuário poderá visualizar e editar as informações relacionadas à receita. As alterações serão salvas e já exibidas
 
 | Caso de Teste | CT-07 - Edição de dados de conta do usuário |
 |---------------|--------------------------|
@@ -51,10 +51,16 @@ A seguir são descritos os testes funcionais a serem executados:
 | Passos | 1- Acessar a aplicação; <br> 2- Acessar a área do usuário <br> 3- Fazer as edições desejadas selecionando o campo de edição |
 | Critérios de Êxito | Ao acessar a área do usuário, as edições dos dados do cadastro da conta poderão ser alterados por ele. As alterações serão salvas e já exibidas nesta página.
 
-
 | Caso de Teste | CT-08 - Recuperação de senha |
 |---------------|--------------------------|
 | Requisitos Associados | RF-008 - A aplicação deve permitir a recuperação ou mudança de senha |
 | Objetivo do Teste | Fazer a recuperação de senha |
 | Passos | 1- Acessar a aplicação; <br> 2- Na página inicial selecionar "Esqueci minha senha" <br> 3- Preencher as informações necessárias para a recuperação |
 | Critérios de Êxito | Ao acessar a aplicação e solicitar a recuperação da senha, o usuário deve conseguir mudar sua senha atual para fazer um novo acesso à aplicação.
+
+| Caso de Teste | CT-09 - Precificação |
+|---------------|--------------------------|
+| Requisitos Associados | RF-005 - A aplicação deve permitir ao usuário o cadastro e exibição das receitas e precificação na plataforma |
+| Objetivo do Teste | Verificar a precificação das receitas |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo "Projetos em andamento" ou "Projetos Finalizados" <br> 3- Iniciar o timer ou acessar a aba Valores onde serão exibidos os valores e precificação |
+| Critérios de Êxito | Ao acessar as receitas, o usuário poderá utilizar o timer e ver a precificação após o seu uso, assim também, poderá visualizar o preço total e os outros valores relacionados à receita.
