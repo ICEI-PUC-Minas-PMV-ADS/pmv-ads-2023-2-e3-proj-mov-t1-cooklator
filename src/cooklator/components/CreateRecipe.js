@@ -26,9 +26,6 @@ const CreateRecipe = () => {
     const user = route.params?.user;
     const applyToAllProjects = user?.applyToAllProjects || false;
 
-    const handleNavigateToMaterial = () => {
-        navigation.navigate('CadastroMaterial');
-    };
 
     const handleNavigateToRecipesPage = () => {
         navigation.navigate('Recipes');
@@ -218,17 +215,6 @@ const CreateRecipe = () => {
                         <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
                             <View style={styles.viewColors}>
                                 <ColorPicker onColorSelect={handleColorSelect}/>
-                            </View>
-                        </Card>
-
-                        <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
-                            <View style={styles.viewMaterial}>
-                                <Text style={styles.textMaterialTitle}>Materiais:</Text>
-                                <Pressable
-                                    style={[styles.button, styles.buttonOpen]}
-                                    onPress={handleNavigateToMaterial}>
-                                    <Text style={styles.textStylePlus}>+</Text>
-                                </Pressable>
                             </View>
                         </Card>
 
