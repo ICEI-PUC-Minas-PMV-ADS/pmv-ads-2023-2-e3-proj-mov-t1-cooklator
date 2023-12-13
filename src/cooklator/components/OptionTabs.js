@@ -17,7 +17,7 @@ const OptionsTabs = ({route}) => {
     const [totalMaterial, setTotalMaterial] = useState(0.00);
     const [totalValueHour, setTotalValueHour] = useState(0.00);
     const [recipeDate, setRecipeDate] = useState(0.00);
-    const {recipe} = route.params;
+    const { recipe, hideOptions } = route.params;
     const [recipeData, setRecipe] = useState(recipe);
     const [modalVisibleConfirmEdition, setModalVisibleConfirmEdition] = useState(false);
     const [modalMessageConfirmEdition, setModalMessageConfirmEdition] = useState('');
@@ -62,61 +62,51 @@ const OptionsTabs = ({route}) => {
         };
     };
 
-    const fetchCostsByField = async (recipeId, field, condicionalValue) => {
-        try {
-            const response = await fetch(`${costsApiUrl}`);
-            const data = await response.json();
-
-            if (response.status === 200) {
-                const matchingCost = data.find(cost => cost.recipeId === recipeId);
-                return matchingCost ? {[field]: matchingCost[field]} : {[field]: condicionalValue};
-            } else {
-                console.error('Erro ao obter lista de custos', data);
-                return {[field]: condicionalValue};
-            }
-        } catch (error) {
-            console.error('Erro na requisição:', error);
-            return {[field]: condicionalValue};
-        }
-    };
-
-    const getSuggestedPrice = async (recipeId) => {
-        return fetchCostsByField(recipeId, 'totalCost', 0);
-    };
-
-    const getTotalMaterial = async (recipeId) => {
-        return fetchCostsByField(recipeId, 'totalMaterialCost', 0);
-    };
-
-    const getTotalValueHour = async (recipeId) => {
-        return fetchCostsByField(recipeId, 'totalTimeValue', 0);
-    };
-
     const getRecipeDate = async (recipe) => {
         return recipe.startDate ? recipe.startDate : "10/10/2023";
-    };
+    }
 
-    useEffect(() => {
-        const fetchData = async () => {
+    const fetchData = async () => {
+        const fetchCostsByField = async (recipeId, field, defaultValue) => {
             try {
-                const [suggestedPriceData, totalMaterialData, totalValueHourData, starDateData] = await Promise.all([
-                    getSuggestedPrice(recipe.id),
-                    getTotalMaterial(recipe.id),
-                    getTotalValueHour(recipe.id),
-                    getRecipeDate(recipe)
-                ]);
+                const response = await fetch(`${costsApiUrl}`);
+                const data = await response.json();
 
-                setSuggestedPrice(suggestedPriceData.totalCost);
-                setTotalMaterial(totalMaterialData.totalMaterialCost);
-                setTotalValueHour(totalValueHourData.totalTimeValue)
-                setRecipeDate(starDateData)
+                if (response.status === 200) {
+                    const matchingCost = data.find(cost => cost.recipeId === recipeId);
+                    return matchingCost ? matchingCost[field] : defaultValue;
+                } else {
+                    console.error('Erro ao obter lista de custos', data);
+                    return defaultValue;
+                }
             } catch (error) {
-                console.error('Erro ao obter dados:', error);
+                console.error('Erro na requisição:', error);
+                return defaultValue;
             }
         };
 
-        fetchData();
-    }, [recipe.id]);
+        try {
+            const [suggestedPriceData, totalMaterialData, totalValueHourData, starDateData] = await Promise.all([
+                fetchCostsByField(recipe.id, 'totalCost', 0),
+                fetchCostsByField(recipe.id, 'totalMaterialCost', 0),
+                fetchCostsByField(recipe.id, 'totalTimeValue', 0),
+                getRecipeDate(recipe),
+            ]);
+
+            setSuggestedPrice(suggestedPriceData);
+            setTotalMaterial(totalMaterialData);
+            setTotalValueHour(totalValueHourData);
+            setRecipeDate(starDateData);
+        } catch (error) {
+            console.error('Erro ao obter dados:', error);
+        }
+    };
+
+    useEffect(() => {
+        if (value === 'values') {
+            fetchData();
+        }
+    }, [value, recipe.id]);
 
     const formatarData = (dataString) => {
         const options = {day: '2-digit', month: '2-digit', year: 'numeric'};
@@ -206,12 +196,26 @@ const OptionsTabs = ({route}) => {
                 ]}
                 style={styles.group}
             />
-            {value === 'timer' && (
+
+            {!hideOptions && value === 'timer' && (
                 <View style={styles.timeView}>
-                    <Text style={styles.titleTimer}>TIMER</Text>
-                    <Timer/>
+                    <Timer recipe={recipe}/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="#9F6BA0" fill-opacity="1"
+                              d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                    </svg>
                 </View>
             )}
+
+            {hideOptions && value === 'timer' && (
+                <View>
+                <CardValues
+                    cardTitle={'Tempo de preparo:'} cardSubTitle={recipe.preparationTime} concatenateCurrency={false}
+                    style={{ fontSize: 30 }}
+                />
+                </View>
+            )}
+
             {value === 'materials' && (
                 <View>
                     <Text style={styles.titleTopic}>Materiais aqui</Text>
@@ -222,7 +226,7 @@ const OptionsTabs = ({route}) => {
                     <Text style={styles.titleTopic}>Valores e precificação</Text>
                     <CardValues cardTitle={'Preço sugerido'} cardSubTitle={suggestedPrice} concatenateCurrency={true}/>
                     <CardValues cardTitle={'Materiais'} cardSubTitle={totalMaterial} concatenateCurrency={true}/>
-                    <CardValues cardTitle={'Valor por hora'} cardSubTitle={totalValueHour} concatenateCurrency={true}/>
+                    <CardValues cardTitle={'Valor tempo de trabalho'} cardSubTitle={totalValueHour} concatenateCurrency={true}/>
                 </View>
             )}
             {value === 'notes' && (
@@ -230,11 +234,13 @@ const OptionsTabs = ({route}) => {
                     <Text style={styles.titleTopic}></Text>
                     <CardValues cardTitle={'Observações cadastradas:'} cardSubTitle={getRecipeObs()}
                                 concatenateCurrency={false} subtitleFontSize={20}
-                                showIcon={true} onPressIcon={handleConfirmCommentEdition}
+                                showIcon={!hideOptions} onPressIcon={handleConfirmCommentEdition}
                                 colorIcon="#04364A"
                                 chosenIcon="lead-pencil"/>
-                    <CardValues cardTitle={'Data de registro da receita'} cardSubTitle={formatarData(recipeDate)}
+                    <CardValues cardTitle={'Data de registro da receita:'} cardSubTitle={formatarData(recipeDate)}
                                 concatenateCurrency={false}/>
+                    <CardValues cardTitle={'Valor cadastrado por hora:'} cardSubTitle={recipe.hourValue}
+                                concatenateCurrency={true}/>
                 </View>
             )}
             <ModalWarning
@@ -285,7 +291,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
-        paddingTop: 200
+        paddingTop: 15
     },
     button: {
         flex: 1,
@@ -306,7 +312,8 @@ const styles = StyleSheet.create({
     timeView: {
         width: 400,
         height: 400,
-        backgroundColor: 'grey',
+        borderRadius: 10,
+        backgroundColor: '#C880B7',
         alignSelf: 'center',
         marginTop: 100
     }

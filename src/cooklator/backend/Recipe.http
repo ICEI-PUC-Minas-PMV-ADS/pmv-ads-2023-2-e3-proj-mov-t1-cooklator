@@ -13,9 +13,11 @@ content-type: application/json
   "comments": "",
   "color": "#98FB98",
   "id": 2,
-  "preparationTime": 0,
+  "preparationTime": "",
   "startDate": "2023-11-21T12:34:56.789Z",
-  "isConcluded": false
+  "isConcluded": false,
+  "userId": 9,
+  "totalCost": 0
 }
 
 ### UPDATE RECIPE
@@ -29,9 +31,11 @@ content-type: application/json
   "appliesDefaultValue": false,
   "comments": "Testando a receita com flor de sal",
   "color":"#176B87",
-  "preparationTime": 0.0,
+  "preparationTime": "",
   "startDate": "2023-11-21T12:34:56.789Z",
-  "isConcluded": false
+  "isConcluded": false,
+  "userId": 9,
+  "totalCost": 0
 }
 
 

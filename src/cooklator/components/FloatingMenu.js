@@ -4,9 +4,10 @@ import {FAB, Portal, Provider, useTheme} from 'react-native-paper';
 import {useNavigation} from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ModalWarning from "./ModalWarning";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-const FloatingMenu = () => {
+const FloatingMenu = ({ userProfile }) => {
 
     const [visible, setVisible] = React.useState(true);
     const [open, setOpen] = React.useState(false);
@@ -14,17 +15,16 @@ const FloatingMenu = () => {
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
-    const [menuActive, setMenuActive] = useState(false);
 
     const handleNavigateToRecipesPage = () => {
         if (open) {
-            navigation.navigate('Receitas');
+            navigation.navigate('Recipes');
         }
     };
 
     const handleNavigateToProfilePage = () => {
-        if (open) {
-        navigation.navigate('Profile');
+        if (open && userProfile) {
+            navigation.navigate('Profile', { user: userProfile });
         }
     };
 
@@ -43,8 +43,10 @@ const FloatingMenu = () => {
             showModal('Tem certeza que deseja sair?')
         }
     };
-    const logOut = () => {
-        console.log('saiu')
+    const logOut = async () => {
+        AsyncStorage.setItem('@USER_DATA', null).then();
+        hideModal()
+        navigation.navigate('Login');
     };
 
     return (

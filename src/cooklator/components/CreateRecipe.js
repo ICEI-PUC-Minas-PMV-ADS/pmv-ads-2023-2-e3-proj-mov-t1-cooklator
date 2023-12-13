@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {Card, Checkbox} from 'react-native-paper';
 import ModalWarning from './ModalWarning';
 import ColorPicker from "./ColorPicker";
 import config from "../config";
+import {createCost} from "./ApiUtils";
 
 const recipeApiUrl = config.recipeApiUrl;
 
@@ -21,13 +22,16 @@ const CreateRecipe = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [selectedColor, setSelectedColor] = useState('#176B87');
+    const route = useRoute();
+    const user = route.params?.user;
+    const applyToAllProjects = user?.applyToAllProjects || false;
 
     const handleNavigateToMaterial = () => {
         navigation.navigate('CadastroMaterial');
     };
 
     const handleNavigateToRecipesPage = () => {
-        navigation.navigate('Receitas');
+        navigation.navigate('Recipes');
     };
 
     const getCurrentDate = () => {
@@ -36,6 +40,7 @@ const CreateRecipe = () => {
     };
 
     const handleAddRecipe = async () => {
+        console.log(user)
         try {
             let isValid = true;
             setNameError('')
@@ -46,27 +51,52 @@ const CreateRecipe = () => {
                 isValid = false;
             }
 
-            if (hourValueChange <= 0 && checked === false) {
+            console.log(hourValueChange <= 0)
+            console.log(checked === false)
+            console.log(!applyToAllProjects)
+            if (hourValueChange <= 0 && checked === false && !applyToAllProjects) {
                 setHourValueError('Insira um valor ou marque o valor padrão');
                 isValid = false;
             }
 
             if (isValid) {
+
+                const chosenHourValue = checked || user.applyToAllProjects ? user.hourValue : hourValueChange;
+
                 const newRecipe = {
                     name: textTitle,
-                    hourValue: hourValueChange,
+                    hourValue: chosenHourValue,
                     appliesDefaultValue: checked,
                     comments: textObs,
                     color: selectedColor,
-                    preparationTime: 0.0,
+                    preparationTime: '',
                     startDate: getCurrentDate(),
-                    isConcluded: false
+                    isConcluded: false,
+                    userId: user.id,
+                    totalCost: 0
                 };
 
-                const response = await addRecipe(newRecipe);
+                const responseRecipe  = await addRecipe(newRecipe);
 
-                if (response.status === 201 || response.status === 200) {
-                    const data = await response.json();
+                if (responseRecipe.status !== 201 && responseRecipe.status !== 200) {
+                    console.error('Erro ao adicionar receita:', responseRecipe);
+                    return;
+                }
+
+                    const recipeData = await responseRecipe.json();
+                    const newCost = {
+                        userId: user.id,
+                        recipeId: recipeData.id,
+                        totalMaterialCost: 0,
+                        totalTimeValue: 0,
+                        totalCost: 0,
+                    };
+
+                const responseCost = await createCost(newCost);
+
+                if (responseCost.status !== 201 && responseCost.status !== 200) {
+                    console.error('Erro ao criar custo:', responseCost);
+                } else {
                     showModal('Receita adicionada com sucesso! Deseja cadastrar outra?');
                 }
             }
@@ -155,7 +185,7 @@ const CreateRecipe = () => {
                                 placeholderTextColor="#606b6a"
 
                             />
-
+                            {!applyToAllProjects && (
                             <View style={styles.viewButtons}>
                                 <View style={styles.viewValue}>
                                     <Text style={styles.textHourValue}> Valor da hora:</Text>
@@ -170,33 +200,36 @@ const CreateRecipe = () => {
 
                                 </View>
                             </View>
+                            )}
+                            {!applyToAllProjects && (
+                                <View style={styles.checkboxContainer}>
+                                    <Checkbox.Android
+                                        status={checked ? 'checked' : 'unchecked'}
+                                        onPress={() => {
+                                            setChecked(!checked);
+                                        }}
+                                    />
+                                    <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
+                                </View>
+                            )}
                             <Text style={styles.errorMessageObs}>{hourValueError}</Text>
-                            <View style={styles.checkboxContainer}>
-                                <Checkbox.Android
-                                    status={checked ? 'checked' : 'unchecked'}
-                                    onPress={() => {
-                                        setChecked(!checked);
-                                    }}
-                                />
-                                <Text style={styles.checkboxText}>Aplicar o valor cadastrado no Perfil</Text>
-                            </View>
                         </Card>
 
                         <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
-                        <View style={styles.viewColors}>
+                            <View style={styles.viewColors}>
                                 <ColorPicker onColorSelect={handleColorSelect}/>
                             </View>
                         </Card>
 
                         <Card style={[styles.card, {minHeight: 10}]} elevation={3}>
-                        <View style={styles.viewMaterial}>
-                            <Text style={styles.textMaterialTitle}>Materiais:</Text>
-                            <Pressable
-                                style={[styles.button, styles.buttonOpen]}
-                                onPress={handleNavigateToMaterial}>
-                                <Text style={styles.textStylePlus}>+</Text>
-                            </Pressable>
-                        </View>
+                            <View style={styles.viewMaterial}>
+                                <Text style={styles.textMaterialTitle}>Materiais:</Text>
+                                <Pressable
+                                    style={[styles.button, styles.buttonOpen]}
+                                    onPress={handleNavigateToMaterial}>
+                                    <Text style={styles.textStylePlus}>+</Text>
+                                </Pressable>
+                            </View>
                         </Card>
 
                         <View style={styles.viewButtons}>
@@ -221,7 +254,8 @@ const CreateRecipe = () => {
                         </View>
                         <ModalWarning visible={modalVisible} message={modalMessage}
                                       onPrimaryButtonPress={handleResetForm}
-                                      primaryButtonLabel={'Sim'} onSecondaryButtonPress={handleNavigateToRecipesPage}
+                                      primaryButtonLabel={'Sim'}
+                                      onSecondaryButtonPress={handleNavigateToRecipesPage}
                                       secondaryButtonLabel={"Não"}/>
                     </View>
                 </View>

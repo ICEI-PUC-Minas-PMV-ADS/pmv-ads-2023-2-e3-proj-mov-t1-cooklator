@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
+import config from "../config";
+import axios from "axios";
+import {getRecipeCost, makeCostsUpdateRequest} from './ApiUtils'
 
-const Timer = () => {
+
+const recipeApiUrl = config.recipeApiUrl;
+const costsApiUrl = config.costsApiUrl;
+
+const Timer = ({ recipe }) => {
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const [previousTimes, setPreviousTimes] = useState([]);
@@ -19,8 +26,57 @@ const Timer = () => {
         setTime(0);
     };
 
-    const handleSave = () => {
+    function makeRecipeUpdateRequest(id, updatedRecipeData) {
+        const editUrl = recipeApiUrl + '/' + id;
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedRecipeData),
+        };
+
+        return fetch(editUrl, requestOptions);
+    }
+
+    const calculateSuggestedPrice = async (recipe, time) => {
+        try {
+            const matchingCosts = await getRecipeCost(recipe.userId, recipe.id);
+            let timeRecipe;
+            timeRecipe = time / 3600
+            const newTimeValue = parseFloat(timeRecipe) * parseFloat(recipe.hourValue)
+
+            const matchingCost = matchingCosts[0];
+            const costDb = matchingCost.totalMaterialCost;
+            const newTotalCost = costDb + newTimeValue;
+
+            const updatedCostData = {
+                ...matchingCost,
+                totalTimeValue: newTimeValue.toFixed(2),
+                totalCost: newTotalCost.toFixed(2),
+            };
+
+            const updatedRecipeData = {
+                ...recipe,
+                preparationTime: calculate(time),
+                totalCost: newTotalCost.toFixed(2),
+            };
+
+            await makeRecipeUpdateRequest(recipe.id, updatedRecipeData);
+            await makeCostsUpdateRequest(matchingCost.id, updatedCostData)
+
+        } catch (error) {
+            console.error('Erro ao buscar custo correspondente:', error);
+        }
+    }
+
+    const handleSave = async () => {
         setPreviousTimes([...previousTimes, time]);
+        console.log(calculate(time))
+
+        await calculateSuggestedPrice(recipe, time);
+
         handleReset();
     };
 
@@ -56,7 +112,7 @@ const Timer = () => {
 
     return (
         <View style={styles.outerContainer}>
-            <View style={styles.container}>
+               <View style={styles.container}>
                 <View style={styles.timerContainer}>
                     <Text style={styles.timerText}>Tempo decorrido: {calculate(time)}</Text>
                 </View>
@@ -68,14 +124,7 @@ const Timer = () => {
                 ) : (
                     <Button title="Começar" onPress={handleStart} />
                 )}
-                <Text style={styles.previousTimesTitle}>Receitas anteriores</Text>
-                <FlatList
-                    data={previousTimes}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => (
-                        <Text>{calculate(item)}</Text>
-                    )}
-                />
+
             </View>
         </View>
     );
@@ -89,6 +138,9 @@ const styles = StyleSheet.create({
     },
     container: {
         width: '80%',
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 15,
     },
     timerContainer: {
         alignItems: 'center',
@@ -105,5 +157,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
 });
+
 
 export default Timer;

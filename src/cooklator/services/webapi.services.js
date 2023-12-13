@@ -15,7 +15,7 @@ const onRequest = async (config) => {
   }
 };
 
-const setupInterceptorsTo = (axiosInstance: AxiosInstance) => {
+const setupInterceptorsTo = (axiosInstance) => {
   axiosInstance.interceptors.request.use(onRequest);
   return axiosInstance;
 };

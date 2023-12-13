@@ -9,47 +9,61 @@ import Logo from '../components/Logo';
 import { useNavigation } from '@react-navigation/native';
 
 import {register} from '../services/auth.services';
+import ModalWarning from "../components/ModalWarning";
 
 const Register = () => {
 
   const navigation = useNavigation();
-  
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [hourValue, setHourValue] = useState('');
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleRegister = () => {
 
     register({
       name: name,
       email: email,
-      password: password
+      password: password,
+      hourValue: hourValue
     }).then( res => {
       console.log(res);
 
       if(res){
-
-        Alert.alert('Atenção', 'Usuário Cadastrado com sucesso!',[
-          { text: "OK", onPress: () => navigation.goBack() }
-        ]);
-
+        showModal('Usuário cadastrado com sucesso!');
       }else{
-
-         Alert.alert('Atenção', 'Usuário não cadastrado! Tente novamente mais tarde =D');
+        showModal('Erro ao cadastrar Usuário!');
       }
-
     });
-    
   }
+
+  const handleInputChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+
+    const formattedValue = numericValue.replace(
+        /(\d)(?=(\d{2})+(?!\d))/g,
+        '$1.'
+    );
+
+    setHourValue(formattedValue);
+  };
+
+  const showModal = (message) => {
+    setModalMessage(message);
+    setModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setModalVisible(false);
+    setModalMessage('');
+    navigation.navigate('Login');
+  };
 
   return (
     <Container>
-    <Button
-          style={styles.button1}
-          icon="keyboard-return"
-          mode="contained"
-          onPress={() => navigation.goBack()}>
-        </Button>
       <View style={styles.header}>
         <Logo />
       </View>
@@ -76,6 +90,13 @@ const Register = () => {
           onChangeText={(text) => setPassword(text)}
           left={<TextInput.Icon name="key" />}
         />
+        <Input
+            label="Valor da hora (você poderá alterar posteriormente)"
+            value={hourValue}
+            placeholder="R$ 0,00"
+            onChangeText={handleInputChange}
+            left={<TextInput.Icon name="key" />}
+        />
         <Button
           style={styles.button}
           icon="account-multiple-plus"
@@ -83,6 +104,8 @@ const Register = () => {
           onPress={handleRegister}>
           REGISTRAR
         </Button>
+        <ModalWarning visible={modalVisible} message={modalMessage} onPrimaryButtonPress={hideModal}
+                      primaryButtonLabel={'OK'}/>
         <Button
           style={styles.button}
           icon="cancel"
@@ -100,7 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#176B87',
     borderTopColor:'#000',
     marginBottom: 8,
-    
+
   },
   button1: {
     backgroundColor:'#176B87',
@@ -109,7 +132,7 @@ const styles = StyleSheet.create({
     width:10,
     height:20,
     marginTop: 5,
-    
+
   },
   textHeader: {
     textAlign: 'center',
