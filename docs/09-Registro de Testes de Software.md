@@ -44,3 +44,12 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklato
 
 https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/1a60b32f-6fcf-4ffc-8354-a2d2fb5f8975
 
+| Caso de Teste | CT-03 - Cadastro de materiais e insumos |
+|---------------|--------------------------|
+| Requisitos Associados | RF-003 - A aplicação permitirá o cadastro de materiais e insumos para controle e cálculos de quantidade e gastos pelo usuário |
+| Objetivo do Teste | Avaliar o cadastro de materiais pelo usuário |
+| Passos | 1- Acessar a aplicação; <br> 2- Acessar o campo para criação de uma nova receita <br> 3  Acessar a aba para cadastrar materiais <br> 4- Cadastrar uma material preenchendo nome do material, preço, quantidade e observações. |
+| Critérios de Êxito | Ao cadastrar um material, este deve ser exibido e acrescentado na lista de materiais. Validações como um alerta de cadastro de um material com mesmo nome de um anterior deve ser exibida.
+| Conclusão do teste | Tetse ocorreu com sucesso. Ao cadastrar os materiais eles são salvos junto à receita cadastrada |
+| Print dos Testes |
+![Alt text](image.png)

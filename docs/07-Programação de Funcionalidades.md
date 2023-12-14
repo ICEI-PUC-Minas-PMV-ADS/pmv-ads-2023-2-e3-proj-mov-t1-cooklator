@@ -203,3 +203,18 @@ Ao acessar o card da receita o usuário pode visualizar em "Valores" os valores 
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t1-cooklator/assets/114538749/0035a61c-7676-487f-a737-d33014cf458a)
 
+## TELA DE MATERIAIS (THAIS MENEZES)
+
+A tela de cadastro de materiais possui a funcionalidade de adicionar materiais a uma receita. Ela é acessada pela tela de criaçao de receitas. 
+Ao clicar no botão "+" o material cadastrado será exibido em forma de lista na página com suas respectivas informações. Ao clicar no botão "Salvar", os materiais serão adicionados à receita e o usuário será levado de volta para a tela de criação de receita. 
+
+Materiais utilizados para estudo:
+- Microfundamentos ADS 3
+- https://developerplus.com.br/como-montar-uma-lista-usando-scrollview-no-react-native/
+- Materiais de acervo pessoal 
+
+
+![Alt text](image-1.png)
+![Alt text](image-2.png)
+![Alt text](image-3.png)
+
